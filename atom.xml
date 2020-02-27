@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://poyibao.github.io/</id>
+    <id>https://poiyibao.github.io/</id>
     <title>poiyibao_blog</title>
-    <updated>2020-02-27T05:51:44.621Z</updated>
+    <updated>2020-02-27T05:52:22.552Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://poyibao.github.io/"/>
-    <link rel="self" href="https://poyibao.github.io/atom.xml"/>
+    <link rel="alternate" href="https://poiyibao.github.io/"/>
+    <link rel="self" href="https://poiyibao.github.io/atom.xml"/>
     <subtitle>tomorrow is another day</subtitle>
-    <logo>https://poyibao.github.io/images/avatar.png</logo>
-    <icon>https://poyibao.github.io/favicon.ico</icon>
+    <logo>https://poiyibao.github.io/images/avatar.png</logo>
+    <icon>https://poiyibao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, poiyibao_blog</rights>
     <entry>
         <title type="html"><![CDATA[ES6基础]]></title>
-        <id>https://poyibao.github.io/post/es6-ji-chu/</id>
-        <link href="https://poyibao.github.io/post/es6-ji-chu/">
+        <id>https://poiyibao.github.io/post/es6-ji-chu/</id>
+        <link href="https://poiyibao.github.io/post/es6-ji-chu/">
         </link>
         <updated>2020-02-27T04:56:12.000Z</updated>
         <content type="html"><![CDATA[<h1 id="es6">ES6</h1>
@@ -729,8 +729,8 @@ var 0 = {
     </entry>
     <entry>
         <title type="html"><![CDATA[git基本使用]]></title>
-        <id>https://poyibao.github.io/post/git-ji-ben-shi-yong/</id>
-        <link href="https://poyibao.github.io/post/git-ji-ben-shi-yong/">
+        <id>https://poiyibao.github.io/post/git-ji-ben-shi-yong/</id>
+        <link href="https://poiyibao.github.io/post/git-ji-ben-shi-yong/">
         </link>
         <updated>2020-02-27T04:55:01.000Z</updated>
         <content type="html"><![CDATA[<h1 id="git">git</h1>
@@ -802,8 +802,8 @@ git commit
     </entry>
     <entry>
         <title type="html"><![CDATA[Vue.js]]></title>
-        <id>https://poyibao.github.io/post/vuejs/</id>
-        <link href="https://poyibao.github.io/post/vuejs/">
+        <id>https://poiyibao.github.io/post/vuejs/</id>
+        <link href="https://poiyibao.github.io/post/vuejs/">
         </link>
         <updated>2020-02-27T04:52:51.000Z</updated>
         <content type="html"><![CDATA[<h1 id="vuejs">Vue.js</h1>
