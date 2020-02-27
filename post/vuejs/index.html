@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Vue.js | poiyibao_blg</title>
+<meta name="description" content="tomorrow is another day">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://poyibao.github.io//favicon.ico?v=1582779401023">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://poyibao.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://poyibao.github.io/">poiyibao_blg</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>Vue.js</h1>
+            <p class="article-meta">
+              2020-02-27
+              
+            </p>
+            
+            <div class="post-content">
+              <h1 id="vuejs">Vue.js</h1>
+<h2 id="node后端中的-mvc-与-前端中的-mvvm-之间的区别">Node（后端）中的 MVC 与 前端中的 MVVM 之间的区别</h2>
+<ul>
+<li>MVC 是后端的分层开发概念；</li>
+<li>MVVM是前端视图层的概念，主要关注于 视图层分离，也就是说：MVVM把前端的视图层，分为了 三部分 Model, View , VM ViewModel</li>
+<li>M：数据    MV：调度    V：视图</li>
+</ul>
+<h2 id="vue之-基本的代码结构和插值表达式-v-cloak">Vue之 - 基本的代码结构和插值表达式、v-cloak</h2>
+<p>v-loak:防止差值闪瞬，默认为display=none</p>
+<p>v-cloak：不会使差值覆盖原标签内文本</p>
+<h2 id="vue指令之v-text和v-html">Vue指令之v-text和v-html</h2>
+<p>v-text: 直接将值插入，会覆盖原有标签内的文本，不存在闪烁问题。</p>
+<p>v-html可以向插值中输入HTML标签，只要符合HTML标签，都会解析</p>
+<p><strong>HTML差值原则</strong></p>
+<ul>
+<li>尽量使用Vue自带的模板机制，减少对HTML差值的使用</li>
+<li>只对可信任的内容使用差值</li>
+<li>绝不相信用户输入的内容</li>
+</ul>
+<p>{{ }}文本差值是不会解析标签的，所有内容被当做文本</p>
+<h2 id="vue指令之v-bind的三种用法">Vue指令之<code>v-bind</code>的三种用法</h2>
+<h3 id="v-bind属性绑定指令">v-bind属性绑定指令</h3>
+<ol>
+<li>
+<p>直接使用指令<code>v-bind</code></p>
+</li>
+<li>
+<p>使用简化指令<code>:</code></p>
+</li>
+<li>
+<p>在绑定的时候，拼接绑定内容：<code>:title=&quot;btnTitle + ', 这是追加的内容'&quot;</code></p>
+</li>
+</ol>
+<h3 id="绑定类名和样式">绑定类名和样式</h3>
+<p>类名有三种绑定方法</p>
+<ul>
+<li>
+<p>使用拼接字符串</p>
+</li>
+<li>
+<p>数组形式（类名作为数组成员）</p>
+</li>
+<li>
+<p>对象（使用对象的时候，类名作为对象键名，当键值判断为真时，类名将绑定在节点上）</p>
+<pre><code class="language-html"> &lt;style&gt;
+    .style_color{ color: black;}
+    .style_front{ font-size: large;}
+    .style_italic{ font-style:italic;}
+    &lt;/style&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;p class =&quot;style_color style_front style_italic&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+        &lt;p :class = &quot;classStr&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+        &lt;p :class = &quot;classArr&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+        &lt;p :class=&quot;classOj&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let vm = new Vue({
+            el: '#app',
+            data(){
+                return{
+                    classStr:&quot;style_color style_front style_italic&quot;,
+                    classArr:['style_color', 'style_front', 'style_italic'],
+                    classOj:{
+                        'style_color':  true,
+                        'style_front':  true,
+                        'style_italic': true
+                    }
+                }
+            }
+        })
+    &lt;/script&gt;
+</code></pre>
+<p>样式绑定以健值对的形式</p>
+</li>
+</ul>
+<h2 id="vue指令之v-on和跑马灯效果">Vue指令之<code>v-on</code>和跑马灯效果</h2>
+<p><strong>v-on事件绑定指令</strong></p>
+<p>简化指令    @</p>
+<h3 id="跑马灯效果">跑马灯效果</h3>
+<ol>
+<li>HTML结构：</li>
+</ol>
+<pre><code class="language-html">
+&lt;div id=&quot;app&quot;&gt;
+
+    &lt;p&gt;{{info}}&lt;/p&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;开启&quot; v-on:click=&quot;go&quot;&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;停止&quot; v-on:click=&quot;stop&quot;&gt;
+
+  &lt;/div&gt;
+
+</code></pre>
+<ol start="2">
+<li>Vue实例：</li>
+</ol>
+<pre><code class="language-js">
+	// 创建 Vue 实例，得到 ViewModel
+
+    var vm = new Vue({
+
+      el: '#app',
+
+      data: {
+
+        info: '猥琐发育，别浪~！',
+
+        intervalId: null
+
+      },
+
+      methods: {
+
+        go() {
+
+          // 如果当前有定时器在运行，则直接return
+
+          if (this.intervalId != null) {
+
+            return;
+
+          }
+
+          // 开始定时器
+
+          this.intervalId = setInterval(() =&gt; {
+
+            this.info = this.info.substring(1) + this.info.substring(0, 1);
+
+          }, 500);
+
+        },
+
+        stop() {
+
+          clearInterval(this.intervalId);
+
+        }
+
+      }
+
+    });
+
+</code></pre>
+<h2 id="vue指令之v-on的缩写和事件修饰符">Vue指令之<code>v-on</code>的缩写和事件修饰符</h2>
+<h3 id="事件修饰符">事件修饰符：</h3>
+<ul>
+<li>
+<p>.stop       阻止冒泡</p>
+</li>
+<li>
+<p>.prevent    阻止默认事件</p>
+</li>
+<li>
+<p>.capture    添加事件侦听器时使用事件捕获模式</p>
+</li>
+<li>
+<p>.self       只当事件在该元素本身（比如不是子元素）触发时触发回调</p>
+</li>
+<li>
+<p>.once       事件只触发一次</p>
+</li>
+</ul>
+<h2 id="vue指令之v-model和双向数据绑定">Vue指令之<code>v-model</code>和<code>双向数据绑定</code></h2>
+<p>v-model可以实现 v ——&gt; m 的数据绑定，也可以实现 m ——&gt; v 的数据绑定。</p>
+<p>只能用于表单元素</p>
+<h2 id="简易计算器案例">简易计算器案例</h2>
+<ol>
+<li>HTML 代码结构</li>
+</ol>
+<pre><code class="language-html">
+  &lt;div id=&quot;app&quot;&gt;
+
+    &lt;input type=&quot;text&quot; v-model=&quot;n1&quot;&gt;
+
+    &lt;select v-model=&quot;opt&quot;&gt;
+
+      &lt;option value=&quot;0&quot;&gt;+&lt;/option&gt;
+
+      &lt;option value=&quot;1&quot;&gt;-&lt;/option&gt;
+
+      &lt;option value=&quot;2&quot;&gt;*&lt;/option&gt;
+
+      &lt;option value=&quot;3&quot;&gt;÷&lt;/option&gt;
+
+    &lt;/select&gt;
+
+    &lt;input type=&quot;text&quot; v-model=&quot;n2&quot;&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;=&quot; v-on:click=&quot;getResult&quot;&gt;
+
+    &lt;input type=&quot;text&quot; v-model=&quot;result&quot;&gt;
+
+  &lt;/div&gt;
+
+</code></pre>
+<ol start="2">
+<li>Vue实例代码：</li>
+</ol>
+<pre><code class="language-js">
+	// 创建 Vue 实例，得到 ViewModel
+
+    var vm = new Vue({
+
+      el: '#app',
+
+      data: {
+
+        n1: 0,
+
+        n2: 0,
+
+        result: 0,
+
+        opt: '0'
+
+      },
+
+      methods: {
+
+        getResult() {
+
+          switch (this.opt) {
+
+            case '0':
+
+              this.result = parseInt(this.n1) + parseInt(this.n2);
+
+              break;
+
+            case '1':
+
+              this.result = parseInt(this.n1) - parseInt(this.n2);
+
+              break;
+
+            case '2':
+
+              this.result = parseInt(this.n1) * parseInt(this.n2);
+
+              break;
+
+            case '3':
+
+              this.result = parseInt(this.n1) / parseInt(this.n2);
+
+              break;
+
+          }
+
+        }
+
+      }
+
+    });
+
+</code></pre>
+<h2 id="在vue中使用样式">在Vue中使用样式</h2>
+<h3 id="使用class样式">使用class样式</h3>
+<ol>
+<li>数组</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;['red', 'thin']&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<ol start="2">
+<li>数组中使用三元表达式</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;['red', 'thin', isactive?'active':'']&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<ol start="3">
+<li>数组中嵌套对象</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;['red', 'thin', {'active': isactive}]&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<ol start="4">
+<li>直接使用对象</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;{red:true, italic:true, active:true, thin:true}&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<h3 id="使用内联样式">使用内联样式</h3>
+<ol>
+<li>直接在元素上通过 <code>:style</code> 的形式，书写样式对象</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :style=&quot;{color: 'red', 'font-size': '40px'}&quot;&gt;这是一个善良的H1&lt;/h1&gt;
+</code></pre>
+<ol start="2">
+<li>将样式对象，定义到 <code>data</code> 中，并直接引用到 <code>:style</code> 中</li>
+</ol>
+<ul>
+<li>在data上定义样式：</li>
+</ul>
+<pre><code class="language-js">data: {
+        h1StyleObj: { color: 'red', 'font-size': '40px', 'font-weight': '200' }
+}
+</code></pre>
+<ul>
+<li>在元素中，通过属性绑定的形式，将样式对象应用到元素中：</li>
+</ul>
+<pre><code class="language-html">&lt;h1 :style=&quot;h1StyleObj&quot;&gt;这是一个善良的H1&lt;/h1&gt;
+</code></pre>
+<ol start="3">
+<li>在 <code>:style</code> 中通过数组，引用多个 <code>data</code> 上的样式对象</li>
+</ol>
+<ul>
+<li>在data上定义样式：</li>
+</ul>
+<pre><code class="language-js">data: {
+        h1StyleObj: { color: 'red', 'font-size': '40px', 'font-weight': '200' },
+        h1StyleObj2: { fontStyle: 'italic' }
+}
+</code></pre>
+<ul>
+<li>在元素中，通过属性绑定的形式，将样式对象应用到元素中：</li>
+</ul>
+<pre><code class="language-html">&lt;h1 :style=&quot;[h1StyleObj, h1StyleObj2]&quot;&gt;这是一个善良的H1&lt;/h1&gt;
+</code></pre>
+<h2 id="vue指令之v-for和key属性">Vue指令之<code>v-for</code>和<code>key</code>属性</h2>
+<p>v-for属性需要以site in sites形式的特殊语法，sites是数据源，site是数组元素迭代的别名</p>
+<p>使用 item in items 或者item of items 语法</p>
+<ol>
+<li>迭代数组</li>
+</ol>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li v-for=&quot;(item, i) in list&quot;&gt;索引：{{i}} --- 姓名：{{item.name}} --- 年龄：{{item.age}}&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<ol start="2">
+<li>迭代对象中的属性</li>
+</ol>
+<pre><code class="language-html">
+	&lt;!-- 循环遍历对象身上的属性 --&gt;
+
+    &lt;div v-for=&quot;(val, key, i) in userInfo&quot;&gt;{{val}} --- {{key}} --- {{i}}&lt;/div&gt;
+
+</code></pre>
+<ol start="3">
+<li>迭代数字</li>
+</ol>
+<pre><code class="language-html">
+&lt;p v-for=&quot;i in 10&quot;&gt;这是第 {{i}} 个P标签&lt;/p&gt;
+&lt;--！ 使用v-for迭代数字会从1开始--&gt;
+
+</code></pre>
+<blockquote>
+<p>2.2.0+ 的版本里，<strong>当在组件中使用</strong> v-for 时，key 现在是必须的。</p>
+</blockquote>
+<p>当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用 “<strong>就地复用</strong>” 策略。如果数据项的顺序被改变，Vue将<strong>不是移动 DOM 元素来匹配数据项的顺序</strong>， 而是<strong>简单复用此处每个元素</strong>，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
+<p>为了给 Vue 一个提示，<strong>以便它能跟踪每个节点的身份，从而重用和重新排序现有元素</strong>，你需要为每项提供一个唯一 key 属性。</p>
+<p>v-for循环时，key属性只能使用number获取string，key使用的时候要用 <strong>v-bind</strong> 属性绑定的形式，绑定key的值</p>
+<h2 id="vue指令之v-if和v-show">Vue指令之<code>v-if</code>和<code>v-show</code></h2>
+<blockquote>
+<p>一般来说，v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。</p>
+</blockquote>
+<p>v-if：每次都会重新删除或建立元素**（dom的操作）**</p>
+<p>v-show：只改变元素的display属性，隐藏元素**（样式的改变）**</p>
+<h2 id="品牌管理案例">品牌管理案例</h2>
+<h3 id="添加新品牌">添加新品牌</h3>
+<h3 id="删除品牌">删除品牌</h3>
+<h3 id="根据条件筛选品牌">根据条件筛选品牌</h3>
+<ol>
+<li>1.x 版本中的filterBy指令，在2.x中已经被废除：</li>
+</ol>
+<p><a href="https://v1-cn.vuejs.org/api/#filterBy">filterBy - 指令</a></p>
+<pre><code class="language-html">
+&lt;tr v-for=&quot;item in list | filterBy searchName in 'name'&quot;&gt;
+
+  &lt;td&gt;{{item.id}}&lt;/td&gt;
+
+  &lt;td&gt;{{item.name}}&lt;/td&gt;
+
+  &lt;td&gt;{{item.ctime}}&lt;/td&gt;
+
+  &lt;td&gt;
+
+    &lt;a href=&quot;#&quot; @click.prevent=&quot;del(item.id)&quot;&gt;删除&lt;/a&gt;
+
+  &lt;/td&gt;
+
+&lt;/tr&gt;
+
+</code></pre>
+<ol start="2">
+<li>在2.x版本中<a href="https://cn.vuejs.org/v2/guide/list.html#%E6%98%BE%E7%A4%BA%E8%BF%87%E6%BB%A4-%E6%8E%92%E5%BA%8F%E7%BB%93%E6%9E%9C">手动实现筛选的方式</a>：</li>
+</ol>
+<ul>
+<li>筛选框绑定到 VM 实例中的 <code>searchName</code> 属性：</li>
+</ul>
+<pre><code>
+&lt;hr&gt; 输入筛选名称：
+
+&lt;input type=&quot;text&quot; v-model=&quot;searchName&quot;&gt;
+
+</code></pre>
+<ul>
+<li>在使用 <code>v-for</code> 指令循环每一行数据的时候，不再直接 <code>item in list</code>，而是 <code>in</code> 一个 过滤的methods 方法，同时，把过滤条件<code>searchName</code>传递进去：</li>
+</ul>
+<pre><code class="language-html">
+&lt;tbody&gt;
+
+      &lt;tr v-for=&quot;item in search(searchName)&quot;&gt;
+
+        &lt;td&gt;{{item.id}}&lt;/td&gt;
+
+        &lt;td&gt;{{item.name}}&lt;/td&gt;
+
+        &lt;td&gt;{{item.ctime}}&lt;/td&gt;
+
+        &lt;td&gt;
+
+          &lt;a href=&quot;#&quot; @click.prevent=&quot;del(item.id)&quot;&gt;删除&lt;/a&gt;
+
+        &lt;/td&gt;
+
+      &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+</code></pre>
+<ul>
+<li><code>search</code> 过滤方法中，使用 数组的 <code>filter</code> 方法进行过滤：</li>
+</ul>
+<pre><code class="language-js">
+search(name) {
+
+  return this.list.filter(x =&gt; {
+
+    return x.name.indexOf(name) != -1;
+
+  });
+
+}
+
+</code></pre>
+<h2 id="vue调试工具vue-devtools的安装步骤和使用">Vue调试工具<code>vue-devtools</code>的安装步骤和使用</h2>
+<p><a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN">Vue.js devtools - 翻墙安装方式 - 推荐</a></p>
+<h2 id="过滤器">过滤器</h2>
+<p>概念：Vue.js 允许你自定义过滤器，<strong>可被用作一些常见的文本格式化</strong>。过滤器可以用在两个地方：<strong>mustache 插值和 v-bind 表达式</strong>。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符指示；</p>
+<h3 id="私有过滤器">私有过滤器</h3>
+<ol>
+<li>HTML元素：</li>
+</ol>
+<pre><code>
+&lt;td&gt;{{item.ctime | dataFormat('yyyy-mm-dd')}}&lt;/td&gt;
+
+</code></pre>
+<ol start="2">
+<li>私有 <code>filters</code> 定义方式：</li>
+</ol>
+<pre><code class="language-js">
+filters: { // 私有局部过滤器，只能在 当前 VM 对象所控制的 View 区域进行使用
+
+    dataFormat(input, pattern = &quot;&quot;) { // 在参数列表中 通过 pattern=&quot;&quot; 来指定形参默认值，防止报错
+
+      var dt = new Date(input);
+
+      // 获取年月日
+
+      var y = dt.getFullYear();
+
+      var m = (dt.getMonth() + 1).toString().padStart(2, '0');
+
+      var d = dt.getDate().toString().padStart(2, '0');
+
+
+
+      // 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日
+
+      // 否则，就返回  年-月-日 时：分：秒
+
+      if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+
+        return `${y}-${m}-${d}`;
+
+      } else {
+
+        // 获取时分秒
+
+        var hh = dt.getHours().toString().padStart(2, '0');
+
+        var mm = dt.getMinutes().toString().padStart(2, '0');
+
+        var ss = dt.getSeconds().toString().padStart(2, '0');
+
+
+
+        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+
+      }
+
+    }
+
+  }
+
+</code></pre>
+<blockquote>
+<p>使用ES6中的字符串新方法 String.prototype.padStart(maxLength, fillString='') 或 String.prototype.padEnd(maxLength, fillString='')来填充字符串；</p>
+</blockquote>
+<h3 id="全局过滤器">全局过滤器</h3>
+<pre><code class="language-javascript">
+// 定义一个全局过滤器
+
+Vue.filter('dataFormat', function (input, pattern = '') {
+
+  var dt = new Date(input);
+
+  // 获取年月日
+
+  var y = dt.getFullYear();
+
+  var m = (dt.getMonth() + 1).toString().padStart(2, '0');
+
+  var d = dt.getDate().toString().padStart(2, '0');
+
+
+
+  // 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日
+
+  // 否则，就返回  年-月-日 时：分：秒
+
+  if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+
+    return `${y}-${m}-${d}`;
+
+  } else {
+
+    // 获取时分秒
+
+    var hh = dt.getHours().toString().padStart(2, '0');
+
+    var mm = dt.getMinutes().toString().padStart(2, '0');
+
+    var ss = dt.getSeconds().toString().padStart(2, '0');
+
+
+
+    return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+
+  }
+
+});
+
+</code></pre>
+<blockquote>
+<p>注意：当有局部和全局两个名称相同的过滤器时候，会以就近原则进行调用，即：局部过滤器优先于全局过滤器被调用！</p>
+</blockquote>
+<h2 id="键盘修饰符以及自定义键盘修饰符">键盘修饰符以及自定义键盘修饰符</h2>
+<h3 id="1x中自定义键盘修饰符了解即可">1.x中自定义键盘修饰符【了解即可】</h3>
+<pre><code>
+Vue.directive('on').keyCodes.f2 = 113;
+
+</code></pre>
+<h3 id="2x中自定义键盘修饰符"><a href="https://cn.vuejs.org/v2/guide/events.html#%E9%94%AE%E5%80%BC%E4%BF%AE%E9%A5%B0%E7%AC%A6">2.x中自定义键盘修饰符</a></h3>
+<ol>
+<li>通过<code>Vue.config.keyCodes.名称 = 按键值</code>来自定义案件修饰符的别名：</li>
+</ol>
+<pre><code>
+Vue.config.keyCodes.f2 = 113;
+
+</code></pre>
+<ol start="2">
+<li>使用自定义的按键修饰符：</li>
+</ol>
+<pre><code>
+&lt;input type=&quot;text&quot; v-model=&quot;name&quot; @keyup.f2=&quot;add&quot;&gt;
+
+</code></pre>
+<h2 id="自定义指令"><a href="https://cn.vuejs.org/v2/guide/custom-directive.html">自定义指令</a></h2>
+<ol>
+<li>自定义全局和局部的 自定义指令：</li>
+</ol>
+<pre><code class="language-js">
+    // 自定义全局指令 v-focus，为绑定的元素自动获取焦点：
+
+    Vue.directive('focus', {
+
+      inserted: function (el) { // inserted 表示被绑定元素插入父节点时调用
+
+        el.focus();
+
+      }
+
+    });
+
+
+
+    // 自定义局部指令 v-color 和 v-font-weight，为绑定的元素设置指定的字体颜色 和 字体粗细：
+
+      directives: {
+
+        color: { // 为元素设置指定的字体颜色
+
+          bind(el, binding) {
+
+            el.style.color = binding.value;
+
+          }
+
+        },
+
+        'font-weight': function (el, binding2) { // 自定义指令的简写形式，等同于定义了 bind 和 update 两个钩子函数
+
+          el.style.fontWeight = binding2.value;
+
+        }
+
+      }
+
+</code></pre>
+<ol start="2">
+<li>自定义指令的使用方式：</li>
+</ol>
+<pre><code>
+&lt;input type=&quot;text&quot; v-model=&quot;searchName&quot; v-focus v-color=&quot;'red'&quot; v-font-weight=&quot;900&quot;&gt;
+
+</code></pre>
+<h1 id="组件">组件</h1>
+<h2 id="全局组件">全局组件</h2>
+<pre><code class="language-js">Vue.component('组件名'，options（组件配置）)
+Vue.copmponet('Vue_model',{
+    template:'&lt;h1&gt; 自定义模板 &lt;/h1&gt;'
+})
+</code></pre>
+<p>组件使用时直接在HTML中以标签的形式使用</p>
+<h2 id="局部组件">局部组件</h2>
+<p>在一个Vue实例中创建的组件，只在这个实例中有效</p>
+<h2 id="props">props</h2>
+<p>父组件用来传递数据的自定义属性（类似在标签里加入的特性）</p>
+<p>一个组件可以有多个props值</p>
+<pre><code class="language-javascript">// 注册一个blog组件，给它注册title特征
+Vue.component('blog',{
+    props:[title],
+    template:'&lt;h1&gt; {{title}} &lt;/h1&gt;'
+})
+let vue = new Vue{
+    el:'#app'
+}
+</code></pre>
+<pre><code class="language-html">&lt;!--HTML--&gt;
+&lt;div id='app'&gt;
+    &lt;blog title='header'&gt;
+    &lt;/blog&gt;
+&lt;/div&gt;
+</code></pre>
+<p>绑定在模板上时使用v-bind可实现动态props</p>
+<p>当传递的数据不是直接写死的，而是来自父级的动态数据就要用动态props</p>
+<p><strong>ps: html特性不识别大小写，驼峰式命名的props要转换成短横分隔命名</strong></p>
+<h2 id="props-组件通信">props 组件通信</h2>
+<p>自定义事件</p>
+<p>当子组件向父组件传递数据时，用到自定义事件父组件可直接在子组件自定义的标签上使用v-on来监听子组件的触发的自定义事件</p>
+<p>$emit()函数将子组件的数据传给父组件</p>
+<p>$smit( 自定义事件的名称，父组件的属性)</p>
+<p>v-model 绑定子组件的事件</p>
+<h3 id="bus中央事件总线">bus:中央事件总线</h3>
+<p>父组件/其他 &lt;-------bus&lt;--------子组件</p>
+<p>bus作用：接受来自子组件的事件的触发，父组件/其他在生命钩子函数中监听bus的事件</p>
+<h2 id="自定义组件">自定义组件</h2>
+<p>两种注册方式：全局          局部</p>
+<p>全局：</p>
+<pre><code class="language-javascript">Vue.directive('指令名'，{
+             //指令选项
+             })
+</code></pre>
+<p>局部：</p>
+<pre><code class="language-javascript">var app = new Vue({
+    el: '#app'
+    directive:{
+    指令名:{
+    //指令选项
+}
+}
+})
+</code></pre>
+<p>自定义指令有几个钩子函数组成（可选用那些钩子函数）：</p>
+<p>bind：只能调用一次，第一次绑定时调用，用这个钩子函数定义一个绑定时执行一次的初始化动作</p>
+<p>inserted：被绑定元素插入父元素时调用</p>
+<p>update：当绑定的元素所在的模板更新时调用</p>
+<p>componentUpdated:当绑定的元素所在的模板完成一次更新时调用</p>
+<p>unbind:只调用一次，在解绑时调用</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+&lt;input  type=&quot;text&quot; v-focus&gt;
+&lt;/div&gt;
+&lt;script&gt;
+	Vue.directive=({
+        'focus',{
+        inserted:function(el){
+        //聚焦元素
+        el.focus();
+    }
+    }
+    });
+    var Vue = new Vue({
+        el:'#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<p><strong>钩子函数的参数</strong></p>
+<p>el:指令所绑定的元素，可直接操作DOM</p>
+<p>binging:对象，包含以下属性：</p>
+<ul>
+<li>
+<p>name：指令名</p>
+</li>
+<li>
+<p>value：指令值（绑定）</p>
+</li>
+<li>
+<p>oldVule: 在update与componentUpdated钩子中可用，前一个值</p>
+</li>
+<li>
+<p>org: 传给指令的字符串</p>
+</li>
+<li>
+<p>modlifiers:包含修饰符的对象</p>
+</li>
+</ul>
+<p>vNode.vue:  编译生成的虚拟节点</p>
+<p>oldVnode: 上一个节点，在update与componentUpdate中使用</p>
+<h1 id="render-函数">render ()函数</h1>
+<p>virtual dom技术（虚拟dom）</p>
+<p>用virtual dom是基于JavaScript计算的，开销很小</p>
+<pre><code class="language-javascript">var Vnode = {
+    tag:'div'
+     
+		id:'main'
+}
+  children：[
+      // 节点内容
+  ]
+}
+</code></pre>
+<h1 id="vue路由">Vue路由</h1>
+<p>路由提供通过不同的URL访问网页不同位置的内容</p>
+<p>类似于用锚点实现。</p>
+<p>形成单页面多视图的web应用。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+        &lt;h1&gt;hello APP!&lt;/h1&gt;
+        &lt;P&gt;
+            &lt;router-link to=&quot;/test1&quot;&gt; test1&lt;/router-link&gt;
+            &lt;router-link to=&quot;/test2&quot;&gt; test2&lt;/router-link&gt;
+             &lt;!--router-link组件来导航，会自动渲染成一个`a`标签--&gt;
+        &lt;/P&gt;
+        &lt;router-view&gt;&lt;/router-view&gt;  
+    &lt;!--每个组件渲染的东西将在这里面显示--&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        // 定义路由组件
+        //可以通过其他文件import进来
+        const test1 = { template:' &lt;div&gt; test1 &lt;/div&gt; '}
+        const test2 = { template:' &lt;div&gt; test2 &lt;/div&gt; '}
+        const test3 = { template:' &lt;div&gt; test3 &lt;/div&gt; '}
+        const test4 = { template:' &lt;div&gt; test4 &lt;/div&gt; '}
+        const test5 = { template:' &lt;div&gt; test5 &lt;/div&gt; '}  
+        //定义路由
+        //每个路由应该映射一个组件。
+        const routes = [
+                {path:'/test1', component:test1},
+                {path:'/test2', component:test2},
+                {path:'/test3', component:test3},
+                {path:'/test4', component:test4},
+                {path:'/test5', component:test5},             
+        ] 
+        // 创建router实例
+        // 传入routes ，也可以传入其他参数
+        const router = new VueRouter({
+            routes // 相当于routes：routes
+        })
+        //创建和挂载根实例
+        // 记得要通过router配置参数注入路由，让整个应用都有路由功能
+        const app = new Vue({
+            router
+        }).$mount('#app') 
+    &lt;/script&gt;
+</code></pre>
+<h2 id="配置路由步骤">配置路由步骤</h2>
+<ul>
+<li>定义路由组件</li>
+<li>定义路由，每个组件映射一个路由</li>
+<li>创建router实例，传入routes或者其他参数</li>
+<li>创建和挂载根实例</li>
+</ul>
+<h2 id="router-link相关属性">router-link相关属性</h2>
+<h3 id="to">to</h3>
+<p>表示目标路由的链接，这个值可以是一个字符串或者描述目标位置的对象。</p>
+<h3 id="replace">replace</h3>
+<p>设置replace属性的话，当点击时，会调用router.replace()而不是router.push()，导航后不会留下history记录</p>
+<h3 id="append">append</h3>
+<p>设置append后，在当前路径前添加基路径</p>
+<h3 id="tag">tag</h3>
+<p>将router-link渲染成指定标签</p>
+<pre><code class="language-html">&lt;router-link to =&quot;/foo&quot; tag=&quot;li&quot;&gt;foo&lt;/router-link&gt;
+&lt;!-- 渲染后--&gt;
+&lt;li&gt;foo&lt;/li&gt;
+</code></pre>
+<h3 id="active-class与exact-active-class">active-class与exact-active-class</h3>
+<p>router-link默认情况下是模糊匹配的，当设置exact-active-class以后，routerlink只有在当前路由被全匹配时才会激活exact-active-class中的class</p>
+<h3 id="event">event</h3>
+<p>声明可以触发导航的事件，可以是个字符串或者包换字符串的数组</p>
+<pre><code class="language-html">&lt;router-link :to = &quot;{path:'/route1'}&quot; event = &quot;mouseover&quot;&gt;Rouyter link 1&lt;/router-link&gt;
+&lt;!-- 上面设置了event为mouseover，当鼠标移动到 Router link 1上面时，导航的HTML内容就会发生变化--&gt;
+</code></pre>
+<h1 id="vue过度动画">Vue过度动画</h1>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://poyibao.github.io//images/avatar.png?v=1582779401023" class="no-responsive avatar">
+    <div class="text-muted">tomorrow is another day</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://poyibao.github.io/post/es6-ji-chu/">ES6基础</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://poyibao.github.io/post/git-ji-ben-shi-yong/">git基本使用</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://poyibao.github.io/post/vuejs/">Vue.js</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">poiyibao</a> | <a class="rss" href="https://poyibao.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

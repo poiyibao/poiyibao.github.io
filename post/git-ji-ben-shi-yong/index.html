@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>poiyibao_blg</title>
+<title>git基本使用 | poiyibao_blg</title>
 <meta name="description" content="tomorrow is another day">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://poyibao.github.io/">poiyibao_blg</a></h3>
@@ -76,81 +77,103 @@
   </div>
 </nav>
 
-
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
+          <article class="article">
+            <h1>git基本使用</h1>
+            <p class="article-meta">
+              2020-02-27
+              
+            </p>
+            
+            <div class="post-content">
+              <h1 id="git">git</h1>
+<h2 id="创建仓库">创建仓库</h2>
+<p>在任意目录下使用</p>
+<pre><code class="language-git">git init
+</code></pre>
+<p>将这个目录变成git可管理的路径即git仓库，</p>
+<p>并且会在里面多一个.git文件夹</p>
+<p>将需要被管理的文件添加入此目录，使用</p>
+<pre><code>git add  XXXX.XX
+</code></pre>
+<p>将告诉git，把文件添加入仓库，使用</p>
+<pre><code>git commit -m &quot;本次提交说明&quot;
+</code></pre>
+<p>将文件提交</p>
+<p>（一次可以add添加多次，然后commit提交一次）</p>
+<p>这样，该文件就存在于git的版本库中。</p>
+<p>使用</p>
+<pre><code>git status
+</code></pre>
+<p>可以查看当前仓库的状态，是否处于修改未添加，或者添加未提交还是其他状态。</p>
+<p>通过</p>
+<pre><code>git diff
+</code></pre>
+<p>可以查看当前修改了什么</p>
+<p>通过</p>
+<pre><code>git log
+</code></pre>
+<p>可以查看历史记录</p>
+<h2 id="返回历史版本">返回历史版本</h2>
+<p>在git中用head表示当前版本，需要返回上个版本就是head<sup>,上上个版本就是head</sup>^，使用</p>
+<pre><code>git reset --hard head^
+</code></pre>
+<p>即可返回上个版本</p>
+<h2 id="重新回到未来的版本">重新回到未来的版本</h2>
+<pre><code>git reset --hard xxxx(commit id)
+</code></pre>
+<p>可以通过以下命令</p>
+<pre><code>git reflog
+</code></pre>
+<p>来查看记录的每一条命令，从而获得commit id</p>
+<h2 id="撤销修改">撤销修改</h2>
+<p>当想抛弃工作区的修改，使用</p>
+<pre><code>git checkout --file
+</code></pre>
+<p>就可丢弃（未添加到git仓库时），当修改了并且Git add到暂存区时，使用</p>
+<pre><code>git reset HEAD &lt;file&gt;
+</code></pre>
+<p>就可以把暂存区的修改回退到工作区，然后通过上一步将工作区修改丢弃</p>
+<h2 id="删除文件">删除文件</h2>
+<p>如果通过直接删除或者rm命令删除，这时候git知道删除了文件，所以工作区和版本库就不一致了，要么通过在版本库中彻底删除，通过</p>
+<pre><code>git rm xxx   //删除
+git commit
+</code></pre>
+<p>要么恢复，通过</p>
+<pre><code>git checkout --xxx
+</code></pre>
+<h2 id="远程仓库绑定">远程仓库绑定</h2>
+<p>在GitHub中创建一个空仓库，要将本地和远程仓库连起来，实现同步，通过下面命令将本地仓库和远程仓库关联</p>
+<pre><code>git remote add origin git@github.com:用户名/远程仓库名.git
+</code></pre>
+<p>然后就可以把本地仓库的内容推到远程仓库里去</p>
+<p>通过</p>
+<pre><code>git push -u origin master
+</code></pre>
+<p>将当前分支推送到远程</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
           
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://poyibao.github.io/post/es6-ji-chu/">ES6基础</a>
-    </h2>
-    <p class="article-meta">
-      2020-02-27
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://poyibao.github.io/post/es6-ji-chu/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://poyibao.github.io/post/git-ji-ben-shi-yong/">git基本使用</a>
-    </h2>
-    <p class="article-meta">
-      2020-02-27
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://poyibao.github.io/post/git-ji-ben-shi-yong/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://poyibao.github.io/post/vuejs/">Vue.js</a>
-    </h2>
-    <p class="article-meta">
-      2020-02-27
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://poyibao.github.io/post/vuejs/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://poyibao.github.io/post/vuejs/">
+                <h3 class="post-title">
+                  Vue.js
+                </h3>
+              </a>
+            </div>
+          
         </div>
         
-        <div class="row flex-edges">
-  
-  
-</div>
-
       </div>
-      
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://poyibao.github.io//images/avatar.png?v=1582779401023" class="no-responsive avatar">
@@ -210,7 +233,9 @@
   </div>
 </div>
 
+
     </div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script type="application/javascript">

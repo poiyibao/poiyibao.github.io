@@ -1,45 +1,1613 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://poyibao.github.io/</id>
-    <title>Gridea</title>
-    <updated>2020-02-27T03:57:46.258Z</updated>
+    <title>poiyibao_blg</title>
+    <updated>2020-02-27T04:57:01.847Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://poyibao.github.io/"/>
     <link rel="self" href="https://poyibao.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>tomorrow is another day</subtitle>
     <logo>https://poyibao.github.io/images/avatar.png</logo>
     <icon>https://poyibao.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, poiyibao_blg</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://poyibao.github.io/post/hello-gridea/</id>
-        <link href="https://poyibao.github.io/post/hello-gridea/">
+        <title type="html"><![CDATA[ES6基础]]></title>
+        <id>https://poyibao.github.io/post/es6-ji-chu/</id>
+        <link href="https://poyibao.github.io/post/es6-ji-chu/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2020-02-27T04:56:12.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="es6">ES6</h1>
+<hr>
+<h1 id="一-变量的解析赋值">一、变量的解析赋值</h1>
+<h2 id="do表达式">do表达式</h2>
+<pre><code class="language-javascript">let x = do{
+	let t = f();
+	t*t+1;
+};
+</code></pre>
+<p>在本质上，块级作用域就是把多个语句封装在一起，没有返回值。如果需要返回值，就需要上例中的do语句。</p>
+<h2 id="es6目前有六种声明方法">ES6目前有六种声明方法</h2>
+<ul>
+<li>
+<p>使用var命令</p>
+</li>
+<li>
+<p>使用function命令</p>
+</li>
+<li>
+<p>使用let命令</p>
+</li>
+<li>
+<p>使用const命令</p>
+</li>
+<li>
+<p>使用import命令</p>
+</li>
+<li>
+<p>使用class命令</p>
+</li>
+</ul>
+<h2 id="解构赋值">解构赋值</h2>
+<p>解构不仅可以用于数组，也可以用于对象</p>
+<pre><code class="language-javascript">var node ={
+	loc:{
+		start:{
+		line: 1,
+		column: 5
+		}
+	}
+}
+var{loc, loc:{start}, loc:{ satrt:{line} } } = node;
+line     // 1
+loc      //Object {satrt:Object}
+start    //Object{line:1,column:5}
+</code></pre>
+<p>字符串进行解构赋值会转成一个类似数组的对象</p>
+<pre><code class="language-javascript">const [a, b,c,d,e] = 'hello;
+	a   // &quot;h&quot;
+	b   // &quot;e&quot;
+	c   // &quot;l&quot;
+	d   // &quot;l&quot;
+	e   // &quot;o&quot;
+</code></pre>
+<h2 id="解构赋值的用途">解构赋值的用途</h2>
+<ul>
+<li>
+<h3 id="交换变量的值">交换变量的值</h3>
+<pre><code class="language-javascript">let x =1;
+let y = 2;
+[x,y] = [y,x];
+</code></pre>
+</li>
+<li>
+<h3 id="从函数返回多个值">从函数返回多个值</h3>
+<pre><code class="language-javascript">// 返回一个数组
+function example(){
+	return [1,2,3];
+}
+let [a,b,c] = example();
+// 返回一个对象
+function example(){
+	return{
+		foo:1,
+		bar:2
+	};
+}
+let {foo,bar} = example();
+</code></pre>
+</li>
+<li>
+<h3 id="函数参数的定义">函数参数的定义</h3>
+<pre><code class="language-javascript">// 解构赋值可以方便的将一组参数与变量名对应起来
+// 参数是一组有次序的值
+function f([x,y,z]){ ... }
+f([1,2,3]);
+
+// 参数是一组无序的值
+function f({x,y,z}){ ... }
+f({z:3,y:2,x:1});
+</code></pre>
+</li>
+<li>
+<h3 id="json的数据提取">json的数据提取</h3>
+<pre><code class="language-javascript">let jsonData = {
+	id: 42,
+	status:&quot;ok&quot;,
+	data:[867,5309]
+};
+let { id, status, data:number } = jsonData;
+console.log( id,status,number );  // 42, &quot;ok&quot;, [867,5309]
+</code></pre>
+</li>
+<li>
+<h3 id="函数的参数的默认值">函数的参数的默认值</h3>
+</li>
+<li>
+<h3 id="遍历map结构">遍历Map结构</h3>
+<pre><code class="language-javascript">var map =new Map();
+map.set('first','hello');
+map.set('second', 'world');
+for(let[key, value] of map){
+	console.log(key + &quot;is&quot;+value);
+	// first is hello
+	// second is value
+}
+</code></pre>
+</li>
+<li>
+<h3 id="输入模块的指定方法">输入模块的指定方法</h3>
+<pre><code class="language-javascript">const { SourceMapCousumer, SourNode } = require(&quot;source-map&quot;);
+</code></pre>
+</li>
+</ul>
+<h1 id="二-字符串扩展">二、字符串扩展</h1>
+<h2 id="字符的unicode表示法">字符的Unicode表示法</h2>
+<p>\uxxxxxx形式表示一个字符，xxxxxx是这个字符的Unicode码，范围为\u0000~\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表达</p>
+<p>“\uD842\uDFB7”  // &quot;吉&quot;</p>
+<p>**ES6中，进码放进大括号就能正确读出这个字符 **</p>
+<p><em>”\u{20BB7}“</em>  // &quot;吉&quot;</p>
+<p>”\u{41}\u{42}\u{43} &quot;    // &quot;ABC&quot;</p>
+<h2 id="codepointat">codePointAt()</h2>
+<p>在JavaScript内部，字符是以utf-16的格式储存，每个字符固定为两个字节，Unicode大于0xFFFF的字符会认为是两个字符，即四个字节，codePointAt()会正确返回该字符的码,如果是常规的两字节储存的字符，codePointAt()和方法charCodeAt()结果相同。</p>
+<pre><code class="language-javascript">var s= '吉a';
+s.length                    // 3(吉占两个字符)
+s.codePointAt(0)          	// 134071
+s.codePointAt(1)		   // 57271
+s.codePointAt(2)            // 97
+
+</code></pre>
+<p>顺便，codePointAt()是最简单的判断一个字符是两个字节还是四个字节。</p>
+<pre><code class="language-javascript">function is32bit(a)
+{
+	return a.codePointAt(0)&gt;0xFFFF;
+}
+is32bit(&quot;吉&quot;)             //true
+is32bit(&quot;a&quot;)              //false
+</code></pre>
+<h2 id="stringfromcodepoint">String.fromCodePoint()</h2>
+<p>作用与codePointArt()相反，将Unicode码转成字符，如果Sring,formCodePoint()有多个参数，则将会将字符拼成字符串返回。</p>
+<pre><code class="language-javascript">String.formCodePoint(9x20BB7)                   // &quot;吉&quot;
+String.formCodePoint(0x78,0x1f680,0x79)         // true
+</code></pre>
+<h2 id="字符串的遍历器接口">字符串的遍历器接口</h2>
+<pre><code class="language-javascript">for (let codePoint of 'foo')
+{
+	console.log(codePoint)
+}
+// &quot;f&quot;
+// &quot;o&quot;
+// &quot;o&quot;
+
+/* 传统的for循环遍历无法识别大于0xFFFF的码的字符*/
+
+let text =&quot;吉&quot;；
+//传统for循环
+for(let i = 0; i &lt; text.length; i++)
+{
+	consle.log(text[i]);
+}
+// &quot; &quot;
+// &quot; &quot;
+//ES6的表达
+for(let i of text)
+{
+	consle.log(i);
+}
+// &quot;吉&quot;
+
+</code></pre>
+<h2 id="at">at()</h2>
+<p>这个方法与charAt()功能一致，返回字符串给定位置的字符，区别在于CharAt()无法识别大于0xFFFF的字符，at()可以</p>
+<pre><code class="language-javascript">'abc'.charAt(0)     // &quot;a&quot;
+ '吉'.char.At(0)    //&quot;\uD842&quot;
+ '吉'.at(0)         // &quot;吉&quot;   
+</code></pre>
+<h2 id="三种查找字符串是否包含在另一个字符串的方法">三种查找字符串是否包含在另一个字符串的方法</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">includes()</th>
+<th style="text-align:center">返回布尔值</th>
+<th>表示是否找到参数字符串</th>
+<th>第二参数表示开始搜索的位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>startsWith()</strong></td>
+<td style="text-align:center"><strong>返回布尔值</strong></td>
+<td><strong>表示参数字符串是否在源字符串头部</strong></td>
+<td><strong>第二参数表示开始搜索的位置</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>endsWith()</strong></td>
+<td style="text-align:center"><strong>返回布尔值</strong></td>
+<td><strong>表示参数是字符串是否在元字符的尾部</strong></td>
+<td><strong>第二参数表示开始搜索的位置</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="repeat">repeat()</h2>
+<p>repeat()方法将返回一个新字符串，将源字符串重复参数次</p>
+<p>如果参数是小数将被<strong>取整</strong>（向下）</p>
+<h2 id="padstart-padend">padStart()、padEnd()</h2>
+<p>字符串补全方法</p>
+<table>
+<thead>
+<tr>
+<th>padStart()</th>
+<th>'x'.padStart(5, 'ab' )                               // 'ababx'</th>
+<th>在头部补全</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>padEnd()</strong></td>
+<td><strong>'x'.padEnd(4, 'ab ')</strong>                                <strong>// 'xaba'</strong></td>
+<td><strong>在尾部补全</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="模板字符串">模板字符串</h2>
+<p>模板字符串是增强版的字符串，用（`）标识</p>
+<pre><code class="language-js">var x = 1;
+var y = 2;
+// 在模板字符串内嵌入变量，需要将变量名写在${}中，大括号内也可以放任意JavaScript语句,调用函数。
+`${x} + ${y} = ${x+y}`         // &quot;1+2=3&quot;
+`${x} + ${y*2} = ${x +y *2}`   // &quot;1+4=5&quot;
+var obj = {x:1,y:2};
+`${obj.x + obj.y}`             // 3 
+function fn(){
+	return &quot;hello World&quot;
+}
+`foo ${fn()} bar `             // foo hello World bar
+
+</code></pre>
+<h3 id="模板编译">模板编译</h3>
+<pre><code class="language-JavaScript">var template = 
+&lt;ul&gt;
+	&lt;% for(var i=1; i&lt; data.supplies.length; i++)
+	{
+		%&gt; &lt;li&gt;&lt;%= data.supplies[i] %&gt; &lt;/li&gt;
+}
+</code></pre>
+<p>上面代码在模板字符串中放置了一个常规模板，该模板使用&lt;%............%&gt;放置JavaScript代码，使用了&lt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">= ........</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.10556em;vertical-align:0em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span>&gt;输出JavaScript表达式</p>
+<h2 id="标签模板">标签模板</h2>
+<p>模板紧跟在一个函数后面，该函数将被调用处理这个模板字符串</p>
+<pre><code class="language-js">alert `123 `   // 等价于alert(123)
+</code></pre>
+<p>如果模板中含有变量，会把模板拆分成多个变量然后调用函数</p>
+<pre><code class="language-javascript">var a = 5;
+var n = 10;
+tag`hello $( a+b ) world $( a*b ) `;           // 等价于tag(['hello','world',' '],15,50);
+</code></pre>
+<h3 id="标签模板的用途">标签模板的用途</h3>
+<ul>
+<li>
+<p>一个重要用途是过滤HTML字符串，防止用户输入恶意内容</p>
+<pre><code class="language-javascript">var message = SaferHTML`&lt;p&gt;${sender} has sent you a messmage.&lt;/p&gt; `;
+function SaferHTML(templateData)
+{
+	var s = templateData[0];
+	for(var i=0;i&lt;argumrnts,length;i++)
+	{
+		var arg = String(argumrnts[i]);
+		s+= arg.replace(/&amp;/g, &quot;&amp;amp;&quot;)
+			   .replace(/&lt;/g, &quot;&amp;lt;&quot;)
+			   .replace(/&gt;/g, &quot;&amp;gt;&quot;);
+		s+= templateData[i]
+	}
+	reyurn s;
+}
+</code></pre>
+<ul>
+<li>
+<p>另一个用途就是多语言转换</p>
+<pre><code class="language-js">`Wlocome to $(sitName), you can visitor number $(visitorNumber) `
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="stringraw">String.raw()</h2>
+<p>String.raw()方法是用来充当模板字符串的处理函数，返回一个反斜线都被转移的字符串</p>
+<pre><code class="language-js">String.raw()`Hi\n${2+3}! `;                   // &quot;Hi\\n5&quot;
+</code></pre>
+<h1 id="三-正则表达式-的扩展">三、正则表达式 的扩展</h1>
+<h2 id="regexp-构造函数">RegExp 构造函数</h2>
+<pre><code class="language-js">/* ES5规定，如果RegExp的第一个参数是正则对象，那么第二个参数可以是指定修饰符。并且，返回的表达式会忽略原有的的正则表达式的修饰符，只是用新的指定的修饰符*/
+new RegEXP(/ABC/ig, 'i').flags                // 会忽略原有的ig，被i覆盖
+</code></pre>
+<h2 id="字符串的正则方法">字符串的正则方法</h2>
+<p>字符串正则的四个方法</p>
+<ul>
+<li>match()</li>
+<li>replace()</li>
+<li>search()</li>
+<li>split()</li>
+</ul>
+<h2 id="y-修饰符">y 修饰符</h2>
+<p>y修饰符和g修饰符一样，也是全局匹配，后一次匹配都是从上一次匹配的下一位开始</p>
+<p><strong>不同</strong></p>
+<p>g修饰符要求剩余部分存在匹配就行</p>
+<p>y修饰符要求要确保从剩下的第一个位置开始</p>
+<h2 id="sticky-属性">sticky 属性</h2>
+<p>sticky属性表示是否设置了y修饰符</p>
+<pre><code class="language-js">var r = /hello\d/y;
+t.sticky            // sure
+</code></pre>
+<h2 id="flags属性">flags属性</h2>
+<p>用来返回正则表达式的修饰符</p>
+<h2 id="unicode属性类">Unicode属性类</h2>
+<p>Unicode 属性类要指定属性名和属性值</p>
+<p>\p{UnocodePropertyName = UnicodePropertyValue }</p>
+<p>\P{...}是\p{...}的反向匹配(匹配不满足条件的字符)</p>
+<p><em>这两种类只对Unicode有效，使用时要加u修饰符，否则报错</em></p>
+<h2 id="具名组匹配">具名组匹配</h2>
+<p>正则表达式使用圆括号进行组匹配</p>
+<pre><code class="language-js">const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+cosnt matchObj = RE_DATE.exec('1999-12-31');
+
+</code></pre>
+<h1 id="四-数值的扩展">四、数值的扩展</h1>
+<h2 id="二进制与八进制">二进制与八进制</h2>
+<p>ES6提供了新的二进制与八进制的写法</p>
+<p>二进制      前缀0b(0B)</p>
+<p>八进制       前缀0o(0O)</p>
+<h2 id="新增方法">新增方法</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Number.isFinite()</td>
+<td style="text-align:center">检查数值是否为有限</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.isNaN()</td>
+<td style="text-align:center">检查数值是否为NaN</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.parseInt()</td>
+<td style="text-align:center">将字符串提取为整数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.parseFloat()</td>
+<td style="text-align:center">将字符串提取为浮点数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.isInteger()</td>
+<td style="text-align:center">判断是否为整数</td>
+<td style="text-align:center">由于js不区分整数和浮点数，所以3和3.0为同一值</td>
+</tr>
+<tr>
+<td style="text-align:center">Number.EPSILON</td>
+<td style="text-align:center">ES6新增的一个极小的常量</td>
+<td style="text-align:center">2.220044049250313e-16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="math对象的扩展">Math对象的扩展</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">实例说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Math.trunc()</td>
+<td style="text-align:center">去除一个数的小数部分，返回整数</td>
+<td style="text-align:center">非数值转换成数值</td>
+</tr>
+<tr>
+<td style="text-align:center">MAth.sign()</td>
+<td style="text-align:center">判断一个数是正，负，0</td>
+<td style="text-align:center">返回值为+1，-1,0，NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.cbrt()</td>
+<td style="text-align:center">用于计算一个数的立方根</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.clz32()</td>
+<td style="text-align:center">返回一个数的32位无符号整数前面有多少个零</td>
+<td style="text-align:center">js整数用32位二进制表示</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.imul()</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.fround()</td>
+<td style="text-align:center">返回一个数的单精度浮点数的形式</td>
+<td style="text-align:center">对于整数没有变化</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.signbbit()</td>
+<td style="text-align:center">判断一个值的正负</td>
+<td style="text-align:center">正：false；负：true；0：-0</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.hypot()</td>
+<td style="text-align:center">返回所有参数的平方和的平方根</td>
+<td style="text-align:center">↙</td>
+</tr>
+</tbody>
+</table>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a^{2}+b^{2}+...+n^{2}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2399999999999998em;vertical-align:-0.177736em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0622639999999999em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.0222640000000003em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
+158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
+c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
+175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
+c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
+-252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
+s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.177736em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="对数的扩展">对数的扩展</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Math.expin1()</td>
+<td style="text-align:center">返回eⁿ-1</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.loglp()</td>
+<td style="text-align:center">返回In(x+1)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.log10()</td>
+<td style="text-align:center">返回log X的值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.log2()</td>
+<td style="text-align:center">返回log₂ X的值</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="指数运算符">指数运算符</h3>
+<p>**</p>
+<p>2**2 = 2²</p>
+<p>2**3 = 2³</p>
+<p>a **  = 2     // a = a * *2         a²</p>
+<h1 id="五-函数的扩展">五、函数的扩展</h1>
+<h2 id="函数的参数的默认值-2">函数的参数的默认值</h2>
+<p>ES6设置值默认值，写在参数的后面</p>
+<pre><code class="language-js">function log(x, y = 'world')
+{
+	console.log(x, y);
+}
+log('hello')                        // hello world
+log('hello', 'china')               // hello china
+log('hello','')                     // hello world  
+</code></pre>
+<h3 id="与解析赋值结合使用">与解析赋值结合使用</h3>
+<pre><code class="language-js">fuction foo({x,y=5})
+{
+	console.log(x,y);
+}
+foo({})                       // undefined, 5
+foo({x:1})                    // 1, 5
+foo()                         // Type Error
+// 只有当参数为对象时才能执行
+</code></pre>
+<h3 id="参数默认位置">参数默认位置</h3>
+<ul>
+<li>
+<p>一般将带默认值的参数放在末尾项</p>
+</li>
+<li>
+<p>若带默认值的参数不在末尾，咋不能进行省略，传值时要在其位置传入undefined才能调用默认参数</p>
+</li>
+</ul>
+<h3 id="length属性">length属性</h3>
+<p>指定默认之后，length只返回无默认值的参数的个数</p>
+<h3 id="作用域">作用域</h3>
+<p>在函数被调用时，参数会形成一个单独的作用域，等初始化结束后，这个作用域就会消失，在不设置默认值参数时是没有这个作用域的。</p>
+<h2 id="rest参数">rest参数</h2>
+<p>用于获取函数的多余参数，只能有rest这一个参数，不能存在其他参数</p>
+<pre><code class="language-js">function add( ... ralues)
+{
+	let sum = 0;
+	for(var val of ralues ){
+		sum += val ;
+	}
+	erturn sum;
+}
+add (2,5,3)           // 10
+</code></pre>
+<h2 id="name-属性">name 属性</h2>
+<p>函数的name属性返回该函数的函数名</p>
+<hr>
+<h2 id="箭头函数-重点">箭头函数                                                   <em>重点</em></h2>
+<hr>
+<p>（=&gt;）定义函数</p>
+<pre><code class="language-js">var f = v =&gt; v;
+// 等价于
+var f= function(v)
+{
+	return v;
+};
+// 当箭头函数不需要参数或者参数多于一个的时候，用圆括号代替参数部分
+var f = () =&gt;5;
+//等价于
+var f = function()
+{
+	return 5;
+};
+
+var sum = (num1,num2) =&gt; num1+num2;
+// 等价于
+var sum = function(num1,num2)
+{
+return num1+num2;
+};
+// 如果箭头函数本体部分多于一条语句，就要是用大括号将其括起来，并使用return语句
+var sum = (num1,num2)=&gt; {return num1+num2};
+</code></pre>
+<h3 id="箭头函数注意事项">箭头函数注意事项</h3>
+<ol>
+<li>
+<p>函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象。</p>
+</li>
+<li>
+<p>不可以作为构造函数。</p>
+</li>
+<li>
+<p>不可以使用argument对象。</p>
+</li>
+<li>
+<p>不可以使用yield命令</p>
+<p><strong>注意</strong></p>
+<p>其中，箭头函数没有this,所以绑定的是外层的代码块的this，由于这一点，可以用箭头函数来绑定this。</p>
+<p>箭头函数也可以嵌套使用</p>
+<pre><code class="language-js">// 管道机制（pipeline）（前一个函数的输出是后一个函数的输入）
+const plus1 = a=&gt;a+1;
+cosnt mult2 = a=&gt;a*2;
+const addTThenMult = pipline(plus1,mult2);
+addThenMult(5)                // 12
+</code></pre>
+</li>
+</ol>
+<h2 id="绑定this">绑定this</h2>
+<p>(::)用来绑定this</p>
+<p>对象 +（::）+ 函数</p>
+<p>将左边对象的this绑定到右边的函数</p>
+<h2 id="尾调优化">尾调优化</h2>
+<p>尾调是指函数的最后一步调用另一个函数</p>
+<pre><code class="language-js">function f(x){
+	return g(x);
+}
+</code></pre>
+<p>尾调中不能出现其他运算（赋值，算术运算都不能算尾调）</p>
+<p>尾递归是在函数的最后一步调用自身，</p>
+<p>由于递归需要同时保存上千的调用帧，很容易出现栈溢出，但尾递归只存在一个调用帧，不存在栈溢出的现象，但可以用循环代替递归来实现递归进行优化</p>
+<h1 id="六-数组的扩展">六、数组的扩展</h1>
+<h2 id="扩展运算符">扩展运算符</h2>
+<p>（ ... ）将一组数组转换成用逗号隔开的参数序列</p>
+<pre><code class="language-js">console.log(...[1,2,3])
+// 1 2 3
+console.log(1,...[2,3,4],5)
+// 1 2 3 4 5
+</code></pre>
+<h2 id="替代数组的apply方法">替代数组的apply方法</h2>
+<p>由于扩展运算符可以展开数组，所以就不需要使用apply来将数组转换成函数的参数了</p>
+<pre><code>// ES5的写法
+Math.max.apply(null,[14.3.77])
+//Es6的写法
+Math.max(...[14,3,77])
+//等于
+Math.max(14,3,77)
+</code></pre>
+<h2 id="扩展运算符的作用">扩展运算符的作用</h2>
+<h3 id="合并数组">合并数组</h3>
+<pre><code class="language-js">var arr1 = ['a','b'];
+var arr2 = ['c'];
+var arr3 = ['d','e'];
+// ES5的写法
+arr1.concat(arr2,arr3);
+// ['a','b','c','d','e'];
+//ES6写法
+[...arr1,...arr2,...arr3]
+// ['a','b','c','d','e'];
+</code></pre>
+<h3 id="与解构赋值结合">与解构赋值结合</h3>
+<pre><code class="language-js">const [first,...rest] = [1,2,3,4,5,6,7];
+first            // 1
+rest             // [2,3,4,5,6,7]
+</code></pre>
+<h3 id="函数返回值">函数返回值</h3>
+<p>JavaScript函数只能返回一个值，如果需要返回多个值，只能使用数组或对象</p>
+<h3 id="字符串">字符串</h3>
+<p>扩展运算符直接将字符串转换成真正的数组</p>
+<pre><code class="language-js">[...'hello']
+// ['h','e','l','l','o']
+//上面这样写的好处是能够正确识别32位的Unicode字符
+</code></pre>
+<h3 id="实现lterator接口的对象">实现lterator接口的对象</h3>
+<p>任何lterator接口的对象都可以用扩展运算符转为真正的数组</p>
+<pre><code class="language-js">var nodelist = docunment.querySelectorAll('div');
+var array = [...nodeList];
+</code></pre>
+<p>上面代码中，querySelectorAll方法返回的是一个nodeList 对象。他不是数组，是对象</p>
+<p>通过扩展运算符可以实现转换</p>
+<h3 id="map和set结构gennerator函数">Map和Set结构，gennerator函数</h3>
+<h3 id="arrayfrom">Array.from()</h3>
+<p>这个方法将用于将两类对象转化为真正的数组</p>
+<p>实际应用为dom操作返回的nodelist类似数组的对象，以及函数内部的arguments对象</p>
+<h3 id="arrayof">Array.of()</h3>
+<p>这个方法用来将参数转换成组数，用来弥补Array()的不足，Aray.of基本上可以代替Array()和new Array()</p>
+<pre><code class="language-js">// Array()在少于三个参数时表现不一致
+Array(3)            // [ , , ]
+Array(1,2,3)        //[1,2,3]
+//在只有一个参数时，返回的是数组的长度而不是数组值
+// Array.of()不存在这个问题
+Array.of(3)         // [3]
+Array.of(1,2,3)     // [1,2,3]
+</code></pre>
+<h2 id="数据实例的find与findindex">数据实例的find()与findIndex()</h2>
+<p>find方法找出第一个符合条件的数据成员。</p>
+<p>参数是回调函数。</p>
+<p>findIndex()方法找出第一个符合条件的数据，返回其位置。</p>
+<pre><code class="language-js">[1,-2,5].find((n) =&gt; n&lt;0)
+// -2
+[1,-2,5].find(function(value, index, arr)
+{
+	return value &gt;4;
+}
+// 5
+
+// find方法可以接受三个参数，依次是当前的值，当前的位置，原数组
+// findIndex()方法与find()方法类似，当所有成员都不符合条件时返回-1
+              
+[1,-2,5].findIndex(value, index, arr)
+{
+	return value &gt; 4;
+}
+// 2
+</code></pre>
+<h2 id="数组实例的fill">数组实例的fill()</h2>
+<p>fill方法给定值填充一个数组<br>
+用于数组初始化会很方便，，数组中已有的元素会被全部抹去</p>
+<p>fill可接受第二个第三个参数，用于指定填充的起始位置和结束位置</p>
+<h2 id="数组实例的include">数组实例的include()</h2>
+<p>返回一个布尔值，表示某个数组是否包含给定的值</p>
+<pre><code class="language-js">[1,2,3].include(2)       // true
+[1,2,3].include(4)       // false
+
+// 该方法的第二个参数表示搜索开始的位置，默认为0
+</code></pre>
+<h1 id="七-对象的扩展">七、对象的扩展</h1>
+<h2 id="属性的简介表示法">属性的简介表示法</h2>
+<p>ES6允许直接写入变量和函数作为对象的属性和方法</p>
+<pre><code class="language-js">var foo = 'bar';
+var baz = {foo};
+baz         // {foo:&quot;bar&quot;}
+
+// 等同于 
+var baz = {foo:&quot;bar&quot;}
+
+</code></pre>
+<p>ES6支持属性和方法简写</p>
+<pre><code class="language-js">var 0 = {
+    method(){
+        return &quot;hello!&quot;;
+    }
+};
+// 等同于
+var 0 = {
+    method:function(){
+        return &quot;hello!&quot;;
+    }
+};
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[git基本使用]]></title>
+        <id>https://poyibao.github.io/post/git-ji-ben-shi-yong/</id>
+        <link href="https://poyibao.github.io/post/git-ji-ben-shi-yong/">
+        </link>
+        <updated>2020-02-27T04:55:01.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="git">git</h1>
+<h2 id="创建仓库">创建仓库</h2>
+<p>在任意目录下使用</p>
+<pre><code class="language-git">git init
+</code></pre>
+<p>将这个目录变成git可管理的路径即git仓库，</p>
+<p>并且会在里面多一个.git文件夹</p>
+<p>将需要被管理的文件添加入此目录，使用</p>
+<pre><code>git add  XXXX.XX
+</code></pre>
+<p>将告诉git，把文件添加入仓库，使用</p>
+<pre><code>git commit -m &quot;本次提交说明&quot;
+</code></pre>
+<p>将文件提交</p>
+<p>（一次可以add添加多次，然后commit提交一次）</p>
+<p>这样，该文件就存在于git的版本库中。</p>
+<p>使用</p>
+<pre><code>git status
+</code></pre>
+<p>可以查看当前仓库的状态，是否处于修改未添加，或者添加未提交还是其他状态。</p>
+<p>通过</p>
+<pre><code>git diff
+</code></pre>
+<p>可以查看当前修改了什么</p>
+<p>通过</p>
+<pre><code>git log
+</code></pre>
+<p>可以查看历史记录</p>
+<h2 id="返回历史版本">返回历史版本</h2>
+<p>在git中用head表示当前版本，需要返回上个版本就是head<sup>,上上个版本就是head</sup>^，使用</p>
+<pre><code>git reset --hard head^
+</code></pre>
+<p>即可返回上个版本</p>
+<h2 id="重新回到未来的版本">重新回到未来的版本</h2>
+<pre><code>git reset --hard xxxx(commit id)
+</code></pre>
+<p>可以通过以下命令</p>
+<pre><code>git reflog
+</code></pre>
+<p>来查看记录的每一条命令，从而获得commit id</p>
+<h2 id="撤销修改">撤销修改</h2>
+<p>当想抛弃工作区的修改，使用</p>
+<pre><code>git checkout --file
+</code></pre>
+<p>就可丢弃（未添加到git仓库时），当修改了并且Git add到暂存区时，使用</p>
+<pre><code>git reset HEAD &lt;file&gt;
+</code></pre>
+<p>就可以把暂存区的修改回退到工作区，然后通过上一步将工作区修改丢弃</p>
+<h2 id="删除文件">删除文件</h2>
+<p>如果通过直接删除或者rm命令删除，这时候git知道删除了文件，所以工作区和版本库就不一致了，要么通过在版本库中彻底删除，通过</p>
+<pre><code>git rm xxx   //删除
+git commit
+</code></pre>
+<p>要么恢复，通过</p>
+<pre><code>git checkout --xxx
+</code></pre>
+<h2 id="远程仓库绑定">远程仓库绑定</h2>
+<p>在GitHub中创建一个空仓库，要将本地和远程仓库连起来，实现同步，通过下面命令将本地仓库和远程仓库关联</p>
+<pre><code>git remote add origin git@github.com:用户名/远程仓库名.git
+</code></pre>
+<p>然后就可以把本地仓库的内容推到远程仓库里去</p>
+<p>通过</p>
+<pre><code>git push -u origin master
+</code></pre>
+<p>将当前分支推送到远程</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Vue.js]]></title>
+        <id>https://poyibao.github.io/post/vuejs/</id>
+        <link href="https://poyibao.github.io/post/vuejs/">
+        </link>
+        <updated>2020-02-27T04:52:51.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="vuejs">Vue.js</h1>
+<h2 id="node后端中的-mvc-与-前端中的-mvvm-之间的区别">Node（后端）中的 MVC 与 前端中的 MVVM 之间的区别</h2>
+<ul>
+<li>MVC 是后端的分层开发概念；</li>
+<li>MVVM是前端视图层的概念，主要关注于 视图层分离，也就是说：MVVM把前端的视图层，分为了 三部分 Model, View , VM ViewModel</li>
+<li>M：数据    MV：调度    V：视图</li>
+</ul>
+<h2 id="vue之-基本的代码结构和插值表达式-v-cloak">Vue之 - 基本的代码结构和插值表达式、v-cloak</h2>
+<p>v-loak:防止差值闪瞬，默认为display=none</p>
+<p>v-cloak：不会使差值覆盖原标签内文本</p>
+<h2 id="vue指令之v-text和v-html">Vue指令之v-text和v-html</h2>
+<p>v-text: 直接将值插入，会覆盖原有标签内的文本，不存在闪烁问题。</p>
+<p>v-html可以向插值中输入HTML标签，只要符合HTML标签，都会解析</p>
+<p><strong>HTML差值原则</strong></p>
+<ul>
+<li>尽量使用Vue自带的模板机制，减少对HTML差值的使用</li>
+<li>只对可信任的内容使用差值</li>
+<li>绝不相信用户输入的内容</li>
+</ul>
+<p>{{ }}文本差值是不会解析标签的，所有内容被当做文本</p>
+<h2 id="vue指令之v-bind的三种用法">Vue指令之<code>v-bind</code>的三种用法</h2>
+<h3 id="v-bind属性绑定指令">v-bind属性绑定指令</h3>
+<ol>
+<li>
+<p>直接使用指令<code>v-bind</code></p>
+</li>
+<li>
+<p>使用简化指令<code>:</code></p>
+</li>
+<li>
+<p>在绑定的时候，拼接绑定内容：<code>:title=&quot;btnTitle + ', 这是追加的内容'&quot;</code></p>
+</li>
+</ol>
+<h3 id="绑定类名和样式">绑定类名和样式</h3>
+<p>类名有三种绑定方法</p>
+<ul>
+<li>
+<p>使用拼接字符串</p>
+</li>
+<li>
+<p>数组形式（类名作为数组成员）</p>
+</li>
+<li>
+<p>对象（使用对象的时候，类名作为对象键名，当键值判断为真时，类名将绑定在节点上）</p>
+<pre><code class="language-html"> &lt;style&gt;
+    .style_color{ color: black;}
+    .style_front{ font-size: large;}
+    .style_italic{ font-style:italic;}
+    &lt;/style&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;p class =&quot;style_color style_front style_italic&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+        &lt;p :class = &quot;classStr&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+        &lt;p :class = &quot;classArr&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+        &lt;p :class=&quot;classOj&quot;&gt; v-bind绑定类名演示 &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        let vm = new Vue({
+            el: '#app',
+            data(){
+                return{
+                    classStr:&quot;style_color style_front style_italic&quot;,
+                    classArr:['style_color', 'style_front', 'style_italic'],
+                    classOj:{
+                        'style_color':  true,
+                        'style_front':  true,
+                        'style_italic': true
+                    }
+                }
+            }
+        })
+    &lt;/script&gt;
+</code></pre>
+<p>样式绑定以健值对的形式</p>
+</li>
+</ul>
+<h2 id="vue指令之v-on和跑马灯效果">Vue指令之<code>v-on</code>和跑马灯效果</h2>
+<p><strong>v-on事件绑定指令</strong></p>
+<p>简化指令    @</p>
+<h3 id="跑马灯效果">跑马灯效果</h3>
+<ol>
+<li>HTML结构：</li>
+</ol>
+<pre><code class="language-html">
+&lt;div id=&quot;app&quot;&gt;
+
+    &lt;p&gt;{{info}}&lt;/p&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;开启&quot; v-on:click=&quot;go&quot;&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;停止&quot; v-on:click=&quot;stop&quot;&gt;
+
+  &lt;/div&gt;
+
+</code></pre>
+<ol start="2">
+<li>Vue实例：</li>
+</ol>
+<pre><code class="language-js">
+	// 创建 Vue 实例，得到 ViewModel
+
+    var vm = new Vue({
+
+      el: '#app',
+
+      data: {
+
+        info: '猥琐发育，别浪~！',
+
+        intervalId: null
+
+      },
+
+      methods: {
+
+        go() {
+
+          // 如果当前有定时器在运行，则直接return
+
+          if (this.intervalId != null) {
+
+            return;
+
+          }
+
+          // 开始定时器
+
+          this.intervalId = setInterval(() =&gt; {
+
+            this.info = this.info.substring(1) + this.info.substring(0, 1);
+
+          }, 500);
+
+        },
+
+        stop() {
+
+          clearInterval(this.intervalId);
+
+        }
+
+      }
+
+    });
+
+</code></pre>
+<h2 id="vue指令之v-on的缩写和事件修饰符">Vue指令之<code>v-on</code>的缩写和事件修饰符</h2>
+<h3 id="事件修饰符">事件修饰符：</h3>
+<ul>
+<li>
+<p>.stop       阻止冒泡</p>
+</li>
+<li>
+<p>.prevent    阻止默认事件</p>
+</li>
+<li>
+<p>.capture    添加事件侦听器时使用事件捕获模式</p>
+</li>
+<li>
+<p>.self       只当事件在该元素本身（比如不是子元素）触发时触发回调</p>
+</li>
+<li>
+<p>.once       事件只触发一次</p>
+</li>
+</ul>
+<h2 id="vue指令之v-model和双向数据绑定">Vue指令之<code>v-model</code>和<code>双向数据绑定</code></h2>
+<p>v-model可以实现 v ——&gt; m 的数据绑定，也可以实现 m ——&gt; v 的数据绑定。</p>
+<p>只能用于表单元素</p>
+<h2 id="简易计算器案例">简易计算器案例</h2>
+<ol>
+<li>HTML 代码结构</li>
+</ol>
+<pre><code class="language-html">
+  &lt;div id=&quot;app&quot;&gt;
+
+    &lt;input type=&quot;text&quot; v-model=&quot;n1&quot;&gt;
+
+    &lt;select v-model=&quot;opt&quot;&gt;
+
+      &lt;option value=&quot;0&quot;&gt;+&lt;/option&gt;
+
+      &lt;option value=&quot;1&quot;&gt;-&lt;/option&gt;
+
+      &lt;option value=&quot;2&quot;&gt;*&lt;/option&gt;
+
+      &lt;option value=&quot;3&quot;&gt;÷&lt;/option&gt;
+
+    &lt;/select&gt;
+
+    &lt;input type=&quot;text&quot; v-model=&quot;n2&quot;&gt;
+
+    &lt;input type=&quot;button&quot; value=&quot;=&quot; v-on:click=&quot;getResult&quot;&gt;
+
+    &lt;input type=&quot;text&quot; v-model=&quot;result&quot;&gt;
+
+  &lt;/div&gt;
+
+</code></pre>
+<ol start="2">
+<li>Vue实例代码：</li>
+</ol>
+<pre><code class="language-js">
+	// 创建 Vue 实例，得到 ViewModel
+
+    var vm = new Vue({
+
+      el: '#app',
+
+      data: {
+
+        n1: 0,
+
+        n2: 0,
+
+        result: 0,
+
+        opt: '0'
+
+      },
+
+      methods: {
+
+        getResult() {
+
+          switch (this.opt) {
+
+            case '0':
+
+              this.result = parseInt(this.n1) + parseInt(this.n2);
+
+              break;
+
+            case '1':
+
+              this.result = parseInt(this.n1) - parseInt(this.n2);
+
+              break;
+
+            case '2':
+
+              this.result = parseInt(this.n1) * parseInt(this.n2);
+
+              break;
+
+            case '3':
+
+              this.result = parseInt(this.n1) / parseInt(this.n2);
+
+              break;
+
+          }
+
+        }
+
+      }
+
+    });
+
+</code></pre>
+<h2 id="在vue中使用样式">在Vue中使用样式</h2>
+<h3 id="使用class样式">使用class样式</h3>
+<ol>
+<li>数组</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;['red', 'thin']&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<ol start="2">
+<li>数组中使用三元表达式</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;['red', 'thin', isactive?'active':'']&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<ol start="3">
+<li>数组中嵌套对象</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;['red', 'thin', {'active': isactive}]&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<ol start="4">
+<li>直接使用对象</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :class=&quot;{red:true, italic:true, active:true, thin:true}&quot;&gt;这是一个邪恶的H1&lt;/h1&gt;
+</code></pre>
+<h3 id="使用内联样式">使用内联样式</h3>
+<ol>
+<li>直接在元素上通过 <code>:style</code> 的形式，书写样式对象</li>
+</ol>
+<pre><code class="language-html">&lt;h1 :style=&quot;{color: 'red', 'font-size': '40px'}&quot;&gt;这是一个善良的H1&lt;/h1&gt;
+</code></pre>
+<ol start="2">
+<li>将样式对象，定义到 <code>data</code> 中，并直接引用到 <code>:style</code> 中</li>
+</ol>
+<ul>
+<li>在data上定义样式：</li>
+</ul>
+<pre><code class="language-js">data: {
+        h1StyleObj: { color: 'red', 'font-size': '40px', 'font-weight': '200' }
+}
+</code></pre>
+<ul>
+<li>在元素中，通过属性绑定的形式，将样式对象应用到元素中：</li>
+</ul>
+<pre><code class="language-html">&lt;h1 :style=&quot;h1StyleObj&quot;&gt;这是一个善良的H1&lt;/h1&gt;
+</code></pre>
+<ol start="3">
+<li>在 <code>:style</code> 中通过数组，引用多个 <code>data</code> 上的样式对象</li>
+</ol>
+<ul>
+<li>在data上定义样式：</li>
+</ul>
+<pre><code class="language-js">data: {
+        h1StyleObj: { color: 'red', 'font-size': '40px', 'font-weight': '200' },
+        h1StyleObj2: { fontStyle: 'italic' }
+}
+</code></pre>
+<ul>
+<li>在元素中，通过属性绑定的形式，将样式对象应用到元素中：</li>
+</ul>
+<pre><code class="language-html">&lt;h1 :style=&quot;[h1StyleObj, h1StyleObj2]&quot;&gt;这是一个善良的H1&lt;/h1&gt;
+</code></pre>
+<h2 id="vue指令之v-for和key属性">Vue指令之<code>v-for</code>和<code>key</code>属性</h2>
+<p>v-for属性需要以site in sites形式的特殊语法，sites是数据源，site是数组元素迭代的别名</p>
+<p>使用 item in items 或者item of items 语法</p>
+<ol>
+<li>迭代数组</li>
+</ol>
+<pre><code class="language-html">&lt;ul&gt;
+  &lt;li v-for=&quot;(item, i) in list&quot;&gt;索引：{{i}} --- 姓名：{{item.name}} --- 年龄：{{item.age}}&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<ol start="2">
+<li>迭代对象中的属性</li>
+</ol>
+<pre><code class="language-html">
+	&lt;!-- 循环遍历对象身上的属性 --&gt;
+
+    &lt;div v-for=&quot;(val, key, i) in userInfo&quot;&gt;{{val}} --- {{key}} --- {{i}}&lt;/div&gt;
+
+</code></pre>
+<ol start="3">
+<li>迭代数字</li>
+</ol>
+<pre><code class="language-html">
+&lt;p v-for=&quot;i in 10&quot;&gt;这是第 {{i}} 个P标签&lt;/p&gt;
+&lt;--！ 使用v-for迭代数字会从1开始--&gt;
+
+</code></pre>
+<blockquote>
+<p>2.2.0+ 的版本里，<strong>当在组件中使用</strong> v-for 时，key 现在是必须的。</p>
+</blockquote>
+<p>当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用 “<strong>就地复用</strong>” 策略。如果数据项的顺序被改变，Vue将<strong>不是移动 DOM 元素来匹配数据项的顺序</strong>， 而是<strong>简单复用此处每个元素</strong>，并且确保它在特定索引下显示已被渲染过的每个元素。</p>
+<p>为了给 Vue 一个提示，<strong>以便它能跟踪每个节点的身份，从而重用和重新排序现有元素</strong>，你需要为每项提供一个唯一 key 属性。</p>
+<p>v-for循环时，key属性只能使用number获取string，key使用的时候要用 <strong>v-bind</strong> 属性绑定的形式，绑定key的值</p>
+<h2 id="vue指令之v-if和v-show">Vue指令之<code>v-if</code>和<code>v-show</code></h2>
+<blockquote>
+<p>一般来说，v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。</p>
+</blockquote>
+<p>v-if：每次都会重新删除或建立元素**（dom的操作）**</p>
+<p>v-show：只改变元素的display属性，隐藏元素**（样式的改变）**</p>
+<h2 id="品牌管理案例">品牌管理案例</h2>
+<h3 id="添加新品牌">添加新品牌</h3>
+<h3 id="删除品牌">删除品牌</h3>
+<h3 id="根据条件筛选品牌">根据条件筛选品牌</h3>
+<ol>
+<li>1.x 版本中的filterBy指令，在2.x中已经被废除：</li>
+</ol>
+<p><a href="https://v1-cn.vuejs.org/api/#filterBy">filterBy - 指令</a></p>
+<pre><code class="language-html">
+&lt;tr v-for=&quot;item in list | filterBy searchName in 'name'&quot;&gt;
+
+  &lt;td&gt;{{item.id}}&lt;/td&gt;
+
+  &lt;td&gt;{{item.name}}&lt;/td&gt;
+
+  &lt;td&gt;{{item.ctime}}&lt;/td&gt;
+
+  &lt;td&gt;
+
+    &lt;a href=&quot;#&quot; @click.prevent=&quot;del(item.id)&quot;&gt;删除&lt;/a&gt;
+
+  &lt;/td&gt;
+
+&lt;/tr&gt;
+
+</code></pre>
+<ol start="2">
+<li>在2.x版本中<a href="https://cn.vuejs.org/v2/guide/list.html#%E6%98%BE%E7%A4%BA%E8%BF%87%E6%BB%A4-%E6%8E%92%E5%BA%8F%E7%BB%93%E6%9E%9C">手动实现筛选的方式</a>：</li>
+</ol>
+<ul>
+<li>筛选框绑定到 VM 实例中的 <code>searchName</code> 属性：</li>
+</ul>
+<pre><code>
+&lt;hr&gt; 输入筛选名称：
+
+&lt;input type=&quot;text&quot; v-model=&quot;searchName&quot;&gt;
+
+</code></pre>
+<ul>
+<li>在使用 <code>v-for</code> 指令循环每一行数据的时候，不再直接 <code>item in list</code>，而是 <code>in</code> 一个 过滤的methods 方法，同时，把过滤条件<code>searchName</code>传递进去：</li>
+</ul>
+<pre><code class="language-html">
+&lt;tbody&gt;
+
+      &lt;tr v-for=&quot;item in search(searchName)&quot;&gt;
+
+        &lt;td&gt;{{item.id}}&lt;/td&gt;
+
+        &lt;td&gt;{{item.name}}&lt;/td&gt;
+
+        &lt;td&gt;{{item.ctime}}&lt;/td&gt;
+
+        &lt;td&gt;
+
+          &lt;a href=&quot;#&quot; @click.prevent=&quot;del(item.id)&quot;&gt;删除&lt;/a&gt;
+
+        &lt;/td&gt;
+
+      &lt;/tr&gt;
+
+    &lt;/tbody&gt;
+
+</code></pre>
+<ul>
+<li><code>search</code> 过滤方法中，使用 数组的 <code>filter</code> 方法进行过滤：</li>
+</ul>
+<pre><code class="language-js">
+search(name) {
+
+  return this.list.filter(x =&gt; {
+
+    return x.name.indexOf(name) != -1;
+
+  });
+
+}
+
+</code></pre>
+<h2 id="vue调试工具vue-devtools的安装步骤和使用">Vue调试工具<code>vue-devtools</code>的安装步骤和使用</h2>
+<p><a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN">Vue.js devtools - 翻墙安装方式 - 推荐</a></p>
+<h2 id="过滤器">过滤器</h2>
+<p>概念：Vue.js 允许你自定义过滤器，<strong>可被用作一些常见的文本格式化</strong>。过滤器可以用在两个地方：<strong>mustache 插值和 v-bind 表达式</strong>。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符指示；</p>
+<h3 id="私有过滤器">私有过滤器</h3>
+<ol>
+<li>HTML元素：</li>
+</ol>
+<pre><code>
+&lt;td&gt;{{item.ctime | dataFormat('yyyy-mm-dd')}}&lt;/td&gt;
+
+</code></pre>
+<ol start="2">
+<li>私有 <code>filters</code> 定义方式：</li>
+</ol>
+<pre><code class="language-js">
+filters: { // 私有局部过滤器，只能在 当前 VM 对象所控制的 View 区域进行使用
+
+    dataFormat(input, pattern = &quot;&quot;) { // 在参数列表中 通过 pattern=&quot;&quot; 来指定形参默认值，防止报错
+
+      var dt = new Date(input);
+
+      // 获取年月日
+
+      var y = dt.getFullYear();
+
+      var m = (dt.getMonth() + 1).toString().padStart(2, '0');
+
+      var d = dt.getDate().toString().padStart(2, '0');
+
+
+
+      // 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日
+
+      // 否则，就返回  年-月-日 时：分：秒
+
+      if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+
+        return `${y}-${m}-${d}`;
+
+      } else {
+
+        // 获取时分秒
+
+        var hh = dt.getHours().toString().padStart(2, '0');
+
+        var mm = dt.getMinutes().toString().padStart(2, '0');
+
+        var ss = dt.getSeconds().toString().padStart(2, '0');
+
+
+
+        return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+
+      }
+
+    }
+
+  }
+
+</code></pre>
+<blockquote>
+<p>使用ES6中的字符串新方法 String.prototype.padStart(maxLength, fillString='') 或 String.prototype.padEnd(maxLength, fillString='')来填充字符串；</p>
+</blockquote>
+<h3 id="全局过滤器">全局过滤器</h3>
+<pre><code class="language-javascript">
+// 定义一个全局过滤器
+
+Vue.filter('dataFormat', function (input, pattern = '') {
+
+  var dt = new Date(input);
+
+  // 获取年月日
+
+  var y = dt.getFullYear();
+
+  var m = (dt.getMonth() + 1).toString().padStart(2, '0');
+
+  var d = dt.getDate().toString().padStart(2, '0');
+
+
+
+  // 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日
+
+  // 否则，就返回  年-月-日 时：分：秒
+
+  if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+
+    return `${y}-${m}-${d}`;
+
+  } else {
+
+    // 获取时分秒
+
+    var hh = dt.getHours().toString().padStart(2, '0');
+
+    var mm = dt.getMinutes().toString().padStart(2, '0');
+
+    var ss = dt.getSeconds().toString().padStart(2, '0');
+
+
+
+    return `${y}-${m}-${d} ${hh}:${mm}:${ss}`;
+
+  }
+
+});
+
+</code></pre>
+<blockquote>
+<p>注意：当有局部和全局两个名称相同的过滤器时候，会以就近原则进行调用，即：局部过滤器优先于全局过滤器被调用！</p>
+</blockquote>
+<h2 id="键盘修饰符以及自定义键盘修饰符">键盘修饰符以及自定义键盘修饰符</h2>
+<h3 id="1x中自定义键盘修饰符了解即可">1.x中自定义键盘修饰符【了解即可】</h3>
+<pre><code>
+Vue.directive('on').keyCodes.f2 = 113;
+
+</code></pre>
+<h3 id="2x中自定义键盘修饰符"><a href="https://cn.vuejs.org/v2/guide/events.html#%E9%94%AE%E5%80%BC%E4%BF%AE%E9%A5%B0%E7%AC%A6">2.x中自定义键盘修饰符</a></h3>
+<ol>
+<li>通过<code>Vue.config.keyCodes.名称 = 按键值</code>来自定义案件修饰符的别名：</li>
+</ol>
+<pre><code>
+Vue.config.keyCodes.f2 = 113;
+
+</code></pre>
+<ol start="2">
+<li>使用自定义的按键修饰符：</li>
+</ol>
+<pre><code>
+&lt;input type=&quot;text&quot; v-model=&quot;name&quot; @keyup.f2=&quot;add&quot;&gt;
+
+</code></pre>
+<h2 id="自定义指令"><a href="https://cn.vuejs.org/v2/guide/custom-directive.html">自定义指令</a></h2>
+<ol>
+<li>自定义全局和局部的 自定义指令：</li>
+</ol>
+<pre><code class="language-js">
+    // 自定义全局指令 v-focus，为绑定的元素自动获取焦点：
+
+    Vue.directive('focus', {
+
+      inserted: function (el) { // inserted 表示被绑定元素插入父节点时调用
+
+        el.focus();
+
+      }
+
+    });
+
+
+
+    // 自定义局部指令 v-color 和 v-font-weight，为绑定的元素设置指定的字体颜色 和 字体粗细：
+
+      directives: {
+
+        color: { // 为元素设置指定的字体颜色
+
+          bind(el, binding) {
+
+            el.style.color = binding.value;
+
+          }
+
+        },
+
+        'font-weight': function (el, binding2) { // 自定义指令的简写形式，等同于定义了 bind 和 update 两个钩子函数
+
+          el.style.fontWeight = binding2.value;
+
+        }
+
+      }
+
+</code></pre>
+<ol start="2">
+<li>自定义指令的使用方式：</li>
+</ol>
+<pre><code>
+&lt;input type=&quot;text&quot; v-model=&quot;searchName&quot; v-focus v-color=&quot;'red'&quot; v-font-weight=&quot;900&quot;&gt;
+
+</code></pre>
+<h1 id="组件">组件</h1>
+<h2 id="全局组件">全局组件</h2>
+<pre><code class="language-js">Vue.component('组件名'，options（组件配置）)
+Vue.copmponet('Vue_model',{
+    template:'&lt;h1&gt; 自定义模板 &lt;/h1&gt;'
+})
+</code></pre>
+<p>组件使用时直接在HTML中以标签的形式使用</p>
+<h2 id="局部组件">局部组件</h2>
+<p>在一个Vue实例中创建的组件，只在这个实例中有效</p>
+<h2 id="props">props</h2>
+<p>父组件用来传递数据的自定义属性（类似在标签里加入的特性）</p>
+<p>一个组件可以有多个props值</p>
+<pre><code class="language-javascript">// 注册一个blog组件，给它注册title特征
+Vue.component('blog',{
+    props:[title],
+    template:'&lt;h1&gt; {{title}} &lt;/h1&gt;'
+})
+let vue = new Vue{
+    el:'#app'
+}
+</code></pre>
+<pre><code class="language-html">&lt;!--HTML--&gt;
+&lt;div id='app'&gt;
+    &lt;blog title='header'&gt;
+    &lt;/blog&gt;
+&lt;/div&gt;
+</code></pre>
+<p>绑定在模板上时使用v-bind可实现动态props</p>
+<p>当传递的数据不是直接写死的，而是来自父级的动态数据就要用动态props</p>
+<p><strong>ps: html特性不识别大小写，驼峰式命名的props要转换成短横分隔命名</strong></p>
+<h2 id="props-组件通信">props 组件通信</h2>
+<p>自定义事件</p>
+<p>当子组件向父组件传递数据时，用到自定义事件父组件可直接在子组件自定义的标签上使用v-on来监听子组件的触发的自定义事件</p>
+<p>$emit()函数将子组件的数据传给父组件</p>
+<p>$smit( 自定义事件的名称，父组件的属性)</p>
+<p>v-model 绑定子组件的事件</p>
+<h3 id="bus中央事件总线">bus:中央事件总线</h3>
+<p>父组件/其他 &lt;-------bus&lt;--------子组件</p>
+<p>bus作用：接受来自子组件的事件的触发，父组件/其他在生命钩子函数中监听bus的事件</p>
+<h2 id="自定义组件">自定义组件</h2>
+<p>两种注册方式：全局          局部</p>
+<p>全局：</p>
+<pre><code class="language-javascript">Vue.directive('指令名'，{
+             //指令选项
+             })
+</code></pre>
+<p>局部：</p>
+<pre><code class="language-javascript">var app = new Vue({
+    el: '#app'
+    directive:{
+    指令名:{
+    //指令选项
+}
+}
+})
+</code></pre>
+<p>自定义指令有几个钩子函数组成（可选用那些钩子函数）：</p>
+<p>bind：只能调用一次，第一次绑定时调用，用这个钩子函数定义一个绑定时执行一次的初始化动作</p>
+<p>inserted：被绑定元素插入父元素时调用</p>
+<p>update：当绑定的元素所在的模板更新时调用</p>
+<p>componentUpdated:当绑定的元素所在的模板完成一次更新时调用</p>
+<p>unbind:只调用一次，在解绑时调用</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+&lt;input  type=&quot;text&quot; v-focus&gt;
+&lt;/div&gt;
+&lt;script&gt;
+	Vue.directive=({
+        'focus',{
+        inserted:function(el){
+        //聚焦元素
+        el.focus();
+    }
+    }
+    });
+    var Vue = new Vue({
+        el:'#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<p><strong>钩子函数的参数</strong></p>
+<p>el:指令所绑定的元素，可直接操作DOM</p>
+<p>binging:对象，包含以下属性：</p>
+<ul>
+<li>
+<p>name：指令名</p>
+</li>
+<li>
+<p>value：指令值（绑定）</p>
+</li>
+<li>
+<p>oldVule: 在update与componentUpdated钩子中可用，前一个值</p>
+</li>
+<li>
+<p>org: 传给指令的字符串</p>
+</li>
+<li>
+<p>modlifiers:包含修饰符的对象</p>
+</li>
+</ul>
+<p>vNode.vue:  编译生成的虚拟节点</p>
+<p>oldVnode: 上一个节点，在update与componentUpdate中使用</p>
+<h1 id="render-函数">render ()函数</h1>
+<p>virtual dom技术（虚拟dom）</p>
+<p>用virtual dom是基于JavaScript计算的，开销很小</p>
+<pre><code class="language-javascript">var Vnode = {
+    tag:'div'
+     
+		id:'main'
+}
+  children：[
+      // 节点内容
+  ]
+}
+</code></pre>
+<h1 id="vue路由">Vue路由</h1>
+<p>路由提供通过不同的URL访问网页不同位置的内容</p>
+<p>类似于用锚点实现。</p>
+<p>形成单页面多视图的web应用。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+        &lt;h1&gt;hello APP!&lt;/h1&gt;
+        &lt;P&gt;
+            &lt;router-link to=&quot;/test1&quot;&gt; test1&lt;/router-link&gt;
+            &lt;router-link to=&quot;/test2&quot;&gt; test2&lt;/router-link&gt;
+             &lt;!--router-link组件来导航，会自动渲染成一个`a`标签--&gt;
+        &lt;/P&gt;
+        &lt;router-view&gt;&lt;/router-view&gt;  
+    &lt;!--每个组件渲染的东西将在这里面显示--&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        // 定义路由组件
+        //可以通过其他文件import进来
+        const test1 = { template:' &lt;div&gt; test1 &lt;/div&gt; '}
+        const test2 = { template:' &lt;div&gt; test2 &lt;/div&gt; '}
+        const test3 = { template:' &lt;div&gt; test3 &lt;/div&gt; '}
+        const test4 = { template:' &lt;div&gt; test4 &lt;/div&gt; '}
+        const test5 = { template:' &lt;div&gt; test5 &lt;/div&gt; '}  
+        //定义路由
+        //每个路由应该映射一个组件。
+        const routes = [
+                {path:'/test1', component:test1},
+                {path:'/test2', component:test2},
+                {path:'/test3', component:test3},
+                {path:'/test4', component:test4},
+                {path:'/test5', component:test5},             
+        ] 
+        // 创建router实例
+        // 传入routes ，也可以传入其他参数
+        const router = new VueRouter({
+            routes // 相当于routes：routes
+        })
+        //创建和挂载根实例
+        // 记得要通过router配置参数注入路由，让整个应用都有路由功能
+        const app = new Vue({
+            router
+        }).$mount('#app') 
+    &lt;/script&gt;
+</code></pre>
+<h2 id="配置路由步骤">配置路由步骤</h2>
+<ul>
+<li>定义路由组件</li>
+<li>定义路由，每个组件映射一个路由</li>
+<li>创建router实例，传入routes或者其他参数</li>
+<li>创建和挂载根实例</li>
+</ul>
+<h2 id="router-link相关属性">router-link相关属性</h2>
+<h3 id="to">to</h3>
+<p>表示目标路由的链接，这个值可以是一个字符串或者描述目标位置的对象。</p>
+<h3 id="replace">replace</h3>
+<p>设置replace属性的话，当点击时，会调用router.replace()而不是router.push()，导航后不会留下history记录</p>
+<h3 id="append">append</h3>
+<p>设置append后，在当前路径前添加基路径</p>
+<h3 id="tag">tag</h3>
+<p>将router-link渲染成指定标签</p>
+<pre><code class="language-html">&lt;router-link to =&quot;/foo&quot; tag=&quot;li&quot;&gt;foo&lt;/router-link&gt;
+&lt;!-- 渲染后--&gt;
+&lt;li&gt;foo&lt;/li&gt;
+</code></pre>
+<h3 id="active-class与exact-active-class">active-class与exact-active-class</h3>
+<p>router-link默认情况下是模糊匹配的，当设置exact-active-class以后，routerlink只有在当前路由被全匹配时才会激活exact-active-class中的class</p>
+<h3 id="event">event</h3>
+<p>声明可以触发导航的事件，可以是个字符串或者包换字符串的数组</p>
+<pre><code class="language-html">&lt;router-link :to = &quot;{path:'/route1'}&quot; event = &quot;mouseover&quot;&gt;Rouyter link 1&lt;/router-link&gt;
+&lt;!-- 上面设置了event为mouseover，当鼠标移动到 Router link 1上面时，导航的HTML内容就会发生变化--&gt;
+</code></pre>
+<h1 id="vue过度动画">Vue过度动画</h1>
 ]]></content>
     </entry>
 </feed>
