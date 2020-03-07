@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>正则表达式 | poiyibao_blog</title>
+<meta name="description" content="tomorrow is another day">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://poiyibao.github.io//favicon.ico?v=1583578126594">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://poiyibao.github.io//styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://poiyibao.github.io/">poiyibao_blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>正则表达式</h1>
+            <p class="article-meta">
+              2020-03-07
+              
+                <a href="https://poiyibao.github.io/tag/Diw4_KkDf/" class="badge ">
+                  JavaScript
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <h2 id="javascript-正则表达式">JavaScript 正则表达式</h2>
+<h2 id="基本格式">基本格式</h2>
+<ul>
+<li><em>/正则表达式/ 修饰符（可选）</em></li>
+<li>调用RegExp()对象的构造函数</li>
+</ul>
+<p>在JavaScript中正则表达式有两种字符方法：search()和replace()</p>
+<p><strong>search()方法</strong>：用于检索字符串中指定的子字符串，或者检索一个与正则表达式匹配的子字符串，并返回子字符串的首位置</p>
+<p><strong>replace()方法</strong>：用于替换字符串中的指定的一些字符，或者换一个与正则表达式匹配的子字符串</p>
+<h2 id="基础元字符">基础元字符</h2>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.</td>
+<td>匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母或者数字或者下划线</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意的空白符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的开始或者结束</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">// 匹配有abc开头的字符串
+\babc 或者^abc
+// 匹配8位数字的qq号码
+^\d\d\d\d\d\d\d\d$
+//匹配1开头11位数字的电话号码
+^1\d\d\d\d\d\d\d\d\d\d$
+
+</code></pre>
+<h2 id="重复限定符">重复限定符</h2>
+<table>
+<thead>
+<tr>
+<th>说明</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>重复零次或者多次</td>
+</tr>
+<tr>
+<td>+</td>
+<td>重复一次或者更多次</td>
+</tr>
+<tr>
+<td>？</td>
+<td>重复零次或者一次</td>
+</tr>
+<tr>
+<td>{n}</td>
+<td>重复n次</td>
+</tr>
+<tr>
+<td>{n,}</td>
+<td>重复n次或者更多次</td>
+</tr>
+<tr>
+<td>{n,m}</td>
+<td>重复n到m次</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-javascript">//匹配8位数字的qq号
+^\d{8}$
+//匹配1开头11位数字的电话号码
+^1\d{10}$
+//匹配银行卡卡号为14~18位的数字
+^\d{14,18}$
+//匹配以a开头的，0个或者多个b结尾的字符串
+^ab*$
+</code></pre>
+<h2 id="分组">分组</h2>
+<p>正则表达式用（）来分组，括号里的内容作为一个整体</p>
+<p>当我们需要匹配多个ab时，就可以这样：</p>
+<pre><code class="language-javascript">^(ab)*
+</code></pre>
+<h2 id="转义">转义</h2>
+<p>当需要匹配的字符为正则表达式的关键保留字符时，通过转义来实现</p>
+<p>当匹配（ab）开头时，需要把括号进行转义：</p>
+<pre><code class="language-javascript">^(\(ab\))*
+</code></pre>
+<h2 id="条件或">条件或</h2>
+<p>正则表达式用|来表示或关系，也叫分支关系，当满足条件的分子条件中的任何一个条件时，都会匹配成功</p>
+<p>匹配联通号码以130、131、132、155、180开头的号码</p>
+<pre><code class="language-javascript">^(130|131|132|155|180)\d{8}$
+</code></pre>
+<h2 id="区间">区间</h2>
+<p>正则表达式提供一个元字符[]来表示区间条件</p>
+<ol>
+<li>限定0到9可以写成[0-9]</li>
+<li>限定A-Z可以写成[A-Z]</li>
+<li>限定某些数字可以写成[ 165]</li>
+</ol>
+<p>所以上一问题可以写成</p>
+<pre><code class="language-javascript">^(13[0-2]|155|180)\d{8}$
+</code></pre>
+<h2 id="贪婪与非贪婪">贪婪与非贪婪</h2>
+<ul>
+<li>
+<p>贪婪匹配会尽可能多的匹配正则字符串</p>
+<pre><code class="language-javascript">/a+/去匹配'aaaa'时会尽可能多的匹配，结果为：
+'aaaa'
+</code></pre>
+</li>
+<li>
+<p>非贪婪匹配会尽可能少的匹配</p>
+<pre><code class="language-javascript">/a+?/去匹配'aaaa'时，结果为
+'a'
+</code></pre>
+</li>
+</ul>
+<h2 id="修饰符">修饰符</h2>
+<p>在正则表达式的第二条/后可以跟修饰符（一个或者多个）</p>
+<p>常用修饰符：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>执行不区分大小写的匹配</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局匹配</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行匹配模式</td>
+</tr>
+<tr>
+<td>y</td>
+<td>粘连修饰符：与g相似都是全局匹配</td>
+</tr>
+<tr>
+<td>s</td>
+<td>表示(.)表示任意字符，不设置的话，四个字节的utf-16字符和航中字符不能表示</td>
+</tr>
+<tr>
+<td>u</td>
+<td>开启Unicode模式，正确处理大于\uFFFF的Unicode字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="regexp属性">RegExp属性</h2>
+<ul>
+<li>flags会返回正则表达式的修饰符</li>
+<li>source只读字符串，包含正则表达式的文本</li>
+<li>lastIndex可读/可写整数、</li>
+</ul>
+<h3 id="regexp的方法">RegExp的方法</h3>
+<p><strong>exec():</strong></p>
+<p>如果没有找到任何属性，返回 null 如果找到匹配返回一个数组，该数组的第一个元素是相匹配的字符串，余下的元素是与圆括号内的子表达式相匹配的子串</p>
+<p><strong>test()：</strong></p>
+<p>调用test()与exec()等价，当exec()返回值不是 null ，test() 返回 true ，否则返回 false 。</p>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://poiyibao.github.io/post/git-ji-ben-shi-yong/">
+                <h3 class="post-title">
+                  git基本使用
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://poiyibao.github.io//images/avatar.png?v=1583578126594" class="no-responsive avatar">
+    <div class="text-muted">tomorrow is another day</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://poiyibao.github.io/post/zheng-ze-biao-da-shi/">正则表达式</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://poiyibao.github.io/post/git-ji-ben-shi-yong/">git基本使用</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://poiyibao.github.io/post/vuejs/">Vue.js</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://poiyibao.github.io/post/es6-ji-chu/">ES6基础</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://poiyibao.github.io/tag/Diw4_KkDf/" class="badge secondary">
+          JavaScript
+        </a>
+      
+        <a href="https://poiyibao.github.io/tag/8-RY4qmbQ/" class="badge success">
+          git
+        </a>
+      
+        <a href="https://poiyibao.github.io/tag/XyBm-QYfJ/" class="badge success">
+          Vue
+        </a>
+      
+        <a href="https://poiyibao.github.io/tag/vXm7jVeFE/" class="badge success">
+          ES6
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">poiyibao</a> | <a class="rss" href="https://poiyibao.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://poiyibao.github.io/</id>
     <title>poiyibao_blog</title>
-    <updated>2020-02-27T05:52:22.552Z</updated>
+    <updated>2020-03-07T10:48:52.582Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://poiyibao.github.io/"/>
     <link rel="self" href="https://poiyibao.github.io/atom.xml"/>
@@ -11,720 +11,199 @@
     <icon>https://poiyibao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, poiyibao_blog</rights>
     <entry>
-        <title type="html"><![CDATA[ES6基础]]></title>
-        <id>https://poiyibao.github.io/post/es6-ji-chu/</id>
-        <link href="https://poiyibao.github.io/post/es6-ji-chu/">
+        <title type="html"><![CDATA[正则表达式]]></title>
+        <id>https://poiyibao.github.io/post/zheng-ze-biao-da-shi/</id>
+        <link href="https://poiyibao.github.io/post/zheng-ze-biao-da-shi/">
         </link>
-        <updated>2020-02-27T04:56:12.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="es6">ES6</h1>
-<hr>
-<h1 id="一-变量的解析赋值">一、变量的解析赋值</h1>
-<h2 id="do表达式">do表达式</h2>
-<pre><code class="language-javascript">let x = do{
-	let t = f();
-	t*t+1;
-};
-</code></pre>
-<p>在本质上，块级作用域就是把多个语句封装在一起，没有返回值。如果需要返回值，就需要上例中的do语句。</p>
-<h2 id="es6目前有六种声明方法">ES6目前有六种声明方法</h2>
+        <updated>2020-03-07T08:54:57.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="javascript-正则表达式">JavaScript 正则表达式</h2>
+<h2 id="基本格式">基本格式</h2>
 <ul>
-<li>
-<p>使用var命令</p>
-</li>
-<li>
-<p>使用function命令</p>
-</li>
-<li>
-<p>使用let命令</p>
-</li>
-<li>
-<p>使用const命令</p>
-</li>
-<li>
-<p>使用import命令</p>
-</li>
-<li>
-<p>使用class命令</p>
-</li>
+<li><em>/正则表达式/ 修饰符（可选）</em></li>
+<li>调用RegExp()对象的构造函数</li>
 </ul>
-<h2 id="解构赋值">解构赋值</h2>
-<p>解构不仅可以用于数组，也可以用于对象</p>
-<pre><code class="language-javascript">var node ={
-	loc:{
-		start:{
-		line: 1,
-		column: 5
-		}
-	}
-}
-var{loc, loc:{start}, loc:{ satrt:{line} } } = node;
-line     // 1
-loc      //Object {satrt:Object}
-start    //Object{line:1,column:5}
-</code></pre>
-<p>字符串进行解构赋值会转成一个类似数组的对象</p>
-<pre><code class="language-javascript">const [a, b,c,d,e] = 'hello;
-	a   // &quot;h&quot;
-	b   // &quot;e&quot;
-	c   // &quot;l&quot;
-	d   // &quot;l&quot;
-	e   // &quot;o&quot;
-</code></pre>
-<h2 id="解构赋值的用途">解构赋值的用途</h2>
-<ul>
-<li>
-<h3 id="交换变量的值">交换变量的值</h3>
-<pre><code class="language-javascript">let x =1;
-let y = 2;
-[x,y] = [y,x];
-</code></pre>
-</li>
-<li>
-<h3 id="从函数返回多个值">从函数返回多个值</h3>
-<pre><code class="language-javascript">// 返回一个数组
-function example(){
-	return [1,2,3];
-}
-let [a,b,c] = example();
-// 返回一个对象
-function example(){
-	return{
-		foo:1,
-		bar:2
-	};
-}
-let {foo,bar} = example();
-</code></pre>
-</li>
-<li>
-<h3 id="函数参数的定义">函数参数的定义</h3>
-<pre><code class="language-javascript">// 解构赋值可以方便的将一组参数与变量名对应起来
-// 参数是一组有次序的值
-function f([x,y,z]){ ... }
-f([1,2,3]);
-
-// 参数是一组无序的值
-function f({x,y,z}){ ... }
-f({z:3,y:2,x:1});
-</code></pre>
-</li>
-<li>
-<h3 id="json的数据提取">json的数据提取</h3>
-<pre><code class="language-javascript">let jsonData = {
-	id: 42,
-	status:&quot;ok&quot;,
-	data:[867,5309]
-};
-let { id, status, data:number } = jsonData;
-console.log( id,status,number );  // 42, &quot;ok&quot;, [867,5309]
-</code></pre>
-</li>
-<li>
-<h3 id="函数的参数的默认值">函数的参数的默认值</h3>
-</li>
-<li>
-<h3 id="遍历map结构">遍历Map结构</h3>
-<pre><code class="language-javascript">var map =new Map();
-map.set('first','hello');
-map.set('second', 'world');
-for(let[key, value] of map){
-	console.log(key + &quot;is&quot;+value);
-	// first is hello
-	// second is value
-}
-</code></pre>
-</li>
-<li>
-<h3 id="输入模块的指定方法">输入模块的指定方法</h3>
-<pre><code class="language-javascript">const { SourceMapCousumer, SourNode } = require(&quot;source-map&quot;);
-</code></pre>
-</li>
-</ul>
-<h1 id="二-字符串扩展">二、字符串扩展</h1>
-<h2 id="字符的unicode表示法">字符的Unicode表示法</h2>
-<p>\uxxxxxx形式表示一个字符，xxxxxx是这个字符的Unicode码，范围为\u0000~\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表达</p>
-<p>“\uD842\uDFB7”  // &quot;吉&quot;</p>
-<p>**ES6中，进码放进大括号就能正确读出这个字符 **</p>
-<p><em>”\u{20BB7}“</em>  // &quot;吉&quot;</p>
-<p>”\u{41}\u{42}\u{43} &quot;    // &quot;ABC&quot;</p>
-<h2 id="codepointat">codePointAt()</h2>
-<p>在JavaScript内部，字符是以utf-16的格式储存，每个字符固定为两个字节，Unicode大于0xFFFF的字符会认为是两个字符，即四个字节，codePointAt()会正确返回该字符的码,如果是常规的两字节储存的字符，codePointAt()和方法charCodeAt()结果相同。</p>
-<pre><code class="language-javascript">var s= '吉a';
-s.length                    // 3(吉占两个字符)
-s.codePointAt(0)          	// 134071
-s.codePointAt(1)		   // 57271
-s.codePointAt(2)            // 97
-
-</code></pre>
-<p>顺便，codePointAt()是最简单的判断一个字符是两个字节还是四个字节。</p>
-<pre><code class="language-javascript">function is32bit(a)
-{
-	return a.codePointAt(0)&gt;0xFFFF;
-}
-is32bit(&quot;吉&quot;)             //true
-is32bit(&quot;a&quot;)              //false
-</code></pre>
-<h2 id="stringfromcodepoint">String.fromCodePoint()</h2>
-<p>作用与codePointArt()相反，将Unicode码转成字符，如果Sring,formCodePoint()有多个参数，则将会将字符拼成字符串返回。</p>
-<pre><code class="language-javascript">String.formCodePoint(9x20BB7)                   // &quot;吉&quot;
-String.formCodePoint(0x78,0x1f680,0x79)         // true
-</code></pre>
-<h2 id="字符串的遍历器接口">字符串的遍历器接口</h2>
-<pre><code class="language-javascript">for (let codePoint of 'foo')
-{
-	console.log(codePoint)
-}
-// &quot;f&quot;
-// &quot;o&quot;
-// &quot;o&quot;
-
-/* 传统的for循环遍历无法识别大于0xFFFF的码的字符*/
-
-let text =&quot;吉&quot;；
-//传统for循环
-for(let i = 0; i &lt; text.length; i++)
-{
-	consle.log(text[i]);
-}
-// &quot; &quot;
-// &quot; &quot;
-//ES6的表达
-for(let i of text)
-{
-	consle.log(i);
-}
-// &quot;吉&quot;
-
-</code></pre>
-<h2 id="at">at()</h2>
-<p>这个方法与charAt()功能一致，返回字符串给定位置的字符，区别在于CharAt()无法识别大于0xFFFF的字符，at()可以</p>
-<pre><code class="language-javascript">'abc'.charAt(0)     // &quot;a&quot;
- '吉'.char.At(0)    //&quot;\uD842&quot;
- '吉'.at(0)         // &quot;吉&quot;   
-</code></pre>
-<h2 id="三种查找字符串是否包含在另一个字符串的方法">三种查找字符串是否包含在另一个字符串的方法</h2>
+<p>在JavaScript中正则表达式有两种字符方法：search()和replace()</p>
+<p><strong>search()方法</strong>：用于检索字符串中指定的子字符串，或者检索一个与正则表达式匹配的子字符串，并返回子字符串的首位置</p>
+<p><strong>replace()方法</strong>：用于替换字符串中的指定的一些字符，或者换一个与正则表达式匹配的子字符串</p>
+<h2 id="基础元字符">基础元字符</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">includes()</th>
-<th style="text-align:center">返回布尔值</th>
-<th>表示是否找到参数字符串</th>
-<th>第二参数表示开始搜索的位置</th>
+<th>元字符</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center"><strong>startsWith()</strong></td>
-<td style="text-align:center"><strong>返回布尔值</strong></td>
-<td><strong>表示参数字符串是否在源字符串头部</strong></td>
-<td><strong>第二参数表示开始搜索的位置</strong></td>
+<td>.</td>
+<td>匹配除换行符以外的任意字符</td>
 </tr>
 <tr>
-<td style="text-align:center"><strong>endsWith()</strong></td>
-<td style="text-align:center"><strong>返回布尔值</strong></td>
-<td><strong>表示参数是字符串是否在元字符的尾部</strong></td>
-<td><strong>第二参数表示开始搜索的位置</strong></td>
+<td>\w</td>
+<td>匹配字母或者数字或者下划线</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意的空白符</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的开始或者结束</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束</td>
 </tr>
 </tbody>
 </table>
-<h2 id="repeat">repeat()</h2>
-<p>repeat()方法将返回一个新字符串，将源字符串重复参数次</p>
-<p>如果参数是小数将被<strong>取整</strong>（向下）</p>
-<h2 id="padstart-padend">padStart()、padEnd()</h2>
-<p>字符串补全方法</p>
-<table>
-<thead>
-<tr>
-<th>padStart()</th>
-<th>'x'.padStart(5, 'ab' )                               // 'ababx'</th>
-<th>在头部补全</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>padEnd()</strong></td>
-<td><strong>'x'.padEnd(4, 'ab ')</strong>                                <strong>// 'xaba'</strong></td>
-<td><strong>在尾部补全</strong></td>
-</tr>
-</tbody>
-</table>
-<h2 id="模板字符串">模板字符串</h2>
-<p>模板字符串是增强版的字符串，用（`）标识</p>
-<pre><code class="language-js">var x = 1;
-var y = 2;
-// 在模板字符串内嵌入变量，需要将变量名写在${}中，大括号内也可以放任意JavaScript语句,调用函数。
-`${x} + ${y} = ${x+y}`         // &quot;1+2=3&quot;
-`${x} + ${y*2} = ${x +y *2}`   // &quot;1+4=5&quot;
-var obj = {x:1,y:2};
-`${obj.x + obj.y}`             // 3 
-function fn(){
-	return &quot;hello World&quot;
-}
-`foo ${fn()} bar `             // foo hello World bar
+<pre><code class="language-javascript">// 匹配有abc开头的字符串
+\babc 或者^abc
+// 匹配8位数字的qq号码
+^\d\d\d\d\d\d\d\d$
+//匹配1开头11位数字的电话号码
+^1\d\d\d\d\d\d\d\d\d\d$
 
 </code></pre>
-<h3 id="模板编译">模板编译</h3>
-<pre><code class="language-JavaScript">var template = 
-&lt;ul&gt;
-	&lt;% for(var i=1; i&lt; data.supplies.length; i++)
-	{
-		%&gt; &lt;li&gt;&lt;%= data.supplies[i] %&gt; &lt;/li&gt;
-}
-</code></pre>
-<p>上面代码在模板字符串中放置了一个常规模板，该模板使用&lt;%............%&gt;放置JavaScript代码，使用了&lt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">= ........</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.10556em;vertical-align:0em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span>&gt;输出JavaScript表达式</p>
-<h2 id="标签模板">标签模板</h2>
-<p>模板紧跟在一个函数后面，该函数将被调用处理这个模板字符串</p>
-<pre><code class="language-js">alert `123 `   // 等价于alert(123)
-</code></pre>
-<p>如果模板中含有变量，会把模板拆分成多个变量然后调用函数</p>
-<pre><code class="language-javascript">var a = 5;
-var n = 10;
-tag`hello $( a+b ) world $( a*b ) `;           // 等价于tag(['hello','world',' '],15,50);
-</code></pre>
-<h3 id="标签模板的用途">标签模板的用途</h3>
-<ul>
-<li>
-<p>一个重要用途是过滤HTML字符串，防止用户输入恶意内容</p>
-<pre><code class="language-javascript">var message = SaferHTML`&lt;p&gt;${sender} has sent you a messmage.&lt;/p&gt; `;
-function SaferHTML(templateData)
-{
-	var s = templateData[0];
-	for(var i=0;i&lt;argumrnts,length;i++)
-	{
-		var arg = String(argumrnts[i]);
-		s+= arg.replace(/&amp;/g, &quot;&amp;amp;&quot;)
-			   .replace(/&lt;/g, &quot;&amp;lt;&quot;)
-			   .replace(/&gt;/g, &quot;&amp;gt;&quot;);
-		s+= templateData[i]
-	}
-	reyurn s;
-}
-</code></pre>
-<ul>
-<li>
-<p>另一个用途就是多语言转换</p>
-<pre><code class="language-js">`Wlocome to $(sitName), you can visitor number $(visitorNumber) `
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="stringraw">String.raw()</h2>
-<p>String.raw()方法是用来充当模板字符串的处理函数，返回一个反斜线都被转移的字符串</p>
-<pre><code class="language-js">String.raw()`Hi\n${2+3}! `;                   // &quot;Hi\\n5&quot;
-</code></pre>
-<h1 id="三-正则表达式-的扩展">三、正则表达式 的扩展</h1>
-<h2 id="regexp-构造函数">RegExp 构造函数</h2>
-<pre><code class="language-js">/* ES5规定，如果RegExp的第一个参数是正则对象，那么第二个参数可以是指定修饰符。并且，返回的表达式会忽略原有的的正则表达式的修饰符，只是用新的指定的修饰符*/
-new RegEXP(/ABC/ig, 'i').flags                // 会忽略原有的ig，被i覆盖
-</code></pre>
-<h2 id="字符串的正则方法">字符串的正则方法</h2>
-<p>字符串正则的四个方法</p>
-<ul>
-<li>match()</li>
-<li>replace()</li>
-<li>search()</li>
-<li>split()</li>
-</ul>
-<h2 id="y-修饰符">y 修饰符</h2>
-<p>y修饰符和g修饰符一样，也是全局匹配，后一次匹配都是从上一次匹配的下一位开始</p>
-<p><strong>不同</strong></p>
-<p>g修饰符要求剩余部分存在匹配就行</p>
-<p>y修饰符要求要确保从剩下的第一个位置开始</p>
-<h2 id="sticky-属性">sticky 属性</h2>
-<p>sticky属性表示是否设置了y修饰符</p>
-<pre><code class="language-js">var r = /hello\d/y;
-t.sticky            // sure
-</code></pre>
-<h2 id="flags属性">flags属性</h2>
-<p>用来返回正则表达式的修饰符</p>
-<h2 id="unicode属性类">Unicode属性类</h2>
-<p>Unicode 属性类要指定属性名和属性值</p>
-<p>\p{UnocodePropertyName = UnicodePropertyValue }</p>
-<p>\P{...}是\p{...}的反向匹配(匹配不满足条件的字符)</p>
-<p><em>这两种类只对Unicode有效，使用时要加u修饰符，否则报错</em></p>
-<h2 id="具名组匹配">具名组匹配</h2>
-<p>正则表达式使用圆括号进行组匹配</p>
-<pre><code class="language-js">const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
-cosnt matchObj = RE_DATE.exec('1999-12-31');
-
-</code></pre>
-<h1 id="四-数值的扩展">四、数值的扩展</h1>
-<h2 id="二进制与八进制">二进制与八进制</h2>
-<p>ES6提供了新的二进制与八进制的写法</p>
-<p>二进制      前缀0b(0B)</p>
-<p>八进制       前缀0o(0O)</p>
-<h2 id="新增方法">新增方法</h2>
+<h2 id="重复限定符">重复限定符</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">作用</th>
-<th style="text-align:center">说明</th>
+<th>说明</th>
+<th>语法</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">Number.isFinite()</td>
-<td style="text-align:center">检查数值是否为有限</td>
-<td style="text-align:center"></td>
+<td>*</td>
+<td>重复零次或者多次</td>
 </tr>
 <tr>
-<td style="text-align:center">Number.isNaN()</td>
-<td style="text-align:center">检查数值是否为NaN</td>
-<td style="text-align:center"></td>
+<td>+</td>
+<td>重复一次或者更多次</td>
 </tr>
 <tr>
-<td style="text-align:center">Number.parseInt()</td>
-<td style="text-align:center">将字符串提取为整数</td>
-<td style="text-align:center"></td>
+<td>？</td>
+<td>重复零次或者一次</td>
 </tr>
 <tr>
-<td style="text-align:center">Number.parseFloat()</td>
-<td style="text-align:center">将字符串提取为浮点数</td>
-<td style="text-align:center"></td>
+<td>{n}</td>
+<td>重复n次</td>
 </tr>
 <tr>
-<td style="text-align:center">Number.isInteger()</td>
-<td style="text-align:center">判断是否为整数</td>
-<td style="text-align:center">由于js不区分整数和浮点数，所以3和3.0为同一值</td>
+<td>{n,}</td>
+<td>重复n次或者更多次</td>
 </tr>
 <tr>
-<td style="text-align:center">Number.EPSILON</td>
-<td style="text-align:center">ES6新增的一个极小的常量</td>
-<td style="text-align:center">2.220044049250313e-16</td>
+<td>{n,m}</td>
+<td>重复n到m次</td>
 </tr>
 </tbody>
 </table>
-<h2 id="math对象的扩展">Math对象的扩展</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">作用</th>
-<th style="text-align:center">实例说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Math.trunc()</td>
-<td style="text-align:center">去除一个数的小数部分，返回整数</td>
-<td style="text-align:center">非数值转换成数值</td>
-</tr>
-<tr>
-<td style="text-align:center">MAth.sign()</td>
-<td style="text-align:center">判断一个数是正，负，0</td>
-<td style="text-align:center">返回值为+1，-1,0，NaN</td>
-</tr>
-<tr>
-<td style="text-align:center">Math.cbrt()</td>
-<td style="text-align:center">用于计算一个数的立方根</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Math.clz32()</td>
-<td style="text-align:center">返回一个数的32位无符号整数前面有多少个零</td>
-<td style="text-align:center">js整数用32位二进制表示</td>
-</tr>
-<tr>
-<td style="text-align:center">Math.imul()</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Math.fround()</td>
-<td style="text-align:center">返回一个数的单精度浮点数的形式</td>
-<td style="text-align:center">对于整数没有变化</td>
-</tr>
-<tr>
-<td style="text-align:center">Math.signbbit()</td>
-<td style="text-align:center">判断一个值的正负</td>
-<td style="text-align:center">正：false；负：true；0：-0</td>
-</tr>
-<tr>
-<td style="text-align:center">Math.hypot()</td>
-<td style="text-align:center">返回所有参数的平方和的平方根</td>
-<td style="text-align:center">↙</td>
-</tr>
-</tbody>
-</table>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a^{2}+b^{2}+...+n^{2}}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2399999999999998em;vertical-align:-0.177736em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0622639999999999em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.0222640000000003em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
-158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
-c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
-175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
-c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
--252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
-s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.177736em;"><span></span></span></span></span></span></span></span></span></span></p>
-<h3 id="对数的扩展">对数的扩展</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">方法</th>
-<th style="text-align:center">作用</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Math.expin1()</td>
-<td style="text-align:center">返回eⁿ-1</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Math.loglp()</td>
-<td style="text-align:center">返回In(x+1)</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Math.log10()</td>
-<td style="text-align:center">返回log X的值</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">Math.log2()</td>
-<td style="text-align:center">返回log₂ X的值</td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-<h3 id="指数运算符">指数运算符</h3>
-<p>**</p>
-<p>2**2 = 2²</p>
-<p>2**3 = 2³</p>
-<p>a **  = 2     // a = a * *2         a²</p>
-<h1 id="五-函数的扩展">五、函数的扩展</h1>
-<h2 id="函数的参数的默认值-2">函数的参数的默认值</h2>
-<p>ES6设置值默认值，写在参数的后面</p>
-<pre><code class="language-js">function log(x, y = 'world')
-{
-	console.log(x, y);
-}
-log('hello')                        // hello world
-log('hello', 'china')               // hello china
-log('hello','')                     // hello world  
+<pre><code class="language-javascript">//匹配8位数字的qq号
+^\d{8}$
+//匹配1开头11位数字的电话号码
+^1\d{10}$
+//匹配银行卡卡号为14~18位的数字
+^\d{14,18}$
+//匹配以a开头的，0个或者多个b结尾的字符串
+^ab*$
 </code></pre>
-<h3 id="与解析赋值结合使用">与解析赋值结合使用</h3>
-<pre><code class="language-js">fuction foo({x,y=5})
-{
-	console.log(x,y);
-}
-foo({})                       // undefined, 5
-foo({x:1})                    // 1, 5
-foo()                         // Type Error
-// 只有当参数为对象时才能执行
+<h2 id="分组">分组</h2>
+<p>正则表达式用（）来分组，括号里的内容作为一个整体</p>
+<p>当我们需要匹配多个ab时，就可以这样：</p>
+<pre><code class="language-javascript">^(ab)*
 </code></pre>
-<h3 id="参数默认位置">参数默认位置</h3>
-<ul>
-<li>
-<p>一般将带默认值的参数放在末尾项</p>
-</li>
-<li>
-<p>若带默认值的参数不在末尾，咋不能进行省略，传值时要在其位置传入undefined才能调用默认参数</p>
-</li>
-</ul>
-<h3 id="length属性">length属性</h3>
-<p>指定默认之后，length只返回无默认值的参数的个数</p>
-<h3 id="作用域">作用域</h3>
-<p>在函数被调用时，参数会形成一个单独的作用域，等初始化结束后，这个作用域就会消失，在不设置默认值参数时是没有这个作用域的。</p>
-<h2 id="rest参数">rest参数</h2>
-<p>用于获取函数的多余参数，只能有rest这一个参数，不能存在其他参数</p>
-<pre><code class="language-js">function add( ... ralues)
-{
-	let sum = 0;
-	for(var val of ralues ){
-		sum += val ;
-	}
-	erturn sum;
-}
-add (2,5,3)           // 10
+<h2 id="转义">转义</h2>
+<p>当需要匹配的字符为正则表达式的关键保留字符时，通过转义来实现</p>
+<p>当匹配（ab）开头时，需要把括号进行转义：</p>
+<pre><code class="language-javascript">^(\(ab\))*
 </code></pre>
-<h2 id="name-属性">name 属性</h2>
-<p>函数的name属性返回该函数的函数名</p>
-<hr>
-<h2 id="箭头函数-重点">箭头函数                                                   <em>重点</em></h2>
-<hr>
-<p>（=&gt;）定义函数</p>
-<pre><code class="language-js">var f = v =&gt; v;
-// 等价于
-var f= function(v)
-{
-	return v;
-};
-// 当箭头函数不需要参数或者参数多于一个的时候，用圆括号代替参数部分
-var f = () =&gt;5;
-//等价于
-var f = function()
-{
-	return 5;
-};
-
-var sum = (num1,num2) =&gt; num1+num2;
-// 等价于
-var sum = function(num1,num2)
-{
-return num1+num2;
-};
-// 如果箭头函数本体部分多于一条语句，就要是用大括号将其括起来，并使用return语句
-var sum = (num1,num2)=&gt; {return num1+num2};
+<h2 id="条件或">条件或</h2>
+<p>正则表达式用|来表示或关系，也叫分支关系，当满足条件的分子条件中的任何一个条件时，都会匹配成功</p>
+<p>匹配联通号码以130、131、132、155、180开头的号码</p>
+<pre><code class="language-javascript">^(130|131|132|155|180)\d{8}$
 </code></pre>
-<h3 id="箭头函数注意事项">箭头函数注意事项</h3>
+<h2 id="区间">区间</h2>
+<p>正则表达式提供一个元字符[]来表示区间条件</p>
 <ol>
-<li>
-<p>函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象。</p>
-</li>
-<li>
-<p>不可以作为构造函数。</p>
-</li>
-<li>
-<p>不可以使用argument对象。</p>
-</li>
-<li>
-<p>不可以使用yield命令</p>
-<p><strong>注意</strong></p>
-<p>其中，箭头函数没有this,所以绑定的是外层的代码块的this，由于这一点，可以用箭头函数来绑定this。</p>
-<p>箭头函数也可以嵌套使用</p>
-<pre><code class="language-js">// 管道机制（pipeline）（前一个函数的输出是后一个函数的输入）
-const plus1 = a=&gt;a+1;
-cosnt mult2 = a=&gt;a*2;
-const addTThenMult = pipline(plus1,mult2);
-addThenMult(5)                // 12
-</code></pre>
-</li>
+<li>限定0到9可以写成[0-9]</li>
+<li>限定A-Z可以写成[A-Z]</li>
+<li>限定某些数字可以写成[ 165]</li>
 </ol>
-<h2 id="绑定this">绑定this</h2>
-<p>(::)用来绑定this</p>
-<p>对象 +（::）+ 函数</p>
-<p>将左边对象的this绑定到右边的函数</p>
-<h2 id="尾调优化">尾调优化</h2>
-<p>尾调是指函数的最后一步调用另一个函数</p>
-<pre><code class="language-js">function f(x){
-	return g(x);
-}
+<p>所以上一问题可以写成</p>
+<pre><code class="language-javascript">^(13[0-2]|155|180)\d{8}$
 </code></pre>
-<p>尾调中不能出现其他运算（赋值，算术运算都不能算尾调）</p>
-<p>尾递归是在函数的最后一步调用自身，</p>
-<p>由于递归需要同时保存上千的调用帧，很容易出现栈溢出，但尾递归只存在一个调用帧，不存在栈溢出的现象，但可以用循环代替递归来实现递归进行优化</p>
-<h1 id="六-数组的扩展">六、数组的扩展</h1>
-<h2 id="扩展运算符">扩展运算符</h2>
-<p>（ ... ）将一组数组转换成用逗号隔开的参数序列</p>
-<pre><code class="language-js">console.log(...[1,2,3])
-// 1 2 3
-console.log(1,...[2,3,4],5)
-// 1 2 3 4 5
+<h2 id="贪婪与非贪婪">贪婪与非贪婪</h2>
+<ul>
+<li>
+<p>贪婪匹配会尽可能多的匹配正则字符串</p>
+<pre><code class="language-javascript">/a+/去匹配'aaaa'时会尽可能多的匹配，结果为：
+'aaaa'
 </code></pre>
-<h2 id="替代数组的apply方法">替代数组的apply方法</h2>
-<p>由于扩展运算符可以展开数组，所以就不需要使用apply来将数组转换成函数的参数了</p>
-<pre><code>// ES5的写法
-Math.max.apply(null,[14.3.77])
-//Es6的写法
-Math.max(...[14,3,77])
-//等于
-Math.max(14,3,77)
+</li>
+<li>
+<p>非贪婪匹配会尽可能少的匹配</p>
+<pre><code class="language-javascript">/a+?/去匹配'aaaa'时，结果为
+'a'
 </code></pre>
-<h2 id="扩展运算符的作用">扩展运算符的作用</h2>
-<h3 id="合并数组">合并数组</h3>
-<pre><code class="language-js">var arr1 = ['a','b'];
-var arr2 = ['c'];
-var arr3 = ['d','e'];
-// ES5的写法
-arr1.concat(arr2,arr3);
-// ['a','b','c','d','e'];
-//ES6写法
-[...arr1,...arr2,...arr3]
-// ['a','b','c','d','e'];
-</code></pre>
-<h3 id="与解构赋值结合">与解构赋值结合</h3>
-<pre><code class="language-js">const [first,...rest] = [1,2,3,4,5,6,7];
-first            // 1
-rest             // [2,3,4,5,6,7]
-</code></pre>
-<h3 id="函数返回值">函数返回值</h3>
-<p>JavaScript函数只能返回一个值，如果需要返回多个值，只能使用数组或对象</p>
-<h3 id="字符串">字符串</h3>
-<p>扩展运算符直接将字符串转换成真正的数组</p>
-<pre><code class="language-js">[...'hello']
-// ['h','e','l','l','o']
-//上面这样写的好处是能够正确识别32位的Unicode字符
-</code></pre>
-<h3 id="实现lterator接口的对象">实现lterator接口的对象</h3>
-<p>任何lterator接口的对象都可以用扩展运算符转为真正的数组</p>
-<pre><code class="language-js">var nodelist = docunment.querySelectorAll('div');
-var array = [...nodeList];
-</code></pre>
-<p>上面代码中，querySelectorAll方法返回的是一个nodeList 对象。他不是数组，是对象</p>
-<p>通过扩展运算符可以实现转换</p>
-<h3 id="map和set结构gennerator函数">Map和Set结构，gennerator函数</h3>
-<h3 id="arrayfrom">Array.from()</h3>
-<p>这个方法将用于将两类对象转化为真正的数组</p>
-<p>实际应用为dom操作返回的nodelist类似数组的对象，以及函数内部的arguments对象</p>
-<h3 id="arrayof">Array.of()</h3>
-<p>这个方法用来将参数转换成组数，用来弥补Array()的不足，Aray.of基本上可以代替Array()和new Array()</p>
-<pre><code class="language-js">// Array()在少于三个参数时表现不一致
-Array(3)            // [ , , ]
-Array(1,2,3)        //[1,2,3]
-//在只有一个参数时，返回的是数组的长度而不是数组值
-// Array.of()不存在这个问题
-Array.of(3)         // [3]
-Array.of(1,2,3)     // [1,2,3]
-</code></pre>
-<h2 id="数据实例的find与findindex">数据实例的find()与findIndex()</h2>
-<p>find方法找出第一个符合条件的数据成员。</p>
-<p>参数是回调函数。</p>
-<p>findIndex()方法找出第一个符合条件的数据，返回其位置。</p>
-<pre><code class="language-js">[1,-2,5].find((n) =&gt; n&lt;0)
-// -2
-[1,-2,5].find(function(value, index, arr)
-{
-	return value &gt;4;
-}
-// 5
-
-// find方法可以接受三个参数，依次是当前的值，当前的位置，原数组
-// findIndex()方法与find()方法类似，当所有成员都不符合条件时返回-1
-              
-[1,-2,5].findIndex(value, index, arr)
-{
-	return value &gt; 4;
-}
-// 2
-</code></pre>
-<h2 id="数组实例的fill">数组实例的fill()</h2>
-<p>fill方法给定值填充一个数组<br>
-用于数组初始化会很方便，，数组中已有的元素会被全部抹去</p>
-<p>fill可接受第二个第三个参数，用于指定填充的起始位置和结束位置</p>
-<h2 id="数组实例的include">数组实例的include()</h2>
-<p>返回一个布尔值，表示某个数组是否包含给定的值</p>
-<pre><code class="language-js">[1,2,3].include(2)       // true
-[1,2,3].include(4)       // false
-
-// 该方法的第二个参数表示搜索开始的位置，默认为0
-</code></pre>
-<h1 id="七-对象的扩展">七、对象的扩展</h1>
-<h2 id="属性的简介表示法">属性的简介表示法</h2>
-<p>ES6允许直接写入变量和函数作为对象的属性和方法</p>
-<pre><code class="language-js">var foo = 'bar';
-var baz = {foo};
-baz         // {foo:&quot;bar&quot;}
-
-// 等同于 
-var baz = {foo:&quot;bar&quot;}
-
-</code></pre>
-<p>ES6支持属性和方法简写</p>
-<pre><code class="language-js">var 0 = {
-    method(){
-        return &quot;hello!&quot;;
-    }
-};
-// 等同于
-var 0 = {
-    method:function(){
-        return &quot;hello!&quot;;
-    }
-};
-
-</code></pre>
+</li>
+</ul>
+<h2 id="修饰符">修饰符</h2>
+<p>在正则表达式的第二条/后可以跟修饰符（一个或者多个）</p>
+<p>常用修饰符：</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>i</td>
+<td>执行不区分大小写的匹配</td>
+</tr>
+<tr>
+<td>g</td>
+<td>全局匹配</td>
+</tr>
+<tr>
+<td>m</td>
+<td>多行匹配模式</td>
+</tr>
+<tr>
+<td>y</td>
+<td>粘连修饰符：与g相似都是全局匹配</td>
+</tr>
+<tr>
+<td>s</td>
+<td>表示(.)表示任意字符，不设置的话，四个字节的utf-16字符和航中字符不能表示</td>
+</tr>
+<tr>
+<td>u</td>
+<td>开启Unicode模式，正确处理大于\uFFFF的Unicode字符</td>
+</tr>
+</tbody>
+</table>
+<h2 id="regexp属性">RegExp属性</h2>
+<ul>
+<li>flags会返回正则表达式的修饰符</li>
+<li>source只读字符串，包含正则表达式的文本</li>
+<li>lastIndex可读/可写整数、</li>
+</ul>
+<h3 id="regexp的方法">RegExp的方法</h3>
+<p><strong>exec():</strong></p>
+<p>如果没有找到任何属性，返回 null 如果找到匹配返回一个数组，该数组的第一个元素是相匹配的字符串，余下的元素是与圆括号内的子表达式相匹配的子串</p>
+<p><strong>test()：</strong></p>
+<p>调用test()与exec()等价，当exec()返回值不是 null ，test() 返回 true ，否则返回 false 。</p>
 ]]></content>
     </entry>
     <entry>
@@ -805,7 +284,7 @@ git commit
         <id>https://poiyibao.github.io/post/vuejs/</id>
         <link href="https://poiyibao.github.io/post/vuejs/">
         </link>
-        <updated>2020-02-27T04:52:51.000Z</updated>
+        <updated>2019-12-07T08:53:58.000Z</updated>
         <content type="html"><![CDATA[<h1 id="vuejs">Vue.js</h1>
 <h2 id="node后端中的-mvc-与-前端中的-mvvm-之间的区别">Node（后端）中的 MVC 与 前端中的 MVVM 之间的区别</h2>
 <ul>
@@ -1608,6 +1087,723 @@ let vue = new Vue{
 &lt;!-- 上面设置了event为mouseover，当鼠标移动到 Router link 1上面时，导航的HTML内容就会发生变化--&gt;
 </code></pre>
 <h1 id="vue过度动画">Vue过度动画</h1>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ES6基础]]></title>
+        <id>https://poiyibao.github.io/post/es6-ji-chu/</id>
+        <link href="https://poiyibao.github.io/post/es6-ji-chu/">
+        </link>
+        <updated>2019-08-21T04:56:12.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="es6">ES6</h1>
+<hr>
+<h1 id="一-变量的解析赋值">一、变量的解析赋值</h1>
+<h2 id="do表达式">do表达式</h2>
+<pre><code class="language-javascript">let x = do{
+	let t = f();
+	t*t+1;
+};
+</code></pre>
+<p>在本质上，块级作用域就是把多个语句封装在一起，没有返回值。如果需要返回值，就需要上例中的do语句。</p>
+<h2 id="es6目前有六种声明方法">ES6目前有六种声明方法</h2>
+<ul>
+<li>
+<p>使用var命令</p>
+</li>
+<li>
+<p>使用function命令</p>
+</li>
+<li>
+<p>使用let命令</p>
+</li>
+<li>
+<p>使用const命令</p>
+</li>
+<li>
+<p>使用import命令</p>
+</li>
+<li>
+<p>使用class命令</p>
+</li>
+</ul>
+<h2 id="解构赋值">解构赋值</h2>
+<p>解构不仅可以用于数组，也可以用于对象</p>
+<pre><code class="language-javascript">var node ={
+	loc:{
+		start:{
+		line: 1,
+		column: 5
+		}
+	}
+}
+var{loc, loc:{start}, loc:{ satrt:{line} } } = node;
+line     // 1
+loc      //Object {satrt:Object}
+start    //Object{line:1,column:5}
+</code></pre>
+<p>字符串进行解构赋值会转成一个类似数组的对象</p>
+<pre><code class="language-javascript">const [a, b,c,d,e] = 'hello;
+	a   // &quot;h&quot;
+	b   // &quot;e&quot;
+	c   // &quot;l&quot;
+	d   // &quot;l&quot;
+	e   // &quot;o&quot;
+</code></pre>
+<h2 id="解构赋值的用途">解构赋值的用途</h2>
+<ul>
+<li>
+<h3 id="交换变量的值">交换变量的值</h3>
+<pre><code class="language-javascript">let x =1;
+let y = 2;
+[x,y] = [y,x];
+</code></pre>
+</li>
+<li>
+<h3 id="从函数返回多个值">从函数返回多个值</h3>
+<pre><code class="language-javascript">// 返回一个数组
+function example(){
+	return [1,2,3];
+}
+let [a,b,c] = example();
+// 返回一个对象
+function example(){
+	return{
+		foo:1,
+		bar:2
+	};
+}
+let {foo,bar} = example();
+</code></pre>
+</li>
+<li>
+<h3 id="函数参数的定义">函数参数的定义</h3>
+<pre><code class="language-javascript">// 解构赋值可以方便的将一组参数与变量名对应起来
+// 参数是一组有次序的值
+function f([x,y,z]){ ... }
+f([1,2,3]);
+
+// 参数是一组无序的值
+function f({x,y,z}){ ... }
+f({z:3,y:2,x:1});
+</code></pre>
+</li>
+<li>
+<h3 id="json的数据提取">json的数据提取</h3>
+<pre><code class="language-javascript">let jsonData = {
+	id: 42,
+	status:&quot;ok&quot;,
+	data:[867,5309]
+};
+let { id, status, data:number } = jsonData;
+console.log( id,status,number );  // 42, &quot;ok&quot;, [867,5309]
+</code></pre>
+</li>
+<li>
+<h3 id="函数的参数的默认值">函数的参数的默认值</h3>
+</li>
+<li>
+<h3 id="遍历map结构">遍历Map结构</h3>
+<pre><code class="language-javascript">var map =new Map();
+map.set('first','hello');
+map.set('second', 'world');
+for(let[key, value] of map){
+	console.log(key + &quot;is&quot;+value);
+	// first is hello
+	// second is value
+}
+</code></pre>
+</li>
+<li>
+<h3 id="输入模块的指定方法">输入模块的指定方法</h3>
+<pre><code class="language-javascript">const { SourceMapCousumer, SourNode } = require(&quot;source-map&quot;);
+</code></pre>
+</li>
+</ul>
+<h1 id="二-字符串扩展">二、字符串扩展</h1>
+<h2 id="字符的unicode表示法">字符的Unicode表示法</h2>
+<p>\uxxxxxx形式表示一个字符，xxxxxx是这个字符的Unicode码，范围为\u0000~\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表达</p>
+<p>“\uD842\uDFB7”  // &quot;吉&quot;</p>
+<p>**ES6中，进码放进大括号就能正确读出这个字符 **</p>
+<p><em>”\u{20BB7}“</em>  // &quot;吉&quot;</p>
+<p>”\u{41}\u{42}\u{43} &quot;    // &quot;ABC&quot;</p>
+<h2 id="codepointat">codePointAt()</h2>
+<p>在JavaScript内部，字符是以utf-16的格式储存，每个字符固定为两个字节，Unicode大于0xFFFF的字符会认为是两个字符，即四个字节，codePointAt()会正确返回该字符的码,如果是常规的两字节储存的字符，codePointAt()和方法charCodeAt()结果相同。</p>
+<pre><code class="language-javascript">var s= '吉a';
+s.length                    // 3(吉占两个字符)
+s.codePointAt(0)          	// 134071
+s.codePointAt(1)		   // 57271
+s.codePointAt(2)            // 97
+
+</code></pre>
+<p>顺便，codePointAt()是最简单的判断一个字符是两个字节还是四个字节。</p>
+<pre><code class="language-javascript">function is32bit(a)
+{
+	return a.codePointAt(0)&gt;0xFFFF;
+}
+is32bit(&quot;吉&quot;)             //true
+is32bit(&quot;a&quot;)              //false
+</code></pre>
+<h2 id="stringfromcodepoint">String.fromCodePoint()</h2>
+<p>作用与codePointArt()相反，将Unicode码转成字符，如果Sring,formCodePoint()有多个参数，则将会将字符拼成字符串返回。</p>
+<pre><code class="language-javascript">String.formCodePoint(9x20BB7)                   // &quot;吉&quot;
+String.formCodePoint(0x78,0x1f680,0x79)         // true
+</code></pre>
+<h2 id="字符串的遍历器接口">字符串的遍历器接口</h2>
+<pre><code class="language-javascript">for (let codePoint of 'foo')
+{
+	console.log(codePoint)
+}
+// &quot;f&quot;
+// &quot;o&quot;
+// &quot;o&quot;
+
+/* 传统的for循环遍历无法识别大于0xFFFF的码的字符*/
+
+let text =&quot;吉&quot;；
+//传统for循环
+for(let i = 0; i &lt; text.length; i++)
+{
+	consle.log(text[i]);
+}
+// &quot; &quot;
+// &quot; &quot;
+//ES6的表达
+for(let i of text)
+{
+	consle.log(i);
+}
+// &quot;吉&quot;
+
+</code></pre>
+<h2 id="at">at()</h2>
+<p>这个方法与charAt()功能一致，返回字符串给定位置的字符，区别在于CharAt()无法识别大于0xFFFF的字符，at()可以</p>
+<pre><code class="language-javascript">'abc'.charAt(0)     // &quot;a&quot;
+ '吉'.char.At(0)    //&quot;\uD842&quot;
+ '吉'.at(0)         // &quot;吉&quot;   
+</code></pre>
+<h2 id="三种查找字符串是否包含在另一个字符串的方法">三种查找字符串是否包含在另一个字符串的方法</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">includes()</th>
+<th style="text-align:center">返回布尔值</th>
+<th>表示是否找到参数字符串</th>
+<th>第二参数表示开始搜索的位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>startsWith()</strong></td>
+<td style="text-align:center"><strong>返回布尔值</strong></td>
+<td><strong>表示参数字符串是否在源字符串头部</strong></td>
+<td><strong>第二参数表示开始搜索的位置</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>endsWith()</strong></td>
+<td style="text-align:center"><strong>返回布尔值</strong></td>
+<td><strong>表示参数是字符串是否在元字符的尾部</strong></td>
+<td><strong>第二参数表示开始搜索的位置</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="repeat">repeat()</h2>
+<p>repeat()方法将返回一个新字符串，将源字符串重复参数次</p>
+<p>如果参数是小数将被<strong>取整</strong>（向下）</p>
+<h2 id="padstart-padend">padStart()、padEnd()</h2>
+<p>字符串补全方法</p>
+<table>
+<thead>
+<tr>
+<th>padStart()</th>
+<th>'x'.padStart(5, 'ab' )                               // 'ababx'</th>
+<th>在头部补全</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>padEnd()</strong></td>
+<td><strong>'x'.padEnd(4, 'ab ')</strong>                                <strong>// 'xaba'</strong></td>
+<td><strong>在尾部补全</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="模板字符串">模板字符串</h2>
+<p>模板字符串是增强版的字符串，用（`）标识</p>
+<pre><code class="language-js">var x = 1;
+var y = 2;
+// 在模板字符串内嵌入变量，需要将变量名写在${}中，大括号内也可以放任意JavaScript语句,调用函数。
+`${x} + ${y} = ${x+y}`         // &quot;1+2=3&quot;
+`${x} + ${y*2} = ${x +y *2}`   // &quot;1+4=5&quot;
+var obj = {x:1,y:2};
+`${obj.x + obj.y}`             // 3 
+function fn(){
+	return &quot;hello World&quot;
+}
+`foo ${fn()} bar `             // foo hello World bar
+
+</code></pre>
+<h3 id="模板编译">模板编译</h3>
+<pre><code class="language-JavaScript">var template = 
+&lt;ul&gt;
+	&lt;% for(var i=1; i&lt; data.supplies.length; i++)
+	{
+		%&gt; &lt;li&gt;&lt;%= data.supplies[i] %&gt; &lt;/li&gt;
+}
+</code></pre>
+<p>上面代码在模板字符串中放置了一个常规模板，该模板使用&lt;%............%&gt;放置JavaScript代码，使用了&lt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">= ........</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.10556em;vertical-align:0em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span></span></span></span>&gt;输出JavaScript表达式</p>
+<h2 id="标签模板">标签模板</h2>
+<p>模板紧跟在一个函数后面，该函数将被调用处理这个模板字符串</p>
+<pre><code class="language-js">alert `123 `   // 等价于alert(123)
+</code></pre>
+<p>如果模板中含有变量，会把模板拆分成多个变量然后调用函数</p>
+<pre><code class="language-javascript">var a = 5;
+var n = 10;
+tag`hello $( a+b ) world $( a*b ) `;           // 等价于tag(['hello','world',' '],15,50);
+</code></pre>
+<h3 id="标签模板的用途">标签模板的用途</h3>
+<ul>
+<li>
+<p>一个重要用途是过滤HTML字符串，防止用户输入恶意内容</p>
+<pre><code class="language-javascript">var message = SaferHTML`&lt;p&gt;${sender} has sent you a messmage.&lt;/p&gt; `;
+function SaferHTML(templateData)
+{
+	var s = templateData[0];
+	for(var i=0;i&lt;argumrnts,length;i++)
+	{
+		var arg = String(argumrnts[i]);
+		s+= arg.replace(/&amp;/g, &quot;&amp;amp;&quot;)
+			   .replace(/&lt;/g, &quot;&amp;lt;&quot;)
+			   .replace(/&gt;/g, &quot;&amp;gt;&quot;);
+		s+= templateData[i]
+	}
+	reyurn s;
+}
+</code></pre>
+<ul>
+<li>
+<p>另一个用途就是多语言转换</p>
+<pre><code class="language-js">`Wlocome to $(sitName), you can visitor number $(visitorNumber) `
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="stringraw">String.raw()</h2>
+<p>String.raw()方法是用来充当模板字符串的处理函数，返回一个反斜线都被转移的字符串</p>
+<pre><code class="language-js">String.raw()`Hi\n${2+3}! `;                   // &quot;Hi\\n5&quot;
+</code></pre>
+<h1 id="三-正则表达式-的扩展">三、正则表达式 的扩展</h1>
+<h2 id="regexp-构造函数">RegExp 构造函数</h2>
+<pre><code class="language-js">/* ES5规定，如果RegExp的第一个参数是正则对象，那么第二个参数可以是指定修饰符。并且，返回的表达式会忽略原有的的正则表达式的修饰符，只是用新的指定的修饰符*/
+new RegEXP(/ABC/ig, 'i').flags                // 会忽略原有的ig，被i覆盖
+</code></pre>
+<h2 id="字符串的正则方法">字符串的正则方法</h2>
+<p>字符串正则的四个方法</p>
+<ul>
+<li>match()</li>
+<li>replace()</li>
+<li>search()</li>
+<li>split()</li>
+</ul>
+<h2 id="y-修饰符">y 修饰符</h2>
+<p>y修饰符和g修饰符一样，也是全局匹配，后一次匹配都是从上一次匹配的下一位开始</p>
+<p><strong>不同</strong></p>
+<p>g修饰符要求剩余部分存在匹配就行</p>
+<p>y修饰符要求要确保从剩下的第一个位置开始</p>
+<h2 id="sticky-属性">sticky 属性</h2>
+<p>sticky属性表示是否设置了y修饰符</p>
+<pre><code class="language-js">var r = /hello\d/y;
+t.sticky            // sure
+</code></pre>
+<h2 id="flags属性">flags属性</h2>
+<p>用来返回正则表达式的修饰符</p>
+<h2 id="unicode属性类">Unicode属性类</h2>
+<p>Unicode 属性类要指定属性名和属性值</p>
+<p>\p{UnocodePropertyName = UnicodePropertyValue }</p>
+<p>\P{...}是\p{...}的反向匹配(匹配不满足条件的字符)</p>
+<p><em>这两种类只对Unicode有效，使用时要加u修饰符，否则报错</em></p>
+<h2 id="具名组匹配">具名组匹配</h2>
+<p>正则表达式使用圆括号进行组匹配</p>
+<pre><code class="language-js">const RE_DATE = /(\d{4})-(\d{2})-(\d{2})/;
+cosnt matchObj = RE_DATE.exec('1999-12-31');
+
+</code></pre>
+<h1 id="四-数值的扩展">四、数值的扩展</h1>
+<h2 id="二进制与八进制">二进制与八进制</h2>
+<p>ES6提供了新的二进制与八进制的写法</p>
+<p>二进制      前缀0b(0B)</p>
+<p>八进制       前缀0o(0O)</p>
+<h2 id="新增方法">新增方法</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Number.isFinite()</td>
+<td style="text-align:center">检查数值是否为有限</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.isNaN()</td>
+<td style="text-align:center">检查数值是否为NaN</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.parseInt()</td>
+<td style="text-align:center">将字符串提取为整数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.parseFloat()</td>
+<td style="text-align:center">将字符串提取为浮点数</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Number.isInteger()</td>
+<td style="text-align:center">判断是否为整数</td>
+<td style="text-align:center">由于js不区分整数和浮点数，所以3和3.0为同一值</td>
+</tr>
+<tr>
+<td style="text-align:center">Number.EPSILON</td>
+<td style="text-align:center">ES6新增的一个极小的常量</td>
+<td style="text-align:center">2.220044049250313e-16</td>
+</tr>
+</tbody>
+</table>
+<h2 id="math对象的扩展">Math对象的扩展</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">实例说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Math.trunc()</td>
+<td style="text-align:center">去除一个数的小数部分，返回整数</td>
+<td style="text-align:center">非数值转换成数值</td>
+</tr>
+<tr>
+<td style="text-align:center">MAth.sign()</td>
+<td style="text-align:center">判断一个数是正，负，0</td>
+<td style="text-align:center">返回值为+1，-1,0，NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.cbrt()</td>
+<td style="text-align:center">用于计算一个数的立方根</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.clz32()</td>
+<td style="text-align:center">返回一个数的32位无符号整数前面有多少个零</td>
+<td style="text-align:center">js整数用32位二进制表示</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.imul()</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.fround()</td>
+<td style="text-align:center">返回一个数的单精度浮点数的形式</td>
+<td style="text-align:center">对于整数没有变化</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.signbbit()</td>
+<td style="text-align:center">判断一个值的正负</td>
+<td style="text-align:center">正：false；负：true；0：-0</td>
+</tr>
+<tr>
+<td style="text-align:center">Math.hypot()</td>
+<td style="text-align:center">返回所有参数的平方和的平方根</td>
+<td style="text-align:center">↙</td>
+</tr>
+</tbody>
+</table>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msqrt><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{a^{2}+b^{2}+...+n^{2}}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2399999999999998em;vertical-align:-0.177736em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0622639999999999em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.740108em;"><span style="top:-2.9890000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><span style="top:-3.0222640000000003em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119c34,79.3,68.167,
+158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120c340,-704.7,510.7,-1060.3,512,-1067
+c4.7,-7.3,11,-11,19,-11H40000v40H1012.3s-271.3,567,-271.3,567c-38.7,80.7,-84,
+175,-136,283c-52,108,-89.167,185.3,-111.5,232c-22.3,46.7,-33.8,70.3,-34.5,71
+c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1s-109,-253,-109,-253c-72.7,-168,-109.3,
+-252,-110,-252c-10.7,8,-22,16.7,-34,26c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26
+s76,-59,76,-59s76,-60,76,-60z M1001 80H40000v40H1012z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.177736em;"><span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="对数的扩展">对数的扩展</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方法</th>
+<th style="text-align:center">作用</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Math.expin1()</td>
+<td style="text-align:center">返回eⁿ-1</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.loglp()</td>
+<td style="text-align:center">返回In(x+1)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.log10()</td>
+<td style="text-align:center">返回log X的值</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Math.log2()</td>
+<td style="text-align:center">返回log₂ X的值</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="指数运算符">指数运算符</h3>
+<p>**</p>
+<p>2**2 = 2²</p>
+<p>2**3 = 2³</p>
+<p>a **  = 2     // a = a * *2         a²</p>
+<h1 id="五-函数的扩展">五、函数的扩展</h1>
+<h2 id="函数的参数的默认值-2">函数的参数的默认值</h2>
+<p>ES6设置值默认值，写在参数的后面</p>
+<pre><code class="language-js">function log(x, y = 'world')
+{
+	console.log(x, y);
+}
+log('hello')                        // hello world
+log('hello', 'china')               // hello china
+log('hello','')                     // hello world  
+</code></pre>
+<h3 id="与解析赋值结合使用">与解析赋值结合使用</h3>
+<pre><code class="language-js">fuction foo({x,y=5})
+{
+	console.log(x,y);
+}
+foo({})                       // undefined, 5
+foo({x:1})                    // 1, 5
+foo()                         // Type Error
+// 只有当参数为对象时才能执行
+</code></pre>
+<h3 id="参数默认位置">参数默认位置</h3>
+<ul>
+<li>
+<p>一般将带默认值的参数放在末尾项</p>
+</li>
+<li>
+<p>若带默认值的参数不在末尾，咋不能进行省略，传值时要在其位置传入undefined才能调用默认参数</p>
+</li>
+</ul>
+<h3 id="length属性">length属性</h3>
+<p>指定默认之后，length只返回无默认值的参数的个数</p>
+<h3 id="作用域">作用域</h3>
+<p>在函数被调用时，参数会形成一个单独的作用域，等初始化结束后，这个作用域就会消失，在不设置默认值参数时是没有这个作用域的。</p>
+<h2 id="rest参数">rest参数</h2>
+<p>用于获取函数的多余参数，只能有rest这一个参数，不能存在其他参数</p>
+<pre><code class="language-js">function add( ... ralues)
+{
+	let sum = 0;
+	for(var val of ralues ){
+		sum += val ;
+	}
+	erturn sum;
+}
+add (2,5,3)           // 10
+</code></pre>
+<h2 id="name-属性">name 属性</h2>
+<p>函数的name属性返回该函数的函数名</p>
+<hr>
+<h2 id="箭头函数-重点">箭头函数                                                   <em>重点</em></h2>
+<hr>
+<p>（=&gt;）定义函数</p>
+<pre><code class="language-js">var f = v =&gt; v;
+// 等价于
+var f= function(v)
+{
+	return v;
+};
+// 当箭头函数不需要参数或者参数多于一个的时候，用圆括号代替参数部分
+var f = () =&gt;5;
+//等价于
+var f = function()
+{
+	return 5;
+};
+
+var sum = (num1,num2) =&gt; num1+num2;
+// 等价于
+var sum = function(num1,num2)
+{
+return num1+num2;
+};
+// 如果箭头函数本体部分多于一条语句，就要是用大括号将其括起来，并使用return语句
+var sum = (num1,num2)=&gt; {return num1+num2};
+</code></pre>
+<h3 id="箭头函数注意事项">箭头函数注意事项</h3>
+<ol>
+<li>
+<p>函数体内的this对象就是定义时所在的对象，而不是使用时所在的对象。</p>
+</li>
+<li>
+<p>不可以作为构造函数。</p>
+</li>
+<li>
+<p>不可以使用argument对象。</p>
+</li>
+<li>
+<p>不可以使用yield命令</p>
+<p><strong>注意</strong></p>
+<p>其中，箭头函数没有this,所以绑定的是外层的代码块的this，由于这一点，可以用箭头函数来绑定this。</p>
+<p>箭头函数也可以嵌套使用</p>
+<pre><code class="language-js">// 管道机制（pipeline）（前一个函数的输出是后一个函数的输入）
+const plus1 = a=&gt;a+1;
+cosnt mult2 = a=&gt;a*2;
+const addTThenMult = pipline(plus1,mult2);
+addThenMult(5)                // 12
+</code></pre>
+</li>
+</ol>
+<h2 id="绑定this">绑定this</h2>
+<p>(::)用来绑定this</p>
+<p>对象 +（::）+ 函数</p>
+<p>将左边对象的this绑定到右边的函数</p>
+<h2 id="尾调优化">尾调优化</h2>
+<p>尾调是指函数的最后一步调用另一个函数</p>
+<pre><code class="language-js">function f(x){
+	return g(x);
+}
+</code></pre>
+<p>尾调中不能出现其他运算（赋值，算术运算都不能算尾调）</p>
+<p>尾递归是在函数的最后一步调用自身，</p>
+<p>由于递归需要同时保存上千的调用帧，很容易出现栈溢出，但尾递归只存在一个调用帧，不存在栈溢出的现象，但可以用循环代替递归来实现递归进行优化</p>
+<h1 id="六-数组的扩展">六、数组的扩展</h1>
+<h2 id="扩展运算符">扩展运算符</h2>
+<p>（ ... ）将一组数组转换成用逗号隔开的参数序列</p>
+<pre><code class="language-js">console.log(...[1,2,3])
+// 1 2 3
+console.log(1,...[2,3,4],5)
+// 1 2 3 4 5
+</code></pre>
+<h2 id="替代数组的apply方法">替代数组的apply方法</h2>
+<p>由于扩展运算符可以展开数组，所以就不需要使用apply来将数组转换成函数的参数了</p>
+<pre><code>// ES5的写法
+Math.max.apply(null,[14.3.77])
+//Es6的写法
+Math.max(...[14,3,77])
+//等于
+Math.max(14,3,77)
+</code></pre>
+<h2 id="扩展运算符的作用">扩展运算符的作用</h2>
+<h3 id="合并数组">合并数组</h3>
+<pre><code class="language-js">var arr1 = ['a','b'];
+var arr2 = ['c'];
+var arr3 = ['d','e'];
+// ES5的写法
+arr1.concat(arr2,arr3);
+// ['a','b','c','d','e'];
+//ES6写法
+[...arr1,...arr2,...arr3]
+// ['a','b','c','d','e'];
+</code></pre>
+<h3 id="与解构赋值结合">与解构赋值结合</h3>
+<pre><code class="language-js">const [first,...rest] = [1,2,3,4,5,6,7];
+first            // 1
+rest             // [2,3,4,5,6,7]
+</code></pre>
+<h3 id="函数返回值">函数返回值</h3>
+<p>JavaScript函数只能返回一个值，如果需要返回多个值，只能使用数组或对象</p>
+<h3 id="字符串">字符串</h3>
+<p>扩展运算符直接将字符串转换成真正的数组</p>
+<pre><code class="language-js">[...'hello']
+// ['h','e','l','l','o']
+//上面这样写的好处是能够正确识别32位的Unicode字符
+</code></pre>
+<h3 id="实现lterator接口的对象">实现lterator接口的对象</h3>
+<p>任何lterator接口的对象都可以用扩展运算符转为真正的数组</p>
+<pre><code class="language-js">var nodelist = docunment.querySelectorAll('div');
+var array = [...nodeList];
+</code></pre>
+<p>上面代码中，querySelectorAll方法返回的是一个nodeList 对象。他不是数组，是对象</p>
+<p>通过扩展运算符可以实现转换</p>
+<h3 id="map和set结构gennerator函数">Map和Set结构，gennerator函数</h3>
+<h3 id="arrayfrom">Array.from()</h3>
+<p>这个方法将用于将两类对象转化为真正的数组</p>
+<p>实际应用为dom操作返回的nodelist类似数组的对象，以及函数内部的arguments对象</p>
+<h3 id="arrayof">Array.of()</h3>
+<p>这个方法用来将参数转换成组数，用来弥补Array()的不足，Aray.of基本上可以代替Array()和new Array()</p>
+<pre><code class="language-js">// Array()在少于三个参数时表现不一致
+Array(3)            // [ , , ]
+Array(1,2,3)        //[1,2,3]
+//在只有一个参数时，返回的是数组的长度而不是数组值
+// Array.of()不存在这个问题
+Array.of(3)         // [3]
+Array.of(1,2,3)     // [1,2,3]
+</code></pre>
+<h2 id="数据实例的find与findindex">数据实例的find()与findIndex()</h2>
+<p>find方法找出第一个符合条件的数据成员。</p>
+<p>参数是回调函数。</p>
+<p>findIndex()方法找出第一个符合条件的数据，返回其位置。</p>
+<pre><code class="language-js">[1,-2,5].find((n) =&gt; n&lt;0)
+// -2
+[1,-2,5].find(function(value, index, arr)
+{
+	return value &gt;4;
+}
+// 5
+
+// find方法可以接受三个参数，依次是当前的值，当前的位置，原数组
+// findIndex()方法与find()方法类似，当所有成员都不符合条件时返回-1
+              
+[1,-2,5].findIndex(value, index, arr)
+{
+	return value &gt; 4;
+}
+// 2
+</code></pre>
+<h2 id="数组实例的fill">数组实例的fill()</h2>
+<p>fill方法给定值填充一个数组<br>
+用于数组初始化会很方便，，数组中已有的元素会被全部抹去</p>
+<p>fill可接受第二个第三个参数，用于指定填充的起始位置和结束位置</p>
+<h2 id="数组实例的include">数组实例的include()</h2>
+<p>返回一个布尔值，表示某个数组是否包含给定的值</p>
+<pre><code class="language-js">[1,2,3].include(2)       // true
+[1,2,3].include(4)       // false
+
+// 该方法的第二个参数表示搜索开始的位置，默认为0
+</code></pre>
+<h1 id="七-对象的扩展">七、对象的扩展</h1>
+<h2 id="属性的简介表示法">属性的简介表示法</h2>
+<p>ES6允许直接写入变量和函数作为对象的属性和方法</p>
+<pre><code class="language-js">var foo = 'bar';
+var baz = {foo};
+baz         // {foo:&quot;bar&quot;}
+
+// 等同于 
+var baz = {foo:&quot;bar&quot;}
+
+</code></pre>
+<p>ES6支持属性和方法简写</p>
+<pre><code class="language-js">var 0 = {
+    method(){
+        return &quot;hello!&quot;;
+    }
+};
+// 等同于
+var 0 = {
+    method:function(){
+        return &quot;hello!&quot;;
+    }
+};
+
+</code></pre>
 ]]></content>
     </entry>
 </feed>
