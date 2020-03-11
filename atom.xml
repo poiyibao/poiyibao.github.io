@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://poiyibao.github.io/</id>
     <title>poiyibao_blog</title>
-    <updated>2020-03-07T10:48:52.582Z</updated>
+    <updated>2020-03-11T15:27:33.100Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://poiyibao.github.io/"/>
     <link rel="self" href="https://poiyibao.github.io/atom.xml"/>
@@ -10,6 +10,250 @@
     <logo>https://poiyibao.github.io/images/avatar.png</logo>
     <icon>https://poiyibao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, poiyibao_blog</rights>
+    <entry>
+        <title type="html"><![CDATA[CSS3复习]]></title>
+        <id>https://poiyibao.github.io/post/css3-fu-xi/</id>
+        <link href="https://poiyibao.github.io/post/css3-fu-xi/">
+        </link>
+        <updated>2020-03-11T15:26:59.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="css3边框扩充">css3边框扩充</h2>
+<h3 id="圆角边框">圆角边框</h3>
+<p>border-radius</p>
+<pre><code class="language-css">div {
+    border: 2px solid;
+    border-radius:25px(20%);
+    // 可添加像素值和百分比
+    //值可为1-4个，按逆时针方向从左上开始
+}
+</code></pre>
+<h3 id="盒阴影">盒阴影</h3>
+<p>box-shadow</p>
+<pre><code class="language-css">div {
+    box-shadow:10px 10px 5px #888888
+    // 水平阴影，垂直阴影，模糊距离，颜色
+}
+</code></pre>
+<h3 id="边界图片">边界图片</h3>
+<p>使用图片作为边界</p>
+<p>border-image</p>
+<pre><code class="language-css">div {
+    border-image:url(border.png) 30 30 round
+    // 值: 图像位置，向内偏移，边界宽度，是否为（重复，拉伸，铺满）
+}
+</code></pre>
+<h2 id="css3-渐变">css3 渐变</h2>
+<p>css3渐变分为线性渐变和径向渐变</p>
+<ul>
+<li>线性：向下、向上、向左、向右、向对角、</li>
+<li>径向：由中心定义</li>
+</ul>
+<p>需要设置至少两种颜色，一个起点，一个方向</p>
+<h3 id="线性渐变">线性渐变</h3>
+<pre><code class="language-css">div {
+    background-image:liner-gradinet(to right,red,yellow)
+    // 线性渐变，向右，从红色变化到黄色
+    background-image:liner-gradlinet(to right,rgba(255,0,0,0),rgba(255,0,0,1))
+    //线性渐变带透明度
+}
+</code></pre>
+<h3 id="径向渐变">径向渐变</h3>
+<pre><code class="language-css">div {
+    // 需设置至少两种颜色，可指定渐变中心（默认中心点），形状（默认椭圆形），大小（farthest-corner:表示最远的角落）
+    background-image:radial-gradient(red,yellow,green)
+    //红换绿的渐变椭圆环
+    background-image:radial-gradient(red 5%,yellow 25%,green 70%)
+    //更改颜色所占比例
+     background-image:radial-gradient(circle red,yellow,green)  
+     //更改为圆形
+}
+</code></pre>
+<h2 id="css3文本新特征">css3文本新特征</h2>
+<h3 id="文本阴影">文本阴影</h3>
+<p>text-shadow</p>
+<pre><code class="language-css">p {
+    box-shadow: 5px 5px 5px #FF0000
+    //水平阴影，垂直阴影，模糊距离，颜色
+}
+</code></pre>
+<p><strong>阴影使用可呈现卡片效果</strong></p>
+<h3 id="文本溢出">文本溢出</h3>
+<p>当文本从文本框中溢出时，可用text-overflow在修饰</p>
+<pre><code class="language-css">div {
+    text-overflow:clip | ellipsis | string
+     // 修剪文本|省略号表示被修剪的文本|使用给定字符串表示被修剪的文本
+}
+</code></pre>
+<h2 id="css3字体">css3字体</h2>
+<p>您所选择的字体在新的 <strong>CSS3</strong> 版本有关于 <strong>@font-face</strong> 规则描述。</p>
+<p>您&quot;自己的&quot;的字体是在 <strong>CSS3 @font-face</strong> 规则中定义的。</p>
+<pre><code class="language-css">@font-face {
+    // 规定字体名称
+    font-family:name;
+    //文字文件的URL
+    src:url();
+    font-style:
+    font-weight:
+    unicode-range:定义字体支持的Unicode字符范围
+}
+</code></pre>
+<h2 id="css3-2d转换">css3 2D转换</h2>
+<h3 id="translate-方法">translate() 方法</h3>
+<p>translate()方法，根据左(X轴)和顶部(Y轴)位置给定的参数，从当前元素位置移动。</p>
+<pre><code class="language-css">div {
+    //根据左(X轴)和顶部(Y轴)位置给定的参数，从当前元素位置移动
+    transform: translate(50px,100px);
+	-ms-transform: translate(50px,100px); /* IE 9 */
+	-webkit-transform: translate(50px,100px); /* Safari and Chrome */
+    // translate值（50px，100px）是从左边元素移动50个像素，并从顶部移动100像素。
+}
+</code></pre>
+<h3 id="rotate-方法">rotate() 方法</h3>
+<p>rotate()方法，在一个给定度数顺时针旋转的元素。负值是允许的，这样是元素逆时针旋转。</p>
+<pre><code class="language-css">div {
+    transform: rotate(30deg);
+	-ms-transform: rotate(30deg); /* IE 9 */
+	-webkit-transform: rotate(30deg);/*Safari and Chrome */
+    // rotate值（30deg）元素顺时针旋转30度。
+}
+</code></pre>
+<h3 id="scale-方法">scale() 方法</h3>
+<p>scale()方法，该元素增加或减少的大小，取决于宽度（X轴）和高度（Y轴）的参数：</p>
+<pre><code class="language-css">div {
+    transform: scale(2,3); /* 标准语法 */
+    -ms-transform:scale(2,3); /* IE 9 */
+	-webkit-transform: scale(2,3); /* Safari */
+    // scale（2,3）转变宽度为原来的大小的2倍，和其原始大小3倍的高度。
+}
+</code></pre>
+<h3 id="skew-方法">skew() 方法</h3>
+<p>包含两个参数值，分别表示X轴和Y轴倾斜的角度，如果第二个参数为空，则默认为0，参数为负表示向相反方向倾斜。</p>
+<ul>
+<li>skewX(<angle>);表示只在X轴(水平方向)倾斜。</li>
+<li>skewY(<angle>);表示只在Y轴(垂直方向)倾斜。</li>
+</ul>
+<pre><code class="language-css">div {
+	transform: skew(30deg,20deg);
+	-ms-transform: skew(30deg,20deg); /* IE 9 */
+	-webkit-transform: skew(30deg,20deg);/*Safari and Chrome */
+}
+</code></pre>
+<h3 id="matrix-方法">matrix() 方法</h3>
+<p>matrix 方法有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。</p>
+<pre><code class="language-css">div {
+	transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+	-ms-transform:matrix(0.866,0.5,-0.5,0.866,0,0); /* IE 9 */
+	-webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0); /* Safari and Chrome */
+}
+</code></pre>
+<h1 id="css3-3d-转换">CSS3 3D 转换</h1>
+<p>CSS3 允许您使用 3D 转换来对元素进行格式化。</p>
+<p>3D 转换方法：</p>
+<ul>
+<li>rotateX()</li>
+<li>rotateY()</li>
+</ul>
+<h3 id="rotatex-方法">rotateX() 方法</h3>
+<p>rotateX()方法，围绕其在一个给定度数X轴旋转的元素。</p>
+<pre><code class="language-css">div {
+    transform: rotateX(120deg);
+    -webkit-transform: rotateX(120deg);/*Safari与Chrome */
+}
+</code></pre>
+<h3 id="rotatey-方法">rotateY() 方法</h3>
+<p>rotateY()方法，围绕其在一个给定度数Y轴旋转的元素。</p>
+<pre><code class="language-css">div {
+    transform: rotateY(130deg);
+    -webkit-transform: rotateY(130deg); /*Safari与Chrome */
+}
+</code></pre>
+<h1 id="css3-过渡">CSS3 过渡</h1>
+<p>CSS3中，我们为了添加某种效果可以从一种样式转变到另一个的时候，无需使用Flash动画或JavaScript。</p>
+<p>CSS3 过渡是元素从一种样式逐渐改变为另一种的效果。</p>
+<p>要实现这一点，必须规定两项内容：</p>
+<ul>
+<li>指定要添加效果的CSS属性</li>
+<li>指定效果的持续时间。</li>
+</ul>
+<h3 id="过渡属性">过渡属性</h3>
+<p>transition：（简写属性）：过渡属性名 | 过度时间| 过渡效果的时间曲线（默认ease）| 延时（默认0）</p>
+<p>过渡效果的时间曲线（transition-timing-function）：</p>
+<ul>
+<li>linear:均速</li>
+<li>ease：先慢后快再慢</li>
+<li>aese-in/out/in-out：慢速开始/慢速结束/慢速开始与结束</li>
+<li>cubic-bezier(n,n,n,n);自定义，n取0-1</li>
+</ul>
+<p>一个典型CSS属性的变化是用户鼠标放在一个元素上时：</p>
+<pre><code class="language-css">//鼠标放在元素上面两秒内宽度，高度变换（100px——&gt;200px）,并旋转360度
+div {
+    //先设定变化前的属性
+    width: 100px;
+    height: 100px;
+    background: red;
+    //设置过渡属性：变化的属性+时间
+    transition: width 2s, height 2s, transform 2s;
+}
+//设置变换后的属性
+div:hover {
+    width: 200px;
+    height: 200px;
+    transform: rotate(360deg);
+}
+</code></pre>
+<h1 id="css3-动画">CSS3 动画</h1>
+<p>CSS3 可以创建动画，它可以取代许多网页动画图像、Flash 动画和 JavaScript 实现的效果。</p>
+<p>要创建 CSS3 动画，需要了解 @keyframes 规则。</p>
+<p>@keyframes 规则是创建动画。</p>
+<p>@keyframes 规则内指定一个 CSS 样式和动画将逐步从目前的样式更改为新的样式。</p>
+<h2 id="css3动画实现">css3动画实现</h2>
+<p>当在 <strong>@keyframes</strong> 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。</p>
+<p>指定至少这两个CSS3的动画属性绑定向一个选择器：</p>
+<ul>
+<li>规定动画的名称</li>
+<li>规定动画的时长</li>
+</ul>
+<p><strong>注意:</strong> 您必须定义动画的名称和动画的持续时间。如果省略的持续时间，动画将无法运行，因为默认值是0。</p>
+<h3 id="动画原理">动画原理</h3>
+<p>动画是使元素从一种样式逐渐变化为另一种样式的效果。</p>
+<p>可以改变任意多的样式任意多的次数。请用百分比来规定变化发生的时间，或用关键词 &quot;from&quot; 和 &quot;to&quot;，等同于 0% 和 100%。</p>
+<p>0% 是动画的开始，100% 是动画的完成。</p>
+<p>为了得到最佳的浏览器支持，应该始终定义 0% 和 100% 选择器。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@keyframes</td>
+<td>描述规定动画</td>
+</tr>
+<tr>
+<td>animation</td>
+<td>所有动画属性的简写属性，除了 animation-play-state 属性。</td>
+</tr>
+<tr>
+<td>animation-duration</td>
+<td>规定动画完成一个周期所花费的秒或毫秒。默认是 0。</td>
+</tr>
+<tr>
+<td>animation-timing-function</td>
+<td>规定动画的速度曲线。默认是 &quot;ease&quot;。</td>
+</tr>
+<tr>
+<td>animation-delay</td>
+<td>规定动画何时开始。默认是 0。</td>
+</tr>
+<tr>
+<td>animation-teration-count</td>
+<td>规定动画被播放的次数。默认是 1</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[正则表达式]]></title>
         <id>https://poiyibao.github.io/post/zheng-ze-biao-da-shi/</id>
