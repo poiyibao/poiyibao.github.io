@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>git基本使用 | poiyibao_blog</title>
+<title>JavaScript之this指向 | poiyibao_blog</title>
 <meta name="description" content="tomorrow is another day">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -81,82 +81,139 @@
       <div class="sm-12 md-8 col">
         <div class="paper">
           <article class="article">
-            <h1>git基本使用</h1>
+            <h1>JavaScript之this指向</h1>
             <p class="article-meta">
-              2020-02-27
+              2020-05-10
               
-                <a href="https://poiyibao.github.io/tag/8-RY4qmbQ/" class="badge secondary">
-                  git
+                <a href="https://poiyibao.github.io/tag/vXm7jVeFE/" class="badge secondary">
+                  ES6
+                </a>
+              
+                <a href="https://poiyibao.github.io/tag/Diw4_KkDf/" class="badge ">
+                  JavaScript
                 </a>
               
             </p>
             
             <div class="post-content">
-              <h1 id="git">git</h1>
-<h2 id="创建仓库">创建仓库</h2>
-<p>在任意目录下使用</p>
-<pre><code class="language-git">git init
+              <p>this作为js中的关键字，this在不同的情况有不同的指向。</p>
+<h2 id="默认指向">默认指向</h2>
+<p>在函数直接调用的情况下，this默认指向全局对象即window<br>
+函数未绑定对象，传参形式被另一个函数调用，this也指向window对象</p>
+<pre><code>//直接调用函数
+function fun()
+ {
+     console.log(this);
+     // window
+ }
+ fun();
+ //函数传参调用函数
+ function foo(func) {
+     funv();
+ }
+ foo(fun);
+ // window
+ //参数是一个对象的方法，this在真正调用的时候，还是一个简单独立的函数的调用，this还是window
+ let obj = {
+     fo() {
+         console.log(this)
+     }
+ }
+ foo(obj.fo)
+ //输出依然是window对象
 </code></pre>
-<p>将这个目录变成git可管理的路径即git仓库，</p>
-<p>并且会在里面多一个.git文件夹</p>
-<p>将需要被管理的文件添加入此目录，使用</p>
-<pre><code>git add  XXXX.XX
+<h2 id="对象调用指向">对象调用指向</h2>
+<p>当函数通过object.fucntion()的形式调用时，this会指向object对象</p>
+<pre><code>let obj = {
+    foo() {
+        console.log(this)
+    }
+}
+obj.foo();
+// obj对象
+//多层对象调用，this任然指向第一个对象obj
+let newObj = {
+    obj: obj
+}
+newObj.obj.foo();
+// obj对象
 </code></pre>
-<p>将告诉git，把文件添加入仓库，使用</p>
-<pre><code>git commit -m &quot;本次提交说明&quot;
+<p>当调用时有其他操作时会造成this指向丢失</p>
+<pre><code>let obj = {
+     fo() {
+         console.log(this)
+     }
+ }
+ let bar = obj.fo;
+ bar();
+ //window对象，bar没有绑定任何对象，属于默认指向
 </code></pre>
-<p>将文件提交</p>
-<p>（一次可以add添加多次，然后commit提交一次）</p>
-<p>这样，该文件就存在于git的版本库中。</p>
-<p>使用</p>
-<pre><code>git status
+<h2 id="直接绑定this指向">直接绑定this指向</h2>
+<p>通过call()和apply()方法进行直接指定this的指向<br>
+<em>call和apply方法的第一个参数相同，都为this指向的对象，后面的值为参数，call为参数列,apply要把所有参数放入数组中</em></p>
+<pre><code>function foo() {
+    console.log(this);
+}
+foo.call(windos)                                        // window对象
+foo.apply({name: fun})                             // {name: fun}
 </code></pre>
-<p>可以查看当前仓库的状态，是否处于修改未添加，或者添加未提交还是其他状态。</p>
-<p>通过</p>
-<pre><code>git diff
+<h2 id="内置函数的this指向">内置函数的this指向</h2>
+<p>一般的内置函数的this需要依靠源码来判定，一般可根据经验来判断</p>
+<ul>
+<li>setTimeout</li>
+</ul>
+<pre><code>setTimeout(function() {
+      console.log(this)
+      //window对象
+  }, 1000 )
 </code></pre>
-<p>可以查看当前修改了什么</p>
-<p>通过</p>
-<pre><code>git log
+<pre><code> serTimeout内部是通过apply绑定this对象，且绑定的是全局对象
 </code></pre>
-<p>可以查看历史记录</p>
-<h2 id="返回历史版本">返回历史版本</h2>
-<p>在git中用head表示当前版本，需要返回上个版本就是head<sup>,上上个版本就是head</sup>^，使用</p>
-<pre><code>git reset --hard head^
+<ul>
+<li>forEach()</li>
+</ul>
+<pre><code>   let arr = [123, 456, 789];
+   arr.forEach(function(item) {
+       console.log(this)
+       //window对象
+   })
+   obj= {}
+   arr.forEach(functiong(item) {
+       console.log(this);
+       //obj对象
+   },obj)
 </code></pre>
-<p>即可返回上个版本</p>
-<h2 id="重新回到未来的版本">重新回到未来的版本</h2>
-<pre><code>git reset --hard xxxx(commit id)
+<p>forEach默认绑定的是window对象，但可以自己指定this的指向</p>
+<h2 id="new绑定this">new绑定this</h2>
+<p>使用构造函数来new新对象，构造函数中的this会指向新对象</p>
+<h2 id="绑定this的优先级">绑定this的优先级</h2>
+<p>new绑定&gt;直接绑定&gt;隐式对象调用绑定&gt;默认绑定</p>
+<h2 id="es6箭头函数中的this">ES6箭头函数中的this</h2>
+<p>箭头函数不会绑定this，根据外层作用于来决定this</p>
+<pre><code>//ES6以前写法
+var obj ={
+    data: [],
+    getData: funvtion() {
+        var _this =this;
+        setTimeout( function() {
+            var datas = get.list;
+            _this.data.push(... datas);
+        },1000)
+    }
+}
+obj.getData();
+//ES6写法
+let obj ={
+    data: [];
+    getData() {
+        setTimeout(() =&gt;{
+             var datas = get.list;
+             this.data.push(... dataas)
+        },1000)
+    }
+}
+//由于箭头函数的this由外层作用域即 setTimeout方法的this决定，所以是obj对象，就不需要_this来保存外层的this了
 </code></pre>
-<p>可以通过以下命令</p>
-<pre><code>git reflog
-</code></pre>
-<p>来查看记录的每一条命令，从而获得commit id</p>
-<h2 id="撤销修改">撤销修改</h2>
-<p>当想抛弃工作区的修改，使用</p>
-<pre><code>git checkout --file
-</code></pre>
-<p>就可丢弃（未添加到git仓库时），当修改了并且Git add到暂存区时，使用</p>
-<pre><code>git reset HEAD &lt;file&gt;
-</code></pre>
-<p>就可以把暂存区的修改回退到工作区，然后通过上一步将工作区修改丢弃</p>
-<h2 id="删除文件">删除文件</h2>
-<p>如果通过直接删除或者rm命令删除，这时候git知道删除了文件，所以工作区和版本库就不一致了，要么通过在版本库中彻底删除，通过</p>
-<pre><code>git rm xxx   //删除
-git commit
-</code></pre>
-<p>要么恢复，通过</p>
-<pre><code>git checkout --xxx
-</code></pre>
-<h2 id="远程仓库绑定">远程仓库绑定</h2>
-<p>在GitHub中创建一个空仓库，要将本地和远程仓库连起来，实现同步，通过下面命令将本地仓库和远程仓库关联</p>
-<pre><code>git remote add origin git@github.com:用户名/远程仓库名.git
-</code></pre>
-<p>然后就可以把本地仓库的内容推到远程仓库里去</p>
-<p>通过</p>
-<pre><code>git push -u origin master
-</code></pre>
-<p>将当前分支推送到远程</p>
 
             </div>
           </article>
@@ -167,9 +224,9 @@ git commit
               <div class="next">
                 下一篇
               </div>
-              <a href="https://poiyibao.github.io/post/vuejs/">
+              <a href="https://poiyibao.github.io/post/css3-fu-xi/">
                 <h3 class="post-title">
-                  Vue.js
+                  CSS3复习
                 </h3>
               </a>
             </div>
@@ -248,19 +305,19 @@ git commit
     </div>
     <div class="row">
       
-        <a href="https://poiyibao.github.io/tag/vXm7jVeFE/" class="badge ">
+        <a href="https://poiyibao.github.io/tag/vXm7jVeFE/" class="badge success">
           ES6
         </a>
       
-        <a href="https://poiyibao.github.io/tag/Diw4_KkDf/" class="badge secondary">
+        <a href="https://poiyibao.github.io/tag/Diw4_KkDf/" class="badge success">
           JavaScript
         </a>
       
-        <a href="https://poiyibao.github.io/tag/8-RY4qmbQ/" class="badge warning">
+        <a href="https://poiyibao.github.io/tag/8-RY4qmbQ/" class="badge success">
           git
         </a>
       
-        <a href="https://poiyibao.github.io/tag/XyBm-QYfJ/" class="badge success">
+        <a href="https://poiyibao.github.io/tag/XyBm-QYfJ/" class="badge ">
           Vue
         </a>
       

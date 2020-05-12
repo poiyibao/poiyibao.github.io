@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://poiyibao.github.io/</id>
     <title>poiyibao_blog</title>
-    <updated>2020-03-11T15:27:45.773Z</updated>
+    <updated>2020-05-12T16:39:25.010Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://poiyibao.github.io/"/>
     <link rel="self" href="https://poiyibao.github.io/atom.xml"/>
@@ -10,6 +10,132 @@
     <logo>https://poiyibao.github.io/images/avatar.png</logo>
     <icon>https://poiyibao.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, poiyibao_blog</rights>
+    <entry>
+        <title type="html"><![CDATA[JavaScript之this指向]]></title>
+        <id>https://poiyibao.github.io/post/javascript-zhi-this-zhi-xiang/</id>
+        <link href="https://poiyibao.github.io/post/javascript-zhi-this-zhi-xiang/">
+        </link>
+        <updated>2020-05-10T14:02:56.000Z</updated>
+        <content type="html"><![CDATA[<p>this作为js中的关键字，this在不同的情况有不同的指向。</p>
+<h2 id="默认指向">默认指向</h2>
+<p>在函数直接调用的情况下，this默认指向全局对象即window<br>
+函数未绑定对象，传参形式被另一个函数调用，this也指向window对象</p>
+<pre><code>//直接调用函数
+function fun()
+ {
+     console.log(this);
+     // window
+ }
+ fun();
+ //函数传参调用函数
+ function foo(func) {
+     funv();
+ }
+ foo(fun);
+ // window
+ //参数是一个对象的方法，this在真正调用的时候，还是一个简单独立的函数的调用，this还是window
+ let obj = {
+     fo() {
+         console.log(this)
+     }
+ }
+ foo(obj.fo)
+ //输出依然是window对象
+</code></pre>
+<h2 id="对象调用指向">对象调用指向</h2>
+<p>当函数通过object.fucntion()的形式调用时，this会指向object对象</p>
+<pre><code>let obj = {
+    foo() {
+        console.log(this)
+    }
+}
+obj.foo();
+// obj对象
+//多层对象调用，this任然指向第一个对象obj
+let newObj = {
+    obj: obj
+}
+newObj.obj.foo();
+// obj对象
+</code></pre>
+<p>当调用时有其他操作时会造成this指向丢失</p>
+<pre><code>let obj = {
+     fo() {
+         console.log(this)
+     }
+ }
+ let bar = obj.fo;
+ bar();
+ //window对象，bar没有绑定任何对象，属于默认指向
+</code></pre>
+<h2 id="直接绑定this指向">直接绑定this指向</h2>
+<p>通过call()和apply()方法进行直接指定this的指向<br>
+<em>call和apply方法的第一个参数相同，都为this指向的对象，后面的值为参数，call为参数列,apply要把所有参数放入数组中</em></p>
+<pre><code>function foo() {
+    console.log(this);
+}
+foo.call(windos)                                        // window对象
+foo.apply({name: fun})                             // {name: fun}
+</code></pre>
+<h2 id="内置函数的this指向">内置函数的this指向</h2>
+<p>一般的内置函数的this需要依靠源码来判定，一般可根据经验来判断</p>
+<ul>
+<li>setTimeout</li>
+</ul>
+<pre><code>setTimeout(function() {
+      console.log(this)
+      //window对象
+  }, 1000 )
+</code></pre>
+<pre><code> serTimeout内部是通过apply绑定this对象，且绑定的是全局对象
+</code></pre>
+<ul>
+<li>forEach()</li>
+</ul>
+<pre><code>   let arr = [123, 456, 789];
+   arr.forEach(function(item) {
+       console.log(this)
+       //window对象
+   })
+   obj= {}
+   arr.forEach(functiong(item) {
+       console.log(this);
+       //obj对象
+   },obj)
+</code></pre>
+<p>forEach默认绑定的是window对象，但可以自己指定this的指向</p>
+<h2 id="new绑定this">new绑定this</h2>
+<p>使用构造函数来new新对象，构造函数中的this会指向新对象</p>
+<h2 id="绑定this的优先级">绑定this的优先级</h2>
+<p>new绑定&gt;直接绑定&gt;隐式对象调用绑定&gt;默认绑定</p>
+<h2 id="es6箭头函数中的this">ES6箭头函数中的this</h2>
+<p>箭头函数不会绑定this，根据外层作用于来决定this</p>
+<pre><code>//ES6以前写法
+var obj ={
+    data: [],
+    getData: funvtion() {
+        var _this =this;
+        setTimeout( function() {
+            var datas = get.list;
+            _this.data.push(... datas);
+        },1000)
+    }
+}
+obj.getData();
+//ES6写法
+let obj ={
+    data: [];
+    getData() {
+        setTimeout(() =&gt;{
+             var datas = get.list;
+             this.data.push(... dataas)
+        },1000)
+    }
+}
+//由于箭头函数的this由外层作用域即 setTimeout方法的this决定，所以是obj对象，就不需要_this来保存外层的this了
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CSS3复习]]></title>
         <id>https://poiyibao.github.io/post/css3-fu-xi/</id>
