@@ -1,13 +1,20 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>计算机网络 | Gridea</title>
-<link rel="shortcut icon" href="https://poiyibao.github.io/favicon.ico?v=1631508944626">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="utf-8" >
+
+<title>计算机网络 | poiyibao&#39;s field</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://poiyibao.github.io/favicon.ico?v=1631509696922">
 <link rel="stylesheet" href="https://poiyibao.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="计算机网络 | Gridea - Atom Feed" href="https://poiyibao.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
@@ -36,82 +43,81 @@ HTTP 响应报文
 
 HTTP..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://poiyibao.github.io">
-  <img class="avatar" src="https://poiyibao.github.io/images/avatar.png?v=1631508944626" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://poiyibao.github.io">
+        <img src="https://poiyibao.github.io/images/avatar.png?v=1631509696922" class="site-logo">
+        <h1 class="site-title">poiyibao&#39;s field</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      春风得意马蹄疾，一日看尽长安花
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://poiyibao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              计算机网络
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-09-13
-              </span>
-              <span>
-                58 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">计算机网络</h2>
+            <div class="post-date">2021-09-13</div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="计算机网络知识总结">计算机网络知识总结</h1>
+            <div class="post-content" v-pre>
+              <h1 id="计算机网络知识总结">计算机网络知识总结</h1>
 <p>本部分主要是笔者在复习计算机网络相关知识和一些相关面试题时所做的笔记，如果出现错误，希望大家指出！</p>
 <h2 id="目录">目录</h2>
 <ul>
@@ -959,161 +965,36 @@ token 具有一定的有效时限。当一个应用系统跳转到另一个应�
 <p>详细资料可以参考：<br>
 <a href="https://www.zhihu.com/question/35906139">《HTTP 是个无状态协议，怎么保持登录状态？》</a></p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93">计算机网络知识总结</a>
-<ul>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
-<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%82">应用层</a>
-<ul>
-<li><a href="#http-%E5%8D%8F%E8%AE%AE">HTTP 协议</a>
-<ul>
-<li><a href="#%E6%A6%82%E5%86%B5">概况</a></li>
-<li><a href="#http-%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87">HTTP 请求报文</a></li>
-<li><a href="#http-%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87">HTTP 响应报文</a></li>
-<li><a href="#%E9%A6%96%E9%83%A8%E8%A1%8C">首部行</a></li>
-<li><a href="#http11-%E5%8D%8F%E8%AE%AE%E7%BC%BA%E7%82%B9">HTTP/1.1 协议缺点</a></li>
-</ul>
-</li>
-<li><a href="#http2-%E5%8D%8F%E8%AE%AE">HTTP/2 协议</a>
-<ul>
-<li><a href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%8D%8F%E8%AE%AE">二进制协议</a></li>
-<li><a href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8">多路复用</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E6%B5%81">数据流</a></li>
-<li><a href="#%E5%A4%B4%E4%BF%A1%E6%81%AF%E5%8E%8B%E7%BC%A9">头信息压缩</a></li>
-<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%8E%A8%E9%80%81">服务器推送</a></li>
-<li><a href="#http2-%E5%8D%8F%E8%AE%AE%E7%BC%BA%E7%82%B9">HTTP/2 协议缺点</a></li>
-<li><a href="#http3-%E5%8D%8F%E8%AE%AE">HTTP/3 协议</a></li>
-</ul>
-</li>
-<li><a href="#https-%E5%8D%8F%E8%AE%AE">HTTPS 协议</a>
-<ul>
-<li><a href="#http-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98">HTTP 存在的问题</a></li>
-<li><a href="#https-%E7%AE%80%E4%BB%8B">HTTPS 简介</a></li>
-<li><a href="#tls-%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B">TLS 握手过程</a></li>
-<li><a href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86">实现原理</a></li>
-</ul>
-</li>
-<li><a href="#dns-%E5%8D%8F%E8%AE%AE">DNS 协议</a>
-<ul>
-<li><a href="#%E6%A6%82%E5%86%B5-2">概况</a></li>
-<li><a href="#%E5%9F%9F%E5%90%8D%E7%9A%84%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84">域名的层级结构</a></li>
-<li><a href="#%E6%9F%A5%E8%AF%A2%E8%BF%87%E7%A8%8B">查询过程</a></li>
-<li><a href="#dns-%E8%AE%B0%E5%BD%95%E5%92%8C%E6%8A%A5%E6%96%87">DNS 记录和报文</a></li>
-<li><a href="#%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2%E5%92%8C%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2">递归查询和迭代查询</a></li>
-<li><a href="#dns-%E7%BC%93%E5%AD%98">DNS 缓存</a></li>
-<li><a href="#dns-%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%B9%B3%E8%A1%A1">DNS 实现负载平衡</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82">传输层</a>
-<ul>
-<li><a href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3">多路复用与多路分解</a></li>
-<li><a href="#udp-%E5%8D%8F%E8%AE%AE">UDP 协议</a>
-<ul>
-<li><a href="#udp-%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84">UDP 报文段结构</a></li>
-</ul>
-</li>
-<li><a href="#tcp-%E5%8D%8F%E8%AE%AE">TCP 协议</a>
-<ul>
-<li><a href="#tcp-%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84">TCP 报文段结构</a></li>
-<li><a href="#tcp-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B">TCP 三次握手的过程</a></li>
-<li><a href="#tcp-%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E7%9A%84%E8%BF%87%E7%A8%8B">TCP 四次挥手的过程</a></li>
-<li><a href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E5%8C%96%E5%9B%BE">状态转化图</a></li>
-<li><a href="#arq-%E5%8D%8F%E8%AE%AE">ARQ 协议</a></li>
-<li><a href="#tcp-%E7%9A%84%E5%8F%AF%E9%9D%A0%E8%BF%90%E8%BE%93%E6%9C%BA%E5%88%B6">TCP 的可靠运输机制</a></li>
-<li><a href="#tcp-%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6%E6%9C%BA%E5%88%B6">TCP 的流量控制机制</a></li>
-<li><a href="#tcp-%E7%9A%84%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E6%9C%BA%E5%88%B6">TCP 的拥塞控制机制</a></li>
-</ul>
-</li>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82">数据链路层</a></li>
-<li><a href="#%E7%89%A9%E7%90%86%E5%B1%82">物理层</a></li>
-</ul>
-</li>
-<li><a href="#%E5%B8%B8%E8%80%83%E9%9D%A2%E8%AF%95%E9%A2%98">常考面试题</a><br>
-*
-<ul>
-<li><a href="#1-post-%E5%92%8C-get-%E7%9A%84%E5%8C%BA%E5%88%AB">1. Post 和 Get 的区别？</a></li>
-<li><a href="#2-tlsssl-%E4%B8%AD%E4%BB%80%E4%B9%88%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E4%B8%89%E4%B8%AA%E9%9A%8F%E6%9C%BA%E6%95%B0%E6%9D%A5%E7%94%9F%E6%88%90%E4%BC%9A%E8%AF%9D%E5%AF%86%E9%92%A5">2. TLS/SSL 中什么一定要用三个随机数，来生成&quot;会话密钥&quot;？</a></li>
-<li><a href="#3-ssl-%E8%BF%9E%E6%8E%A5%E6%96%AD%E5%BC%80%E5%90%8E%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D">3. SSL 连接断开后如何恢复？</a></li>
-<li><a href="#4-rsa-%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%89%E5%85%A8%E6%80%A7%E4%BF%9D%E9%9A%9C">4. RSA 算法的安全性保障？</a></li>
-<li><a href="#5-dns-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-udp-%E5%8D%8F%E8%AE%AE%E4%BD%9C%E4%B8%BA%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE">5. DNS 为什么使用 UDP 协议作为传输层协议？</a></li>
-<li><a href="#6-%E5%BD%93%E4%BD%A0%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B8%AD%E8%BE%93%E5%85%A5-googlecom-%E5%B9%B6%E4%B8%94%E6%8C%89%E4%B8%8B%E5%9B%9E%E8%BD%A6%E4%B9%8B%E5%90%8E%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88">6. 当你在浏览器中输入 Google.com 并且按下回车之后发生了什么？</a></li>
-<li><a href="#7-%E8%B0%88%E8%B0%88-cdn-%E6%9C%8D%E5%8A%A1">7. 谈谈 CDN 服务？</a></li>
-<li><a href="#8-%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86">8. 什么是正向代理和反向代理？</a></li>
-<li><a href="#9-%E8%B4%9F%E8%BD%BD%E5%B9%B3%E8%A1%A1%E7%9A%84%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F">9. 负载平衡的两种实现方式？</a></li>
-<li><a href="#10-http-%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95-options-%E6%96%B9%E6%B3%95%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8">10. http 请求方法 options 方法有什么用？</a></li>
-<li><a href="#11-http11-%E5%92%8C-http10-%E4%B9%8B%E9%97%B4%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8C%BA%E5%88%AB">11. http1.1 和 http1.0 之间有哪些区别？</a></li>
-<li><a href="#12-%E7%BD%91%E7%AB%99%E5%9F%9F%E5%90%8D%E5%8A%A0-www-%E4%B8%8E%E4%B8%8D%E5%8A%A0-www-%E7%9A%84%E5%8C%BA%E5%88%AB">12. 网站域名加 www 与不加 www 的区别？</a></li>
-<li><a href="#13-%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%9F%AD%E8%BD%AE%E8%AF%A2-%E9%95%BF%E8%BD%AE%E8%AF%A2-sse-%E5%92%8C-websocket-%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB">13. 即时通讯的实现，短轮询、长轮询、SSE 和 WebSocket 间的区别？</a></li>
-<li><a href="#14-%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E5%A4%9A%E4%B8%AA%E7%BD%91%E7%AB%99%E4%B9%8B%E9%97%B4%E5%85%B1%E4%BA%AB%E7%99%BB%E5%BD%95%E7%8A%B6%E6%80%81">14. 怎么实现多个网站之间共享登录状态</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
+            
+            
+
+            
+
+          </div>
+
         </div>
-
-        
-
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://poiyibao.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>

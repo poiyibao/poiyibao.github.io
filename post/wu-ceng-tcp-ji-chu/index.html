@@ -1,13 +1,20 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>五层TCP基础 | Gridea</title>
-<link rel="shortcut icon" href="https://poiyibao.github.io/favicon.ico?v=1631508944626">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+    <meta charset="utf-8" >
+
+<title>五层TCP基础 | poiyibao&#39;s field</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://poiyibao.github.io/favicon.ico?v=1631509696922">
 <link rel="stylesheet" href="https://poiyibao.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="五层TCP基础 | Gridea - Atom Feed" href="https://poiyibao.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
@@ -50,82 +57,81 @@ DNS
 
 nslookup：DN..." />
     <meta name="keywords" content="" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://poiyibao.github.io">
-  <img class="avatar" src="https://poiyibao.github.io/images/avatar.png?v=1631508944626" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://poiyibao.github.io">
+        <img src="https://poiyibao.github.io/images/avatar.png?v=1631509696922" class="site-logo">
+        <h1 class="site-title">poiyibao&#39;s field</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      春风得意马蹄疾，一日看尽长安花
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://poiyibao.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              五层TCP基础
-            </h2>
-            <div class="post-info">
-              <span>
-                2021-09-13
-              </span>
-              <span>
-                4 min read
-              </span>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">五层TCP基础</h2>
+            <div class="post-date">2021-09-13</div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h2 id="tcp五层">TCP五层</h2>
+            <div class="post-content" v-pre>
+              <h2 id="tcp五层">TCP五层</h2>
 <h3 id="五层对应封装">五层对应封装</h3>
 <table>
 <thead>
@@ -471,115 +477,45 @@ nslookup：DN..." />
 </li>
 </ul>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#tcp%E4%BA%94%E5%B1%82">TCP五层</a>
-<ul>
-<li><a href="#%E4%BA%94%E5%B1%82%E5%AF%B9%E5%BA%94%E5%B0%81%E8%A3%85">五层对应封装</a></li>
-<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%82%E5%9F%BA%E7%A1%80">应用层基础</a>
-<ul>
-<li><a href="#dns">DNS</a></li>
-<li><a href="#http">HTTP</a></li>
-<li><a href="#%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE">邮件协议</a></li>
-<li><a href="#telnet">Telnet</a></li>
-<li><a href="#ftptftp">FTP&amp;TFTP</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E7%AB%AF%E5%88%B0%E7%AB%AF%E8%BF%9E%E6%8E%A5">传输层：端到端连接</a>
-<ul>
-<li><a href="#%E7%AB%AF%E5%8F%A3%E8%8C%83%E5%9B%B4">端口范围</a></li>
-<li><a href="#%E5%85%AC%E8%AE%A4%E7%AB%AF%E5%8F%A3">公认端口</a></li>
-<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE">传输层协议</a></li>
-</ul>
-</li>
-<li><a href="#%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>
-<ul>
-<li><a href="#arp%E5%8D%8F%E8%AE%AE">ARP协议</a></li>
-<li><a href="#icmp%E5%8D%8F%E8%AE%AE">ICMP协议</a></li>
-<li><a href="#ip%E5%8D%8F%E8%AE%AE">IP协议</a></li>
-</ul>
-</li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E4%BB%A5%E5%A4%AA%E7%BD%91">数据链路层与以太网</a>
-<ul>
-<li><a href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%8464-1518%E5%AD%97%E8%8A%82">以太网帧结构（64-1518字节）</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://poiyibao.github.io/post/ji-suan-ji-wang-luo/">
+                  <h3 class="post-title">
+                    计算机网络
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://poiyibao.github.io/post/ji-suan-ji-wang-luo/">
-              <h3 class="post-title">
-                计算机网络
-              </h3>
-            </a>
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://poiyibao.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
-    <script>
-      hljs.initHighlightingOnLoad()
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+AOS.init();
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
+</script>
 
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
 
-    </script>
+
+
+
+
   </body>
 </html>
