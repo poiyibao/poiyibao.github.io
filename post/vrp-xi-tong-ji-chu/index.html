@@ -1,0 +1,415 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VRP系统基础 | Gridea</title>
+<link rel="shortcut icon" href="https://poiyibao.github.io/favicon.ico?v=1631508944626">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://poiyibao.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="VRP系统基础 | Gridea - Atom Feed" href="https://poiyibao.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="管理方式
+
+
+本地管理：使用console线进行，使用serial协议，适合初始化、故障恢复。
+
+
+talent/ssh：远程登录(VTY口)，后期维护，SSH/talnet协议。
+
+
+基础命令
+用户权限
+
+
+
+用户等级
+命令等级
+名称
+
+..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://poiyibao.github.io">
+  <img class="avatar" src="https://poiyibao.github.io/images/avatar.png?v=1631508944626" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              VRP系统基础
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-13
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h3 id="管理方式">管理方式</h3>
+<ul>
+<li>
+<p>本地管理：使用console线进行，使用serial协议，适合初始化、故障恢复。</p>
+</li>
+<li>
+<p>talent/ssh：远程登录(VTY口)，后期维护，SSH/talnet协议。</p>
+</li>
+</ul>
+<h3 id="基础命令">基础命令</h3>
+<p><strong>用户权限</strong></p>
+<table>
+<thead>
+<tr>
+<th>用户等级</th>
+<th>命令等级</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>访问级</td>
+</tr>
+<tr>
+<td>1</td>
+<td>≤1</td>
+<td>监控级</td>
+</tr>
+<tr>
+<td>2</td>
+<td>≤2</td>
+<td>配置级</td>
+</tr>
+<tr>
+<td>3-15</td>
+<td>≤3</td>
+<td>管理级</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用户视图</strong></p>
+<table>
+<thead>
+<tr>
+<th>save</th>
+<th>保存配置信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>display startup</td>
+<td>查看启动文件配置</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>系统视图</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>配置命名</td>
+<td>sysname XXXX</td>
+</tr>
+<tr>
+<td>设置所在时区</td>
+<td>clock timezone</td>
+</tr>
+<tr>
+<td>配置当前时间与日期</td>
+<td>clock datetime HH:MM:SS YY-MM-DD</td>
+</tr>
+<tr>
+<td>配置使用夏时制</td>
+<td>clock daylight-saving-time</td>
+</tr>
+<tr>
+<td>配置在用户登录前显示的标题消息</td>
+<td>header login information &quot;XXXXXX&quot;</td>
+</tr>
+<tr>
+<td>配置在用户登录后显示的标题消息</td>
+<td>header shell information &quot;XXXXXX&quot;</td>
+</tr>
+<tr>
+<td>显示接口信息</td>
+<td>display [ip]interface  brief</td>
+</tr>
+<tr>
+<td>对比当前文件与下次重启文件</td>
+<td>compare configuration</td>
+</tr>
+<tr>
+<td>清除启动文件</td>
+<td>reset saved-configuration</td>
+</tr>
+<tr>
+<td>查看系统硬件配置</td>
+<td>display version</td>
+</tr>
+<tr>
+<td>查看那系统启动配置参数</td>
+<td>display startup</td>
+</tr>
+</tbody>
+</table>
+<p><strong>配置接口</strong></p>
+<pre><code class="language-text">systm-view                  
+interface gigabitethernet x/x/x          #进入端口xx
+ip address x.x.x.x  x.x.x.x              #配置端口地址与掩码
+
+</code></pre>
+<p><strong>认证模式</strong></p>
+<table>
+<thead>
+<tr>
+<th>认证模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AAA</td>
+<td>登录时需要用户名与密码</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>登录时只需要密码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>talnet配置</strong>（远程连接）</p>
+<pre><code class="language-PowerShell">talnet server enable                            # 开启talnet服务
+display telnet server status                    # 验证talnet服务
+user-interface vty 0 4                          # 进入VTY配置模式
+    authentication-mode password/aaa            # 配置认证模式
+    set authentication password cipher XXXX     # 配置认证密码
+    user privilege level xx                     # 配置用户等级
+user-interface maximum-vty xx                   # 配置vty会话最大数量
+#aaa配置
+aaa
+    local-user xxx passoword cipher xxx           # 创建用户与密码
+    local-user xxx privilege level xx             # 配置用户级别 
+    local-user xxx service-type (telnet)          # 配置用户可用服务
+
+</code></pre>
+<h3 id="vrp文件系统">VRP文件系统</h3>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>管理项目</th>
+<th>命令</th>
+<th>管理项目、</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mkdir</td>
+<td>创建目录</td>
+<td>more</td>
+<td>显示文件内容</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>重命名目录</td>
+<td>copy</td>
+<td>拷贝文件</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>查看当前的工作目录</td>
+<td>move</td>
+<td>移动文件</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>改变当前目录</td>
+<td>rename</td>
+<td>重命名</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>显示目录或文件信息</td>
+<td>zip</td>
+<td>压缩文件</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除目录</td>
+<td>delete</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>execute</td>
+<td>执行批文件处理</td>
+<td>reset</td>
+<td>彻底删除回收站文件</td>
+</tr>
+</tbody>
+</table>
+<p>** VRP系统FTP操作**</p>
+<pre><code class="language-PowerShell">FTP ipxxxx                         #连接到ftp服务器
+get xxx                            #下载xx文件
+put xxx                            #上传文件
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F">管理方式</a></li>
+<li><a href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4">基础命令</a></li>
+<li><a href="#vrp%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">VRP文件系统</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://poiyibao.github.io/post/wu-ceng-tcp-ji-chu/">
+              <h3 class="post-title">
+                五层TCP基础
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://poiyibao.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

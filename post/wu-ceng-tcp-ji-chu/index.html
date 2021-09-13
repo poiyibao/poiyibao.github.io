@@ -1,0 +1,585 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>五层TCP基础 | Gridea</title>
+<link rel="shortcut icon" href="https://poiyibao.github.io/favicon.ico?v=1631508944626">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://poiyibao.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="五层TCP基础 | Gridea - Atom Feed" href="https://poiyibao.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="TCP五层
+五层对应封装
+
+
+
+
+
+
+
+
+
+应用层
+PDU
+
+
+传输层
+段
+
+
+网络层
+段
+
+
+数据链路层
+帧（frame）
+
+
+物理层
+比特（bit）
+
+
+
+应用层基础
+DNS
+在win-cmd里，使用以下命令
+
+
+nslookup：DN..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://poiyibao.github.io">
+  <img class="avatar" src="https://poiyibao.github.io/images/avatar.png?v=1631508944626" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              五层TCP基础
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-09-13
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="tcp五层">TCP五层</h2>
+<h3 id="五层对应封装">五层对应封装</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层</td>
+<td>PDU</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>段</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>段</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>帧（frame）</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>比特（bit）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="应用层基础">应用层基础</h3>
+<h4 id="dns">DNS</h4>
+<p>在win-cmd里，使用以下命令</p>
+<ul>
+<li>
+<p>nslookup：DNS调试工具</p>
+</li>
+<li>
+<p>ipconfig/displaydns：查看DNS缓存</p>
+</li>
+<li>
+<p>ipconfig/flushdns：清空DNS</p>
+</li>
+</ul>
+<h4 id="http">HTTP</h4>
+<h4 id="邮件协议">邮件协议</h4>
+<h4 id="telnet">Telnet</h4>
+<h4 id="ftptftp">FTP&amp;TFTP</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FTP</td>
+<td><a href="ftp://%E7%94%A8%E6%88%B7%E5%90%8D">ftp://用户名</a>：密码@ IP:端口号可靠、认证、权限</td>
+</tr>
+<tr>
+<td>TFTP</td>
+<td>不可靠</td>
+</tr>
+</tbody>
+</table>
+<h3 id="传输层端到端连接">传输层：端到端连接</h3>
+<h4 id="端口范围">端口范围</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-1023</td>
+<td>公认端口</td>
+</tr>
+<tr>
+<td>1024-49151</td>
+<td>注册端口</td>
+</tr>
+<tr>
+<td>49152-65535</td>
+<td>动态端口</td>
+</tr>
+</tbody>
+</table>
+<h4 id="公认端口">公认端口</h4>
+<ul>
+<li>
+<p>21：   FTP</p>
+</li>
+<li>
+<p>23：   Telnet</p>
+</li>
+<li>
+<p>25：   SMTP</p>
+</li>
+<li>
+<p>80：    HTTP</p>
+</li>
+<li>
+<p>110：  POP3</p>
+</li>
+<li>
+<p>194：  Internet中继聊天（IRC）</p>
+</li>
+<li>
+<p>443：  HTTPS</p>
+</li>
+</ul>
+<hr>
+<h4 id="传输层协议">传输层协议</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TCP</td>
+<td>可靠、面向连接</td>
+</tr>
+<tr>
+<td>UCP</td>
+<td>不可靠、无连接</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TCP数据包包头</strong>(20)</p>
+<figure data-type="image" tabindex="1"><img src="https://secure.wostatic.cn/static/5gKtJoZvhEuP9P5KmVKFx/image.png" alt="" loading="lazy"></figure>
+<p><strong>UDP数据包包头</strong>(8)</p>
+<figure data-type="image" tabindex="2"><img src="https://secure.wostatic.cn/static/k7WTxemt1234ryWN62nqQA/image.png" alt="" loading="lazy"></figure>
+<hr>
+<h3 id="网络层">网络层</h3>
+<h4 id="arp协议">ARP协议</h4>
+<p>ARP协议（地址解析协议）：以广播的形式查询，收到回复记录映射缓存</p>
+<p>win下命令</p>
+<ul>
+<li>
+<p>arp -a 查看arp缓存</p>
+</li>
+<li>
+<p>arp -d 清除arp缓存</p>
+</li>
+</ul>
+<p>ARP欺骗：改造数据包发送无故ARP响应，使得目标IP接收到假的IP与mac地址的映射，造成网络卡顿与断网，在一个网段内生效。</p>
+<p><strong>免费ARP</strong></p>
+<p>检测网段内IP地址是否冲突，通过发送“自问”ARP数据包，我回复则证明不冲突，有回复则冲突。</p>
+<h4 id="icmp协议">ICMP协议</h4>
+<p>ICMP协议（控制报文协议）：</p>
+<p><strong>数据包格式</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>以太网头部</td>
+<td>IP头部</td>
+<td>ICMP</td>
+<td>FCS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>主要字段：</strong></p>
+<ul>
+<li>
+<p>Type：表示ICMP消息类型</p>
+</li>
+<li>
+<p>Code：表示同一消息类型中的不同信息</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>类型</td>
+<td>编码</td>
+<td>描述</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Echo Reply</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0</td>
+<td>网络不可达</td>
+</tr>
+<tr>
+<td>3</td>
+<td>1</td>
+<td>主机不可达</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2</td>
+<td>协议不可达</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>端口不可达</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0</td>
+<td>重定向</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0</td>
+<td>Echo Request</td>
+</tr>
+</tbody>
+</table>
+<p>ICMP数据包通ping命令发出，回复有：</p>
+<ul>
+<li>
+<p>正常回复</p>
+</li>
+<li>
+<p>超时：对方主机不在线，屏蔽</p>
+</li>
+<li>
+<p>传输失败：网关出问题，ICMP包发布出去</p>
+</li>
+<li>
+<p>无法访问：获取不到MAC</p>
+</li>
+<li>
+<p>地址（收不到ARP回复包）</p>
+</li>
+</ul>
+<h4 id="ip协议">IP协议</h4>
+<p><strong>IP数据包头结构</strong></p>
+<figure data-type="image" tabindex="3"><img src="https://secure.wostatic.cn/static/q7rvz3dUmuineha4NzJQhg/20200119120637571.png" alt="" loading="lazy"></figure>
+<ul>
+<li>
+<p>版本号（Version）：4bit。标识目前采用的IP协议的版本号。0100（IPv4），IPv6的值（0110）</p>
+</li>
+<li>
+<p>IP包头长度（Header Length）：4bit。描述IP包头的长度，最小长度为20字节，最大长度24字节。</p>
+</li>
+<li>
+<p>服务类型（Type of Service）：8bit。这个子段可以拆分成两个部分：Precedence和TOS。TOS目前不太使用。而Precedence则用于QOS应用。</p>
+</li>
+<li>
+<p>IP包总长（Total Length）：16bit。IP包最大长度65535字节。</p>
+</li>
+<li>
+<p>标识符：为分片分类</p>
+</li>
+<li>
+<p>标志：判断分片是否为最后一片</p>
+</li>
+<li>
+<p>段偏移量：用来标识该数据包在该数据流中的位置。</p>
+</li>
+<li>
+<p>TTL(生存时间)</p>
+<ul>
+<li>
+<p>防止IP数据包无限制传输</p>
+</li>
+<li>
+<p>每经过一次路由，TTL减1</p>
+</li>
+<li>
+<p>当TTL=0，丢弃数据包</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>利用TTL排错</strong></p>
+<p>TTL的特性可以进行路由追踪通过：<strong>ping -i</strong>或<strong>tracert -d</strong>。</p>
+<hr>
+<h3 id="数据链路层与以太网">数据链路层与以太网</h3>
+<p>数据链路层分为两个子层：LLC（逻辑链路控制）子层与MAC（介质访问控制）子层</p>
+<p>LLC层与网络层对接，识别网络层的协议</p>
+<p>类型，接收数据并封装为帧。</p>
+<p>MAC层与物理层对接，负责硬件设备物理寻址，定义网络拓扑及数据帧的传递顺序。</p>
+<h4 id="以太网帧结构64-1518字节">以太网帧结构（64-1518字节）</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前导码</td>
+<td>开始定位符</td>
+<td>目的地址</td>
+<td>源地址</td>
+<td>类型</td>
+<td>数据</td>
+<td>帧校验序列</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>协议类型：表示上层协议</p>
+</li>
+<li>
+<p>帧大小范围： 64-1518字节</p>
+</li>
+<li>
+<p>MTU：最大传输单元，默认1500字节，发送数据的最大值</p>
+</li>
+<li>
+<p>帧校验：</p>
+</li>
+<li>
+<p>MAC地址：48bits=24bits(厂商)+24bits（厂商分）</p>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#tcp%E4%BA%94%E5%B1%82">TCP五层</a>
+<ul>
+<li><a href="#%E4%BA%94%E5%B1%82%E5%AF%B9%E5%BA%94%E5%B0%81%E8%A3%85">五层对应封装</a></li>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%82%E5%9F%BA%E7%A1%80">应用层基础</a>
+<ul>
+<li><a href="#dns">DNS</a></li>
+<li><a href="#http">HTTP</a></li>
+<li><a href="#%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE">邮件协议</a></li>
+<li><a href="#telnet">Telnet</a></li>
+<li><a href="#ftptftp">FTP&amp;TFTP</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E7%AB%AF%E5%88%B0%E7%AB%AF%E8%BF%9E%E6%8E%A5">传输层：端到端连接</a>
+<ul>
+<li><a href="#%E7%AB%AF%E5%8F%A3%E8%8C%83%E5%9B%B4">端口范围</a></li>
+<li><a href="#%E5%85%AC%E8%AE%A4%E7%AB%AF%E5%8F%A3">公认端口</a></li>
+<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE">传输层协议</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E5%B1%82">网络层</a>
+<ul>
+<li><a href="#arp%E5%8D%8F%E8%AE%AE">ARP协议</a></li>
+<li><a href="#icmp%E5%8D%8F%E8%AE%AE">ICMP协议</a></li>
+<li><a href="#ip%E5%8D%8F%E8%AE%AE">IP协议</a></li>
+</ul>
+</li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%8E%E4%BB%A5%E5%A4%AA%E7%BD%91">数据链路层与以太网</a>
+<ul>
+<li><a href="#%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E7%BB%93%E6%9E%8464-1518%E5%AD%97%E8%8A%82">以太网帧结构（64-1518字节）</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://poiyibao.github.io/post/ji-suan-ji-wang-luo/">
+              <h3 class="post-title">
+                计算机网络
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://poiyibao.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
